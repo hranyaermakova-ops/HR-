@@ -6,15 +6,15 @@
   <title>HRD Анна Ермакова — HR-услуги для компаний</title>
   <style>
     :root{
-      --bg: #f7f4f0; /* Теплый мягкий серо-кремовый */
+      --bg: #f7f5f2; /* Теплый мягкий серо-кремовый */
       --card: #ffffff; /* Белоснежные карточки */
-      --muted: #8d8580; /* Теплый серый для второстепенного текста */
-      --text: #2f2a28; /* Глубокий кофейно-серый для отличной читаемости */
+      --muted: #8c807a; /* Теплый серый для второстепенного текста */
+      --text: #2c1e21; /* Глубокий винно-черный для отличной читаемости */
       --brand: #d4af37; /* Благородное золото */
       --brand-hover: #c5a059; /* Темное золото при наведении */
-      --pink-soft: #ffe5ec; /* Нежнейший пушистый розовый */
-      --pink-accent: #ffccd5; /* Чуть более насыщенный розовый */
-      --shadow: 0 20px 40px rgba(184, 165, 153, 0.12); /* Мягкие пушистые тени */
+      --burgundy-soft: #f5e6e8; /* Нежнейший "пушистый" оттенок пыльной бордовой розы */
+      --burgundy-accent: #800020; /* Глубокий бархатный бордовый */
+      --shadow: 0 20px 40px rgba(128, 0, 32, 0.06); /* Мягкие бордово-серые тени */
       --ring: 0 0 0 4px rgba(212, 175, 55, 0.15);
       --radius: 18px;
       --radius2: 24px;
@@ -25,9 +25,9 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
       background:
-        radial-gradient(900px 500px at 15% -10%, rgba(255, 204, 213, 0.45), transparent 60%), /* Нежно-розовое пушистое свечение */
-        radial-gradient(700px 450px at 90% 10%, rgba(212, 175, 55, 0.15), transparent 60%), /* Золотистое мерцание */
-        radial-gradient(500px 380px at 40% 110%, rgba(255, 229, 236, 0.5), transparent 60%),
+        radial-gradient(900px 500px at 15% -10%, rgba(128, 0, 32, 0.12), transparent 60%), /* Мягкое бордовое свечение */
+        radial-gradient(700px 450px at 90% 10%, rgba(212, 175, 55, 0.15), transparent 60%), /* Золотистый блик */
+        radial-gradient(500px 380px at 40% 110%, rgba(245, 230, 232, 0.5), transparent 60%),
         var(--bg);
       color:var(--text);
       line-height:1.4;
@@ -40,8 +40,8 @@
       top:0;
       z-index:50;
       backdrop-filter: blur(10px);
-      background: rgba(247, 244, 240, 0.75);
-      border-bottom: 1px solid rgba(184, 165, 153, 0.15);
+      background: rgba(247, 245, 242, 0.8);
+      border-bottom: 1px solid rgba(128, 0, 32, 0.08);
     }
     .nav{
       display:flex; align-items:center; justify-content:space-between;
@@ -50,8 +50,8 @@
     .logo{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
     .mark{
       width:36px; height:36px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--pink-accent), var(--brand));
-      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+      background: linear-gradient(135deg, var(--burgundy-accent), var(--brand));
+      box-shadow: 0 8px 20px rgba(128, 0, 32, 0.15);
       position:relative;
     }
     .mark:after{
@@ -65,7 +65,7 @@
 
     .navlinks{display:flex; gap:18px; align-items:center; flex-wrap:wrap;}
     .navlinks a{
-      color: rgba(47, 42, 40, 0.8);
+      color: rgba(44, 30, 33, 0.8);
       font-size:14px;
       padding:10px 10px;
       border-radius: 12px;
@@ -75,7 +75,7 @@
 
     .cta{display:flex; gap:10px; align-items:center;}
     .btn{
-      border:1px solid rgba(184, 165, 153, 0.25);
+      border:1px solid rgba(128, 0, 32, 0.15);
       background: rgba(255, 255, 255, 0.6);
       color: var(--text);
       padding: 10px 14px;
@@ -83,7 +83,7 @@
       font-weight:800;
       font-size:14px;
       transition: .2s ease;
-      box-shadow: 0 6px 15px rgba(184, 165, 153, 0.08);
+      box-shadow: 0 6px 15px rgba(128, 0, 32, 0.04);
       cursor:pointer;
       user-select:none;
     }
@@ -103,13 +103,13 @@
 
     .pill{
       display:inline-flex; gap:10px; align-items:center;
-      border: 1px solid rgba(184, 165, 153, 0.2);
-      background: var(--pink-soft);
+      border: 1px solid rgba(128, 0, 32, 0.1);
+      background: var(--burgundy-soft);
       padding: 8px 12px;
       border-radius: 999px;
       font-weight:700;
       font-size: 13px;
-      color: var(--text);
+      color: var(--burgundy-accent);
     }
     .dot{
       width:10px; height:10px; border-radius: 99px;
@@ -124,29 +124,43 @@
       letter-spacing:-.6px;
       color: var(--text);
     }
-    /* Сделаем ключевые слова в заголовках золотыми */
+    /* Ключевые слова в заголовках золотые */
     h1 b, h2 b, h3 b, h4 b {
       color: var(--brand);
       font-weight: inherit;
     }
-    .lead{color: rgba(47, 42, 40, 0.85); font-size: 16px; max-width: 56ch;}
+    .lead{color: rgba(44, 30, 33, 0.85); font-size: 16px; max-width: 56ch;}
     .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top: 18px; align-items:center;}
 
-    .badges{display:flex; flex-wrap:wrap; gap:10px; margin-top: 18px;}
-    .badge{
-      border: 1px solid rgba(184, 165, 153, 0.15);
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 16px;
-      padding: 10px 12px;
-      min-width: 190px;
-      box-shadow: var(--shadow);
+    /* Стили для твоей фотографии */
+    .hero-photo-container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
     }
-    .badge b{display:block; font-size:14px; color: var(--brand);}
-    .badge span{display:block; color: var(--muted); font-size:13px; margin-top:4px}
+    .hero-photo {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--burgundy-accent);
+      box-shadow: 0 10px 25px rgba(128, 0, 32, 0.15);
+      background: var(--burgundy-soft);
+    }
+    .hero-photo-text {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .hero-photo-text b {
+      color: var(--burgundy-accent);
+      display: block;
+      font-size: 15px;
+    }
 
     .panel{
       background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.8));
-      border: 1px solid rgba(184, 165, 153, 0.2);
+      border: 1px solid rgba(128, 0, 32, 0.12);
       border-radius: var(--radius2);
       box-shadow: var(--shadow);
       padding: 18px;
@@ -157,7 +171,7 @@
       content:"";
       position:absolute;
       width: 240px; height: 240px;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 204, 213, 0.4), transparent 62%);
+      background: radial-gradient(circle at 30% 30%, rgba(245, 230, 232, 0.6), transparent 62%);
       top:-130px; right:-120px;
     }
     .panel h3{margin:0 0 6px; font-size: 18px; color: var(--text);}
@@ -168,7 +182,7 @@
     input, textarea, select{
       width:100%;
       border-radius: 14px;
-      border: 1px solid rgba(184, 165, 153, 0.25);
+      border: 1px solid rgba(128, 0, 32, 0.15);
       background: rgba(255, 255, 255, 0.8);
       color: var(--text);
       padding: 11px 12px;
@@ -188,7 +202,7 @@
       border-radius: 16px;
       padding: 12px 12px;
       border: 1px solid rgba(212, 175, 55, 0.3);
-      background: rgba(255, 229, 236, 0.8);
+      background: var(--burgundy-soft);
       color: var(--text);
       font-weight:700;
       text-align: center;
@@ -210,7 +224,7 @@
     }
     .price-card {
       background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(184, 165, 153, 0.2);
+      border: 1px solid rgba(128, 0, 32, 0.1);
       border-radius: var(--radius2);
       padding: 30px 24px;
       display: flex;
@@ -223,10 +237,10 @@
       transform: translateY(-5px);
       border-color: var(--brand);
       background: #ffffff;
-      box-shadow: 0 25px 50px rgba(184, 165, 153, 0.2);
+      box-shadow: 0 25px 50px rgba(128, 0, 32, 0.12);
     }
     .price-card.featured {
-      background: linear-gradient(180deg, rgba(255, 229, 236, 0.6), rgba(255, 255, 255, 0.95));
+      background: linear-gradient(180deg, rgba(245, 230, 232, 0.4), rgba(255, 255, 255, 0.95));
       border: 1.5px solid var(--brand);
       box-shadow: 0 25px 50px rgba(212, 175, 55, 0.15);
     }
@@ -237,7 +251,7 @@
       position: absolute;
       top: 15px;
       right: 15px;
-      background: var(--brand);
+      background: var(--burgundy-accent);
       color: #ffffff;
       font-size: 11px;
       font-weight: 900;
@@ -255,7 +269,7 @@
     .price-value {
       font-size: 28px;
       font-weight: 900;
-      color: var(--brand); /* Золотой цвет для цен */
+      color: var(--brand); /* Золотой цвет цен */
       margin-bottom: 20px;
       display: flex;
       flex-direction: column;
@@ -274,7 +288,7 @@
       line-height: 1.4;
     }
     .price-card-desc b {
-      color: var(--brand); /* Выделение золотым */
+      color: var(--burgundy-accent); /* Выделение бордовым */
     }
     .price-features {
       list-style: none;
@@ -284,7 +298,7 @@
       flex-direction: column;
       gap: 12px;
       flex-grow: 1;
-      border-top: 1px solid rgba(184, 165, 153, 0.15);
+      border-top: 1px solid rgba(128, 0, 32, 0.08);
       padding-top: 18px;
     }
     .price-features li {
@@ -311,7 +325,7 @@
     @media (max-width: 980px){.steps{grid-template-columns: 1fr;}}
     .step{
       background: rgba(255, 255, 255, 0.6);
-      border: 1px solid rgba(184, 165, 153, 0.15);
+      border: 1px solid rgba(128, 0, 32, 0.08);
       border-radius: var(--radius);
       padding: 16px;
       box-shadow: var(--shadow);
@@ -319,8 +333,8 @@
     .step .n{
       width:36px; height:36px; border-radius: 14px;
       display:flex; align-items:center; justify-content:center;
-      background: var(--pink-soft);
-      border:1px solid var(--pink-accent);
+      background: var(--burgundy-soft);
+      border:1px solid rgba(128, 0, 32, 0.15);
       font-weight:900;
       color: var(--brand); /* Золотые номера шагов */
     }
@@ -332,7 +346,7 @@
     ul{margin:0; padding:0; list-style:none; display:grid; gap:10px}
     .li{
       display:flex; gap:10px; align-items:flex-start;
-      border:1px solid rgba(184, 165, 153, 0.15);
+      border:1px solid rgba(128, 0, 32, 0.08);
       background: rgba(255, 255, 255, 0.6);
       border-radius: var(--radius);
       padding: 12px;
@@ -340,8 +354,8 @@
     }
     .check{
       width:22px; height:22px; border-radius: 10px;
-      background: var(--pink-soft);
-      border:1px solid var(--pink-accent);
+      background: var(--burgundy-soft);
+      border:1px solid rgba(128, 0, 32, 0.15);
       display:flex; align-items:center; justify-content:center;
       flex:0 0 auto;
       margin-top:2px;
@@ -353,7 +367,7 @@
 
     .faq{display:grid; gap:10px}
     details{
-      border:1px solid rgba(184, 165, 153, 0.15);
+      border:1px solid rgba(128, 0, 32, 0.08);
       background: rgba(255, 255, 255, 0.6);
       border-radius: var(--radius);
       padding: 12px 14px;
@@ -362,7 +376,7 @@
     summary{cursor:pointer; font-weight:700; outline:none; color: var(--text);}
     details p{margin:10px 0 0; color: var(--muted); font-size:14px}
 
-    footer{padding: 28px 0 40px; color: var(--text); border-top: 1px solid rgba(184, 165, 153, 0.15); background: rgba(255,255,255,0.3);}
+    footer{padding: 28px 0 40px; color: var(--text); border-top: 1px solid rgba(128, 0, 32, 0.08); background: rgba(255,255,255,0.3);}
     .foot{
       padding-top: 16px;
       display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
@@ -372,7 +386,7 @@
 
     .modalOverlay{
       position:fixed; inset:0;
-      background: rgba(47, 42, 40, 0.4);
+      background: rgba(44, 30, 33, 0.4);
       backdrop-filter: blur(4px);
       display:none;
       align-items:center; justify-content:center;
@@ -383,7 +397,7 @@
       width: min(640px, 100%);
       border-radius: 22px;
       background: #ffffff;
-      border:1px solid rgba(184, 165, 153, 0.2);
+      border:1px solid rgba(128, 0, 32, 0.12);
       box-shadow: var(--shadow);
       padding: 16px;
     }
@@ -424,24 +438,25 @@
     <section class="hero" aria-label="Главный экран">
       <div class="grid-hero">
         <div>
-          <div class="pill"><span class="dot" aria-hidden="true"></span> HR‑практик с 9+ лет опыта в e‑commerce, маркетплейсах и ритейле. 
-            Специализируюсь на выстраивании HR‑процессов с нуля: найм, адаптация, мотивация, корпоративная культура и автоматизация.
-            Помогаю малому и среднему бизнесу быстро запускать HR‑отдел, снижать текучку и увеличивать операционную прибыль через систему KPI и внедрение «бесшовных» процессов.</div>
+          <div class="pill"><span class="dot" aria-hidden="true"></span> HR-услуги для компаний: найм, процесс и контроль</div>
           <h1>Сделаем найм <b>управляемым</b> и поможем закрывать вакансии <b>быстрее</b></h1>
           <p class="lead">
             HR Анна Ермакова помогает выстроить воронку под ваши требования, ускорить подбор и повысить качество кандидатов.
             Оформим процесс так, чтобы прогресс был виден и решения принимались без “тишины”.
           </p>
 
-          <div class="hero-actions">
-            <button class="btn primary" type="button" onclick="openLead()">Бесплатная консультация</button>
-            <button class="btn" type="button" onclick="scrollToId('services')">Что входит</button>
+          <!-- Твоё фото без фона с подписью -->
+          <div class="hero-photo-container">
+            <img src="https://i.ibb.co/dwtxr66G/image.png" alt="HR Анна Ермакова" class="hero-photo" onerror="this.src='https://i.ibb.co/XYZ123/placeholder.png';">
+            <div class="hero-photo-text">
+              <b>Анна Ермакова</b>
+              Ваш персональный HR-партнёр
+            </div>
           </div>
 
-          <div class="badges">
-            <div class="badge"><b>Скорость</b><span>запуск поиска после согласования критериев</span></div>
-            <div class="badge"><b>Качество</b><span>отбор по понятным и проверяемым требованиям</span></div>
-            <div class="badge"><b>Прозрачность</b><span>статусы, отчётность и план на этапы</span></div>
+          <div class="hero-actions" style="margin-top:24px;">
+            <button class="btn primary" type="button" onclick="openLead()">Бесплатная консультация</button>
+            <button class="btn" type="button" onclick="scrollToId('services')">Что входит</button>
           </div>
         </div>
 
@@ -609,11 +624,11 @@
           <div class="sub">За короткую консультацию обозначим формат работы и следующий шаг.</div>
 
           <div class="cards" style="grid-template-columns:1fr; gap:10px;">
-            <div class="card" style="padding:14px; background: rgba(255,255,255,0.8); border: 1px solid rgba(184, 165, 153, 0.15);">
+            <div class="card" style="padding:14px; background: rgba(255,255,255,0.8); border: 1px solid rgba(128, 0, 32, 0.08);">
               <h4 style="margin-bottom:6px">Что вы получите</h4>
               <p>План по вакансии: этапы, критерии оценки и ориентиры по срокам.</p>
             </div>
-            <div class="card" style="padding:14px; background: rgba(255,255,255,0.8); border: 1px solid rgba(184, 165, 153, 0.15);">
+            <div class="card" style="padding:14px; background: rgba(255,255,255,0.8); border: 1px solid rgba(128, 0, 32, 0.08);">
               <h4 style="margin-bottom:6px">Кому подходит</h4>
               <p>Компании, которым важны скорость, контроль и качество найма.</p>
             </div>
