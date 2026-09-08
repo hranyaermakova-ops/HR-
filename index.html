@@ -130,6 +130,17 @@
       font-weight: inherit;
     }
     .lead{color: rgba(44, 30, 33, 0.85); font-size: 16px; max-width: 56ch;}
+    .experience-text{
+      color: var(--text);
+      font-size: 14.5px;
+      line-height: 1.5;
+      margin: 16px 0;
+      max-width: 56ch;
+      background: rgba(255, 255, 255, 0.4);
+      padding: 12px 16px;
+      border-radius: 14px;
+      border-left: 3px solid var(--brand);
+    }
     .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top: 18px; align-items:center;}
 
     /* Стили для твоей фотографии */
@@ -438,14 +449,21 @@
     <section class="hero" aria-label="Главный экран">
       <div class="grid-hero">
         <div>
-          <div class="pill"><span class="dot" aria-hidden="true"></span> Дипломированный HR‑практик с 9+ лет опыта в e‑commerce, маркетплейсах и ритейле.
-            Специализируюсь на выстраивании HR‑процессов с нуля: найм, адаптация, мотивация, корпоративная культура и автоматизация.
-            Помогаю малому и среднему бизнесу быстро запускать HR‑отдел, снижать текучку и увеличивать операционную прибыль через систему KPI и внедрение «бесшовных» процессов.</div>
+          <div class="pill"><span class="dot" aria-hidden="true"></span> HR-услуги для компаний: найм, процесс и контроль</div>
+          
           <h1>Сделаем найм <b>управляемым</b> и поможем закрывать вакансии <b>быстрее</b></h1>
+          
           <p class="lead">
             HR Анна Ермакова помогает выстроить воронку под ваши требования, ускорить подбор и повысить качество кандидатов.
             Оформим процесс так, чтобы прогресс был виден и решения принимались без “тишины”.
           </p>
+
+          <!-- Твой перенесенный текст о профессиональном опыте -->
+          <div class="experience-text">
+            Дипломированный HR‑практик с 9+ лет опыта в e‑commerce, маркетплейсах и ритейле.
+            Специализируюсь на выстраивании HR‑процессов с нуля: найм, адаптация, мотивация, корпоративная культура и автоматизация.
+            Помогаю малому и среднему бизнесу быстро запускать HR‑отдел, снижать текучку и увеличивать операционную прибыль через систему KPI и внедрение «бесшовных» процессов.
+          </div>
 
           <!-- Твоё фото без фона с подписью -->
           <div class="hero-photo-container">
@@ -727,45 +745,4 @@
     const role = formData.get('Вакансия');
     const region = formData.get('Регион');
     const deadline = formData.get('Срок');
-    const msg = formData.get('Сообщение');
-
-    // Форматируем красивое сообщение для Telegram
-    const message = `📥 *Новая заявка с сайта!*\n\n` +
-                    `👤 *Имя:* ${name}\n` +
-                    `🏢 *Компания:* ${company}\n` +
-                    `📞 *Телефон:* ${phone}\n` +
-                    `💼 *Вакансия:* ${role}\n` +
-                    `🌍 *Формат:* ${region}\n` +
-                    `⏰ *Срок:* ${deadline}\n` +
-                    `📝 *О задаче:* ${msg || 'Не заполнено'}`;
-
-    const token = '8634522740:AAGY-mmGbkBvsk_BCXiUAcEadyz_KIIzL4o'; 
-    const chatId = '2064552434'; 
-    const url = `https://api.telegram.org/bot${token}/sendMessage`;
-
-    try {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          chat_id: chatId, 
-          text: message,
-          parse_mode: 'Markdown' // Чтобы текст пришел красивым и жирным
-        })
-      });
-
-      if (response.ok) {
-        okbar.style.display = 'block';
-        leadForm.reset();
-        setTimeout(()=>{ okbar.style.display = 'none'; }, 4500);
-      } else {
-        alert("Произошла ошибка при отправке. Пожалуйста, проверьте правильность токена и запущен ли бот.");
-      }
-    } catch (error) {
-      console.error("Ошибка отправки в Telegram:", error);
-      alert("Не удалось отправить данные. Пожалуйста, попробуйте еще раз.");
-    }
-  });
-</script>
-</body>
-</html>
+    const msg = formData.get('Со
