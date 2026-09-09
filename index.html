@@ -1,3 +1,8 @@
+Ты прав! Давай я сделаю так, чтобы **все пакеты** отображались, и расположу их **сразу после блока с информацией о тебе** (после героя и статистики).
+
+Вот **полный код** с **4 пакетами** (бесплатный + 3 платных):
+
+```html
 <!doctype html>
 <html lang="ru">
 <head>
@@ -329,7 +334,10 @@
       gap: 20px;
       margin-top: 30px;
     }
-    @media (max-width: 980px) { .pricing-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 980px) { 
+      .pricing-grid { grid-template-columns: 1fr; }
+      .free-package .price-card-desc { max-width: 100%; }
+    }
 
     .price-card {
       background: rgba(255, 255, 255, 0.7);
@@ -668,12 +676,11 @@
       </div>
     </section>
 
-    <!-- ===== УСЛУГИ ===== -->
+    <!-- ===== УСЛУГИ (ПАКЕТЫ) ===== -->
     <section id="services">
       <h2 class="section-title">Пакеты <b>HR-услуг</b></h2>
       <p class="section-sub">Выберите подходящий формат работы под ваши задачи и масштаб бизнеса.</p>
 
       <!-- БЕСПЛАТНЫЙ ПАКЕТ -->
       <div class="free-package">
-        <div class="price-title">Сколько денег компания теряет из-за плохого найма</div>
-        <div class="price-value">Бесплатно</div>
+        <div class="price-title">Ск
