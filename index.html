@@ -261,7 +261,7 @@
       top: 15px;
       right: 15px;
       background: var(--burgundy-accent);
-      color: #ffffff;
+      color: #fff;
       font-size: 11px;
       font-weight: 900;
       padding: 4px 10px;
@@ -311,19 +311,16 @@
       padding-top: 18px;
     }
     .price-features li {
-      display: flex;
-      gap: 10px;
-      font-size: 13.5px;
-      color: var(--text);
-      line-height: 1.3;
+      display:flex; gap:10px; align-items:flex-start;
+      font-size: 13.5px; color: var(--text); line-height:1.3;
     }
-    .price-features li b {
+    .price-features li b{
       color: var(--brand);
     }
     .price-features .icon {
       color: var(--brand);
       font-weight: bold;
-      flex-shrink: 0;
+      flex-shrink:0;
     }
     .price-card .btn {
       width: 100%;
@@ -339,7 +336,7 @@
       margin-bottom: 30px;
       box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
       position: relative;
-      overflow: hidden;
+      overflow:hidden;
     }
     .free-package::before {
       content: "БЕСПЛАТНО";
@@ -381,24 +378,25 @@
       transform: translateY(-2px);
     }
 
+    /* Оформление блоков по этапам/шагам */
     .steps{display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px;}
     @media (max-width: 980px){.steps{grid-template-columns: 1fr;}}
     .step{
-      background: rgba(255, 255, 255, 0.6);
-      border: 1px solid rgba(128, 0, 32, 0.08);
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(128,0,32,0.08);
       border-radius: var(--radius);
-      padding: 16px;
+      padding:16px;
       box-shadow: var(--shadow);
     }
     .step .n{
-      width:36px; height:36px; border-radius: 14px;
+      width:36px; height:36px; border-radius:14px;
       display:flex; align-items:center; justify-content:center;
       background: var(--burgundy-soft);
-      border:1px solid rgba(128, 0, 32, 0.15);
+      border:1px solid rgba(128,0,32,0.15);
       font-weight:900;
       color: var(--brand);
     }
-    .step h4{margin: 10px 0 6px; font-size:16px; color: var(--text);}
+    .step h4{margin:10px 0 6px; font-size:16px; color: var(--text);}
     .step p{margin:0; color: var(--muted); font-size:14px}
 
     .two{display:grid; grid-template-columns: 1fr 1fr; gap:14px;}
@@ -413,9 +411,9 @@
       box-shadow: var(--shadow);
     }
     .check{
-      width:22px; height:22px; border-radius: 10px;
+      width:22px; height:22px; border-radius:10px;
       background: var(--burgundy-soft);
-      border:1px solid rgba(128, 0, 32, 0.15);
+      border:1px solid rgba(128,0,32,0.15);
       display:flex; align-items:center; justify-content:center;
       flex:0 0 auto;
       margin-top:2px;
@@ -436,7 +434,12 @@
     summary{cursor:pointer; font-weight:700; outline:none; color: var(--text);}
     details p{margin:10px 0 0; color: var(--muted); font-size:14px}
 
-    footer{padding: 28px 0 40px; color: var(--text); border-top: 1px solid rgba(128, 0, 32, 0.08); background: rgba(255,255,255,0.3);}
+    footer{
+      padding: 28px 0 40px; 
+      color: var(--text); 
+      border-top: 1px solid rgba(128, 0, 32, 0.08); 
+      background: rgba(255,255,255,0.3);
+    }
     .foot{
       padding-top: 16px;
       display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
@@ -444,26 +447,35 @@
     }
     .small{color: var(--muted); font-size:12px}
 
-    .modalOverlay{
-      position:fixed; inset:0;
-      background: rgba(44, 30, 33, 0.4);
-      backdrop-filter: blur(4px);
-      display:none;
-      align-items:center; justify-content:center;
-      padding: 18px;
-      z-index: 100;
+    /* Модальное окно или форма (заготовка, можно расширять) */
+    /* Этот CSS только пример — реальные стили для формы/модалки добавьте по необходимости */
+    #contactFormWrapper {
+      display: none; /* по умолчанию скрыта */
+      position: fixed;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.4);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
     }
-    .modal{
-      width: min(640px, 100%);
-      border-radius: 22px;
-      background: #ffffff;
-      border:1px solid rgba(128, 0, 32, 0.12);
-      box-shadow: var(--shadow);
-      padding: 16px;
+    #contactForm {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 100%;
     }
-    .modal h3{margin:0 0 6px; color: var(--text);}
-    .modal .mSub{color: var(--muted); margin:0 0 14px}
-    .modal .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end}
+    /* пример стилей формы */
+    #contactForm input, #contactForm textarea {
+      width:100%;
+      padding:8px;
+      margin-top:8px;
+      border-radius:4px;
+      border:1px solid #ccc;
+    }
+    #contactForm button {
+      margin-top:12px;
+    }
   </style>
 </head>
 <body>
@@ -477,14 +489,12 @@
           <div style="font-size:18px; line-height:1; color: var(--text);">Анна Ермакова</div>
         </div>
       </div>
-
       <nav class="navlinks" aria-label="Навигация">
         <a href="#services">Услуги</a>
         <a href="#process">Как работаем</a>
         <a href="#why">Преимущества</a>
         <a href="#faq">FAQ</a>
       </nav>
-
       <div class="cta">
         <button class="btn" type="button" onclick="scrollToId('faq')">Вопросы</button>
         <button class="btn primary" type="button" onclick="openLead()">Получить консультацию</button>
@@ -499,20 +509,16 @@
       <div class="grid-hero">
         <div>
           <div class="pill"><span class="dot" aria-hidden="true"></span> HR-услуги для компаний: найм, процесс и контроль</div>
-          
           <h1>Сделаем найм <b>управляемым</b> и поможем закрывать вакансии <b>быстрее</b></h1>
-          
           <p class="lead">
             HR Анна Ермакова помогает выстроить воронку под ваши требования, ускорить подбор и повысить качество кандидатов.
             Оформим процесс так, чтобы прогресс был виден и решения принимались без “тишины”.
           </p>
-
           <div class="experience-text">
             Дипломированный HR‑практик с 9+ лет опыта в e‑commerce, маркетплейсах и ритейле.
             Специализируюсь на выстраивании HR‑процессов с нуля: найм, адаптация, мотивация, корпоративная культура и автоматизация.
             Помогаю малому и среднему бизнесу быстро запускать HR‑отдел, снижать текучку и увеличивать операционную прибыль через систему KPI и внедрение «бесшовных» процессов.
           </div>
-
           <div class="hero-photo-container">
             <img src="https://i.ibb.co/dwtxr66G/image.png" alt="HR Анна Ермакова" class="hero-photo" onerror="this.src='https://i.ibb.co/XYZ123/placeholder.png';">
             <div class="hero-photo-text">
@@ -520,81 +526,20 @@
               Ваш персональный HR-партнёр
             </div>
           </div>
-
           <div class="hero-actions" style="margin-top:24px;">
             <button class="btn primary" type="button" onclick="openLead()">Бесплатная консультация</button>
             <button class="btn" type="button" onclick="scrollToId('services')">Что входит</button>
           </div>
         </div>
-
-        <aside class="panel" aria-label="Форма заявки">
-          <h3>Заявка на консультацию</h3>
-          <div class="sub">Оставьте контакты — подготовим план под вашу задачу.</div>
-
-          <form id="leadForm" autocomplete="on">
-            <div class="form-row">
-              <div>
-                <label for="name">Имя</label>
-                <input id="name" name="Имя" placeholder="Иван" required />
-              </div>
-              <div>
-                <label for="company">Компания</label>
-                <input id="company" name="Компания" placeholder="ООО Ромашка" required />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div>
-                <label for="phone">Телефон / мессенджер</label>
-                <input id="phone" name="Телефон" placeholder="+7 ___ ___-__-__" required />
-              </div>
-              <div>
-                <label for="role">Вакансия / роль</label>
-                <input id="role" name="Вакансия" placeholder="Менеджер по продажам" required />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div>
-                <label for="region">Город / формат</label>
-                <select id="region" name="Регион">
-                  <option value="Москва, офис/гибрид">Москва, офис/гибрид</option>
-                  <option value="Удалённо">Удалённо</option>
-                  <option value="Другое">Другое</option>
-                </select>
-              </div>
-              <div>
-                <label for="deadline">Срок закрытия</label>
-                <select id="deadline" name="Срок">
-                  <option value="2–4 недели">2–4 недели</option>
-                  <option value="1–2 месяца">1–2 месяца</option>
-                  <option value="Не срочно">Не срочно</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label for="msg">Коротко о задаче</label>
-              <textarea id="msg" name="Сообщение" placeholder="Что важно в кандидате? Какие задачи?"></textarea>
-            </div>
-
-            <button class="btn primary" type="submit">Отправить заявку</button>
-            <div class="fineprint">
-              Нажимая “Отправить”, вы соглашаетесь на обработку заявки. Мы свяжемся с вами для уточнения деталей.
-            </div>
-
-            <div class="okbar" id="okbar">Заявка отправлена. Мы свяжемся с вами в ближайшее время.</div>
-          </form>
-        </aside>
       </div>
     </section>
 
-    <!-- РАЗДЕЛ УСЛУГИ С 4 ПАКЕТАМИ (бесплатный выделен вверху) -->
+    <!-- Раздел услуг -->
     <section id="services" aria-label="Услуги">
       <h2 class="section-title">Пакеты HR-услуг</h2>
       <p class="section-sub">Выберите подходящий формат работы под ваши задачи и масштаб бизнеса.</p>
-
-      <!-- Бесплатный пакет (вверху, подсвечен) -->
+      
+      <!-- Бесплатный пакет -->
       <div class="free-package">
         <div class="price-title">Сколько денег компания теряет из-за плохого найма</div>
         <div class="price-value">Бесплатно</div>
@@ -610,9 +555,8 @@
         <button class="btn" type="button" onclick="openLead()">Пройти тест</button>
       </div>
 
-      <!-- Остальные 3 пакета в сетке -->
+      <!-- Остальные пакеты -->
       <div class="pricing-grid">
-        <!-- Пакет 2: Диагностика -->
         <div class="price-card">
           <div class="price-title">Диагностика найма за 48 часов</div>
           <div class="price-value">7 900 ₽</div>
@@ -629,7 +573,6 @@
           <button class="btn" type="button" onclick="openLead()">Заказать диагностику</button>
         </div>
 
-        <!-- Пакет 3: Найм под ключ (выделенный) -->
         <div class="price-card featured">
           <div class="badge-popular">Рекомендуем</div>
           <div class="price-title">Найм под ключ: система подбора за 4 недели</div>
@@ -648,7 +591,6 @@
           <button class="btn primary" type="button" onclick="openLead()">Обсудить проект</button>
         </div>
 
-        <!-- Пакет 4: HR-партнёрство -->
         <div class="price-card">
           <div class="price-title">HR-партнёрство</div>
           <div class="price-value">от 249 000 ₽<span>/ 3 месяца</span></div>
@@ -665,13 +607,39 @@
           </ul>
           <button class="btn" type="button" onclick="openLead()">Запросить расчёт</button>
         </div>
+        
+      </div> <!-- конец сетки пакетов -->
+
+      <!-- БАННЕР для сбора контактов (заменяет старую форму) -->
+      <div style="margin-top:40px; padding:30px; background: linear-gradient(135deg, rgba(245, 230, 232, 0.5), rgba(255,255,255,0.9)); border: 2px solid var(--brand); border-radius: var(--radius2); box-shadow: 0 10px 20px rgba(128, 0, 32, 0.1); text-align:center;">
+        <h3 style="margin-bottom:14px;">Запишитесь на бесплатную консультацию</h3>
+        <p style="margin-bottom:14px;">Оставьте свои контакты, чтобы наш бот автоматически связался с вами и помог решить вашу задачу. Быстро и удобно — просто нажмите кнопку ниже.</p>
+        <button class="btn primary" style="padding:14px 24px; font-size:16px;" onclick="openLead()">Оставить контакты</button>
       </div>
     </section>
+  </div>
+</main>
 
-    <section id="process" aria-label="Как работаем">
-      <h2 class="section-title">Как <b>работаем</b></h2>
-      <p class="section-sub">Одинаковая структура этапов — меньше хаоса и быстрее результат.</p>
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div class="small">Copyright © 2023 HRD Анна Ермакова</div>
+      <div class="small">Все права защищены</div>
+    </div>
+  </div>
+</footer>
 
-      <div class="steps">
-        <div class="step"><div class="n">1</div><h4>Согласуем требования</h4><p>Критерии, профиль роли, ориентиры по срокам.</p></div>
-        <div class="step"><div class="n">2</div><h4>Запускаем поиск</h4><p>Кандидатская ворон
+<!-- Скрипт для открытия формы / модалки -->
+<script>
+  function openLead() {
+    // Тут должно быть ваше решение: либо открыть модалку, либо форму
+    alert('Это место, где должна открыться форма для сбора контактов или модальное окно.');
+    // Например, можно показывать скрытый блок с формой или запускать модалку
+  }
+
+  function scrollToId(id) {
+    document.querySelector('#' + id).scrollIntoView({behavior: 'smooth'});
+  }
+</script>
+</body>
+</html>
