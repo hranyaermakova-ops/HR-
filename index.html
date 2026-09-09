@@ -1,6 +1,3 @@
-Отлично! Вот **полный код главной страницы** со всеми блоками, пакетами услуг и формой сбора данных в Telegram:
-
-```html
 <!doctype html>
 <html lang="ru">
 <head>
@@ -38,7 +35,6 @@
     a{color:inherit; text-decoration:none}
     .container{width: min(var(--max), calc(100% - 32px)); margin: 0 auto;}
 
-    /* ===== ШАПКА ===== */
     header{
       position: sticky;
       top:0;
@@ -130,7 +126,6 @@
       transform: translateY(-1px);
     }
 
-    /* ===== ГЕРО ===== */
     .hero{padding: 40px 0 26px;}
     .grid-hero{display:grid; grid-template-columns: 1.1fr .9fr; gap: 22px; align-items: start;}
     @media (max-width: 980px){ .grid-hero{grid-template-columns: 1fr;} .navlinks{display:none} }
@@ -221,12 +216,10 @@
     .panel .sub{color: var(--muted); font-size:14px; margin-bottom: 14px}
     .panel .btn, .panel .btn-telegram { width:100%; justify-content:center; }
 
-    /* ===== СЕКЦИИ ===== */
     section{padding: 28px 0;}
     .section-title{font-size: 22px; margin: 0 0 10px; letter-spacing:-.2px; color: var(--text);}
     .section-sub{color: var(--muted); margin: 0 0 18px; max-width: 80ch}
 
-    /* ===== СТАТИСТИКА ===== */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -264,7 +257,6 @@
       opacity: 0.8;
     }
 
-    /* ===== ПРОБЛЕМЫ ===== */
     .problems-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -288,7 +280,6 @@
     .problem-item h4 { margin: 0 0 4px 0; font-size: 15px; color: var(--text); }
     .problem-item p { margin: 0; font-size: 13.5px; color: var(--muted); }
 
-    /* ===== РЕЗУЛЬТАТЫ ===== */
     .results-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -311,7 +302,6 @@
     .result-card .result-desc { font-size: 14px; color: var(--muted); margin: 0; }
     .result-card .result-author { font-size: 13px; font-weight: 700; color: var(--burgundy-accent); margin-top: 10px; display: block; }
 
-    /* ===== АУДИТОРИЯ ===== */
     .audience-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -333,7 +323,6 @@
     .audience-item h4 { margin: 0 0 4px; font-size: 15px; color: var(--text); }
     .audience-item p { margin: 0; font-size: 13px; color: var(--muted); }
 
-    /* ===== БАННЕР CTA ===== */
     .cta-banner {
       background: linear-gradient(135deg, var(--burgundy-accent), #4a0012);
       border-radius: var(--radius2);
@@ -350,7 +339,6 @@
     .cta-banner .btn:hover { background: var(--brand-hover); transform: translateY(-2px); }
     @media (max-width: 680px) { .cta-banner h2 { font-size: 22px; } .cta-banner p { max-width: 100%; } }
 
-    /* ===== ПАКЕТЫ УСЛУГ ===== */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -423,7 +411,6 @@
     .price-features .icon { color: var(--brand); font-weight: bold; flex-shrink: 0; }
     .price-card .btn { width: 100%; text-align: center; justify-content:center; }
 
-    /* ===== БЕСПЛАТНЫЙ ПАКЕТ ===== */
     .free-package {
       background: linear-gradient(135deg, rgba(245, 230, 232, 0.5), rgba(255, 255, 255, 0.9));
       border: 2px solid var(--brand);
@@ -465,7 +452,6 @@
       .free-package::before { font-size: 11px; padding: 4px 30px; top: 10px; right: -20px; }
     }
 
-    /* ===== ШАГИ ===== */
     .steps{display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px;}
     @media (max-width: 980px){.steps{grid-template-columns: 1fr;}}
     .step{
@@ -486,7 +472,6 @@
     .step h4{margin: 10px 0 6px; font-size:16px; color: var(--text);}
     .step p{margin:0; color: var(--muted); font-size:14px}
 
-    /* ===== FAQ ===== */
     .faq{display:grid; gap:10px}
     details{
       border:1px solid rgba(128, 0, 32, 0.08);
@@ -498,7 +483,6 @@
     summary{cursor:pointer; font-weight:700; outline:none; color: var(--text);}
     details p{margin:10px 0 0; color: var(--muted); font-size:14px}
 
-    /* ===== ФУТЕР ===== */
     footer{padding: 28px 0 40px; color: var(--text); border-top: 1px solid rgba(128, 0, 32, 0.08); background: rgba(255,255,255,0.3);}
     .foot{
       padding-top: 16px;
@@ -507,7 +491,6 @@
     }
     .small{color: var(--muted); font-size:12px}
 
-    /* ===== МОДАЛЬНАЯ ФОРМА ===== */
     .modalForm {
       display: none;
       position: fixed;
@@ -684,4 +667,13 @@
           <span class="problem-icon">💸</span>
           <div><h4>Текучка съедает бюджет</h4><p>Каждый уволенный сотрудник — это минус 3-6 месячных окладов на поиск и адаптацию нового.</p></div>
         </div>
-        <div class
+        <div class="problem-item">
+          <span class="problem-icon">🤷</span>
+          <div><h4>Не понимаете, почему уходят</h4><p>Обратная связь — «не вписался», а что это значит — непонятно. Система оценки отсутствует.</p></div>
+        </div>
+        <div class="problem-item">
+          <span class="problem-icon">📉</span>
+          <div><h4>Найм работает вслепую</h4><p>Нет воронки, нет метрик, нет прогноза. Каждая вакансия — как лотерея.</p></div>
+        </div>
+      </div>
+    </section>
