@@ -6,15 +6,15 @@
   <title>HRD Анна Ермакова — HR-услуги для компаний</title>
   <style>
     :root{
-      --bg: #f7f5f2; /* Теплый мягкий серо-кремовый */
-      --card: #ffffff; /* Белоснежные карточки */
-      --muted: #8c807a; /* Теплый серый для второстепенного текста */
-      --text: #2c1e21; /* Глубокий винно-черный для отличной читаемости */
-      --brand: #d4af37; /* Благородное золото */
-      --brand-hover: #c5a059; /* Темное золото при наведении */
-      --burgundy-soft: #f5e6e8; /* Нежнейший "пушистый" оттенок пыльной бордовой розы */
-      --burgundy-accent: #800020; /* Глубокий бархатный бордовый */
-      --shadow: 0 20px 40px rgba(128, 0, 32, 0.06); /* Мягкие бордово-серые тени */
+      --bg: #f7f5f2;
+      --card: #ffffff;
+      --muted: #8c807a;
+      --text: #2c1e21;
+      --brand: #d4af37;
+      --brand-hover: #c5a059;
+      --burgundy-soft: #f5e6e8;
+      --burgundy-accent: #800020;
+      --shadow: 0 20px 40px rgba(128, 0, 32, 0.06);
       --ring: 0 0 0 4px rgba(212, 175, 55, 0.15);
       --radius: 18px;
       --radius2: 24px;
@@ -25,8 +25,8 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
       background:
-        radial-gradient(900px 500px at 15% -10%, rgba(128, 0, 32, 0.12), transparent 60%), /* Мягкое бордовое свечение */
-        radial-gradient(700px 450px at 90% 10%, rgba(212, 175, 55, 0.15), transparent 60%), /* Золотистый блик */
+        radial-gradient(900px 500px at 15% -10%, rgba(128, 0, 32, 0.12), transparent 60%),
+        radial-gradient(700px 450px at 90% 10%, rgba(212, 175, 55, 0.15), transparent 60%),
         radial-gradient(500px 380px at 40% 110%, rgba(245, 230, 232, 0.5), transparent 60%),
         var(--bg);
       color:var(--text);
@@ -124,7 +124,6 @@
       letter-spacing:-.6px;
       color: var(--text);
     }
-    /* Ключевые слова в заголовках золотые */
     h1 b, h2 b, h3 b, h4 b {
       color: var(--brand);
       font-weight: inherit;
@@ -143,7 +142,6 @@
     }
     .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top: 18px; align-items:center;}
 
-    /* Стили для твоей фотографии */
     .hero-photo-container {
       display: flex;
       align-items: center;
@@ -280,7 +278,7 @@
     .price-value {
       font-size: 28px;
       font-weight: 900;
-      color: var(--brand); /* Золотой цвет цен */
+      color: var(--brand);
       margin-bottom: 20px;
       display: flex;
       flex-direction: column;
@@ -299,7 +297,7 @@
       line-height: 1.4;
     }
     .price-card-desc b {
-      color: var(--burgundy-accent); /* Выделение бордовым */
+      color: var(--burgundy-accent);
     }
     .price-features {
       list-style: none;
@@ -320,16 +318,67 @@
       line-height: 1.3;
     }
     .price-features li b {
-      color: var(--brand); /* Золотые акценты */
+      color: var(--brand);
     }
     .price-features .icon {
-      color: var(--brand); /* Золотые галочки */
+      color: var(--brand);
       font-weight: bold;
       flex-shrink: 0;
     }
     .price-card .btn {
       width: 100%;
       text-align: center;
+    }
+
+    /* Стиль для бесплатного пакета (выделенный вверху) */
+    .free-package {
+      background: linear-gradient(135deg, rgba(245, 230, 232, 0.5), rgba(255, 255, 255, 0.9));
+      border: 2px solid var(--brand);
+      border-radius: var(--radius2);
+      padding: 30px 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .free-package::before {
+      content: "БЕСПЛАТНО";
+      position: absolute;
+      top: 20px;
+      right: -30px;
+      background: var(--burgundy-accent);
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+      padding: 6px 40px;
+      transform: rotate(45deg);
+      letter-spacing: 1px;
+      box-shadow: 0 4px 10px rgba(128, 0, 32, 0.3);
+    }
+    .free-package .price-title {
+      font-size: 24px;
+    }
+    .free-package .price-value {
+      color: var(--burgundy-accent);
+      font-size: 32px;
+    }
+    .free-package .price-card-desc {
+      font-size: 16px;
+      max-width: 80%;
+    }
+    .free-package .price-features {
+      border-top-color: rgba(212, 175, 55, 0.3);
+    }
+    .free-package .btn {
+      background: var(--burgundy-accent);
+      color: #fff;
+      border: none;
+      padding: 14px 20px;
+      font-size: 16px;
+    }
+    .free-package .btn:hover {
+      background: #a0002a;
+      transform: translateY(-2px);
     }
 
     .steps{display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px;}
@@ -347,7 +396,7 @@
       background: var(--burgundy-soft);
       border:1px solid rgba(128, 0, 32, 0.15);
       font-weight:900;
-      color: var(--brand); /* Золотые номера шагов */
+      color: var(--brand);
     }
     .step h4{margin: 10px 0 6px; font-size:16px; color: var(--text);}
     .step p{margin:0; color: var(--muted); font-size:14px}
@@ -371,7 +420,7 @@
       flex:0 0 auto;
       margin-top:2px;
       font-weight:900;
-      color: var(--brand); /* Золотые галочки */
+      color: var(--brand);
     }
     .li b{display:block; font-size:14px; color: var(--text);}
     .li span{display:block; color: var(--muted); font-size:13px; margin-top:4px}
@@ -458,14 +507,12 @@
             Оформим процесс так, чтобы прогресс был виден и решения принимались без “тишины”.
           </p>
 
-          <!-- Твой перенесенный текст о профессиональном опыте -->
           <div class="experience-text">
             Дипломированный HR‑практик с 9+ лет опыта в e‑commerce, маркетплейсах и ритейле.
             Специализируюсь на выстраивании HR‑процессов с нуля: найм, адаптация, мотивация, корпоративная культура и автоматизация.
             Помогаю малому и среднему бизнесу быстро запускать HR‑отдел, снижать текучку и увеличивать операционную прибыль через систему KPI и внедрение «бесшовных» процессов.
           </div>
 
-          <!-- Твоё фото без фона с подписью -->
           <div class="hero-photo-container">
             <img src="https://i.ibb.co/dwtxr66G/image.png" alt="HR Анна Ермакова" class="hero-photo" onerror="this.src='https://i.ibb.co/XYZ123/placeholder.png';">
             <div class="hero-photo-text">
@@ -542,65 +589,81 @@
       </div>
     </section>
 
-    <!-- РАЗДЕЛ УСЛУГИ С ТВОИМИ ПАКЕТАМИ, ЦЕНАМИ И ЗОЛОТЫМИ АКЦЕНТАМИ -->
+    <!-- РАЗДЕЛ УСЛУГИ С 4 ПАКЕТАМИ (бесплатный выделен вверху) -->
     <section id="services" aria-label="Услуги">
       <h2 class="section-title">Пакеты HR-услуг</h2>
       <p class="section-sub">Выберите подходящий формат работы под ваши задачи и масштаб бизнеса.</p>
 
+      <!-- Бесплатный пакет (вверху, подсвечен) -->
+      <div class="free-package">
+        <div class="price-title">Сколько денег компания теряет из-за плохого найма</div>
+        <div class="price-value">Бесплатно</div>
+        <div class="price-card-desc">
+          За 5–7 минут узнаёте примерную сумму потерь от текучки, долгого закрытия вакансий и ошибок в найме — на основе ваших ответов о команде и процессах.
+        </div>
+        <ul class="price-features">
+          <li><span class="icon">✓</span> Короткая анкета (5–7 вопросов о компании и найме)</li>
+          <li><span class="icon">✓</span> Автоматический расчёт суммы потерь</li>
+          <li><span class="icon">✓</span> Персональный результат с рекомендацией следующего шага</li>
+          <li><span class="icon">✓</span> <b>Кому подходит:</b> всем, кто ещё сомневается, есть ли у него вообще проблема с наймом — тест переводит ощущение «что-то не так» в конкретную цифру.</li>
+        </ul>
+        <button class="btn" type="button" onclick="openLead()">Пройти тест</button>
+      </div>
+
+      <!-- Остальные 3 пакета в сетке -->
       <div class="pricing-grid">
-        <!-- Пакет 1 -->
+        <!-- Пакет 2: Диагностика -->
         <div class="price-card">
-          <div class="price-title">«HR‑Старт» (проект)</div>
-          <div class="price-value">120 000 ₽</div>
+          <div class="price-title">Диагностика найма за 48 часов</div>
+          <div class="price-value">7 900 ₽</div>
           <div class="price-card-desc">
-            <b>Для бизнеса:</b> Комплексный запуск HR: подбор до 3 вакансий, готовая система адаптации, должностные инструкции, KPI и 3‑месячный план внедрения. Отчёт с первыми метриками.
+            За 48 часов находим, где именно ваш найм теряет деньги и время: разбираем воронку, вакансии и процесс подбора, даём конкретные рекомендации, что чинить в первую очередь.
           </div>
           <ul class="price-features">
-            <li><span class="icon">✓</span> <b>Ценность:</b> закрыть ключевые позиции, снизить риск неудачных наймов и создать повторяемый процесс.</li>
-            <li><span class="icon">✓</span> Подбор до 3 вакансий</li>
-            <li><span class="icon">✓</span> Готовая система адаптации</li>
-            <li><span class="icon">✓</span> Разработка должностных инструкций</li>
-            <li><span class="icon">✓</span> Настройка KPI и 3-мес. план внедрения</li>
+            <li><span class="icon">✓</span> Разбор 1–3 текущих вакансий и воронки подбора</li>
+            <li><span class="icon">✓</span> Анализ узких мест: где теряются кандидаты и почему</li>
+            <li><span class="icon">✓</span> Видеоразбор с рекомендациями</li>
+            <li><span class="icon">✓</span> Письменный отчёт с приоритетными точками роста</li>
+            <li><span class="icon">✓</span> <b>Кому подходит:</b> компаниям, которые чувствуют, что найм работает не так, как должен, но не понимают, в чём именно проблема.</li>
           </ul>
-          <button class="btn" type="button" onclick="openLead()">Заказать проект</button>
+          <button class="btn" type="button" onclick="openLead()">Заказать диагностику</button>
         </div>
 
-        <!-- Пакет 2 (Выделенный) -->
+        <!-- Пакет 3: Найм под ключ (выделенный) -->
         <div class="price-card featured">
           <div class="badge-popular">Рекомендуем</div>
-          <div class="price-title">«HR‑Партнёр» (ретейнер)</div>
-          <div class="price-value">
-            180 000 ₽<span>/ месяц</span>
-            <span style="font-size:12px; color: var(--muted)">или проект за 300 000 ₽</span>
-          </div>
+          <div class="price-title">Найм под ключ: система подбора за 4 недели</div>
+          <div class="price-value">от 89 000 ₽</div>
           <div class="price-card-desc">
-            <b>Для бизнеса:</b> Премиум‑сопровождение 3–6 мес:найм, внедрение KPI, обучение менеджеров, performance‑маршруты, приоритетный подбор и ежемесячный аудит HR‑метрик. Проактивное управление рисками.
+            Полный цикл подбора 1–2 приоритетных вакансий за 4 недели: от портрета кандидата до выхода на работу. Берём на себя воронку, интервью и гарантийные обязательства — вы получаете готового сотрудника, а не набор резюме.
           </div>
           <ul class="price-features">
-            <li><span class="icon">✓</span> <b>Ценность:</b> устойчивое снижение текучки, рост эффективности команды и measurable ROI.</li>
-            <li><span class="icon">✓</span> Внедрение KPI и обучение менеджеров</li>
-            <li><span class="icon">✓</span> Разработка performance-маршрутов</li>
-            <li><span class="icon">✓</span> Приоритетный подбор кандидатов</li>
-            <li><span class="icon">✓</span> Ежемесячный детальный аудит HR-метрик</li>
+            <li><span class="icon">✓</span> Разработка профиля вакансии и портрета кандидата</li>
+            <li><span class="icon">✓</span> Публикация и продвижение вакансии</li>
+            <li><span class="icon">✓</span> Первичный отбор и интервью</li>
+            <li><span class="icon">✓</span> Презентация финалистов с рекомендациями</li>
+            <li><span class="icon">✓</span> Гарантия замены при увольнении в испытательный срок</li>
+            <li><span class="icon">✓</span> <b>Кому подходит:</b> компаниям, которым нужно быстро и предсказуемо закрыть 1–2 ключевые позиции без раздувания внутреннего HR-ресурса.</li>
           </ul>
-          <button class="btn primary" type="button" onclick="openLead()">Начать сопровождение</button>
+          <button class="btn primary" type="button" onclick="openLead()">Обсудить проект</button>
         </div>
 
-        <!-- Пакет 3 -->
+        <!-- Пакет 4: HR-партнёрство -->
         <div class="price-card">
-          <div class="price-title">«HR‑Care» (подписка)</div>
-          <div class="price-value">80 000 ₽<span>/ месяц</span></div>
+          <div class="price-title">HR-партнёрство</div>
+          <div class="price-value">от 249 000 ₽<span>/ 3 месяца</span></div>
           <div class="price-card-desc">
-            <b>Для бизнеса:</b> Месячная подписка: ежемесячный чек‑ап метрик, 2 консультации, 1 срочный подбор в месяц, доступ к библиотеке шаблонов.
+            Не просто подбор, а выстраивание системы найма и HR-процессов на 3 месяца. Параллельно закрываем до 3 вакансий и внедряем инструменты, которые продолжат работать без нас: воронку найма, скрипты интервью, систему оценки кандидатов.
           </div>
           <ul class="price-features">
-            <li><span class="icon">✓</span> <b>Ценность:</b> постоянный контроль, профилактика проблем и быстрый доступ к экспертизе.</li>
-            <li><span class="icon">✓</span> Ежемесячный чек-ап метрик</li>
-            <li><span class="icon">✓</span> 2 персональные консультации</li>
-            <li><span class="icon">✓</span> 1 срочный подбор в месяц</li>
-            <li><span class="icon">✓</span> Полноценный доступ к библиотеке шаблонов</li>
+            <li><span class="icon">✓</span> Аудит и перестройка процесса найма</li>
+            <li><span class="icon">✓</span> Закрытие до 3 вакансий в рамках сопровождения</li>
+            <li><span class="icon">✓</span> Разработка HR-инструментов и регламентов под вашу команду</li>
+            <li><span class="icon">✓</span> Регулярные стратегические сессии с руководителем</li>
+            <li><span class="icon">✓</span> Обучение внутренней команды самостоятельному найму</li>
+            <li><span class="icon">✓</span> <b>Кому подходит:</b> компаниям в стадии роста, которым нужен не разовый найм, а рабочая HR-система и партнёр на ближайшие месяцы.</li>
           </ul>
-          <button class="btn" type="button" onclick="openLead()">Оформить подписку</button>
+          <button class="btn" type="button" onclick="openLead()">Запросить расчёт</button>
         </div>
       </div>
     </section>
@@ -611,138 +674,4 @@
 
       <div class="steps">
         <div class="step"><div class="n">1</div><h4>Согласуем требования</h4><p>Критерии, профиль роли, ориентиры по срокам.</p></div>
-        <div class="step"><div class="n">2</div><h4>Запускаем поиск</h4><p>Кандидатская воронка, источники и коммуникация.</p></div>
-        <div class="step"><div class="n">3</div><h4>Отбираем кандидатов</h4><p>Скрининг по компетенциям и релевантности.</p></div>
-        <div class="step"><div class="n">4</div><h4>Сопровождаем до оффера</h4><p>Организация интервью и контроль прогресса.</p></div>
-      </div>
-    </section>
-
-    <section id="why" aria-label="Преимущества">
-      <div class="two">
-        <div>
-          <h2 class="section-title">Почему HR <b>Анна Ермакова</b></h2>
-          <p class="section-sub">Делаем найм управляемым: вы видите прогресс, а мы обеспечиваем процесс.</p>
-
-          <ul>
-            <li class="li">
-              <div class="check">✓</div>
-              <div><b>Прозрачные этапы</b><span>статусы и понятные действия на каждом шаге.</span></div>
-            </li>
-            <li class="li">
-              <div class="check">✓</div>
-              <div><b>Фокус на качестве</b><span>отбор по критериям, а не “по ощущению”.</span></div>
-            </li>
-            <li class="li">
-              <div class="check">✓</div>
-              <div><b>Коммуникация без задержек</b><span>обратная связь и планирование по графику.</span></div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <h3>Оценим вашу задачу</h3>
-          <div class="sub">За короткую консультацию обозначим формат работы и следующий шаг.</div>
-
-          <div class="cards" style="grid-template-columns:1fr; gap:10px;">
-            <div class="card" style="padding:14px; background: rgba(255,255,255,0.8); border: 1px solid rgba(128, 0, 32, 0.08);">
-              <h4 style="margin-bottom:6px">Что вы получите</h4>
-              <p>План по вакансии: этапы, критерии оценки и ориентиры по срокам.</p>
-            </div>
-            <div class="card" style="padding:14px; background: rgba(255,255,255,0.8); border: 1px solid rgba(128, 0, 32, 0.08);">
-              <h4 style="margin-bottom:6px">Кому подходит</h4>
-              <p>Компании, которым важны скорость, контроль и качество найма.</p>
-            </div>
-          </div>
-
-          <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap;">
-            <button class="btn primary" type="button" onclick="openLead()">Запросить консультацию</button>
-            <button class="btn" type="button" onclick="scrollToId('faq')">Как стартуем</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" aria-label="FAQ">
-      <h2 class="section-title">FAQ</h2>
-      <p class="section-sub">Коротко о том, как стартуем и что важно согласовать.</p>
-
-      <div class="faq">
-        <details>
-          <summary>Сколько времени занимает первый этап?</summary>
-          <p>Согласование требований и профиля кандидата занимает короткую сессию (ориентир — до нескольких рабочих часов в сумме), после чего запускаем поиск.</p>
-        </details>
-        <details>
-          <summary>Какие данные нужны от компании?</summary>
-          <p>Задачи роли, критерии (hard/soft), желаемый опыт, формат работы, сроки и примерные условия.</p>
-        </details>
-        <details>
-          <summary>Как вы показываете прогресс?</summary>
-          <p>Мы фиксируем этапы и регулярно даём статус: что сделано, сколько кандидатов на стадии отбора и что дальше по плану.</p>
-        </details>
-        <details>
-          <summary>Можно подключиться не с самого начала?</summary>
-          <p>Да. Часто подключаются на аудит, скрининг кандидатов или подготовку short-list — подстраиваемся под задачу.</p>
-        </details>
-      </div>
-    </section>
-  </div>
-</main>
-
-<footer>
-  <div class="container">
-    <div class="foot">
-      <div>
-        <div style="font-weight:900; letter-spacing:.2px; color: var(--brand);">HR Анна Ермакова</div>
-        <div class="small">HR-услуги: подбор, процесс, контроль результата.</div>
-      </div>
-      <div class="small">© <span id="year"></span> HR Анна Ермакова</div>
-    </div>
-  </div>
-</footer>
-
-<div class="modalOverlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Консультация">
-  <div class="modal">
-    <h3>Оставьте заявку</h3>
-    <div class="mSub">Заполните форму — мы свяжемся с вами.</div>
-    <div class="row">
-      <button class="btn" type="button" onclick="closeLead()">Закрыть</button>
-      <button class="btn primary" type="button" onclick="focusLead()">Перейти к форме</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  const leadForm = document.getElementById('leadForm');
-  const okbar = document.getElementById('okbar');
-  const overlay = document.getElementById('modalOverlay');
-
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  function scrollToId(id){
-    const el = document.getElementById(id);
-    if(!el) return;
-    el.scrollIntoView({behavior:'smooth', block:'start'});
-  }
-  function openLead(){ overlay.style.display = 'flex'; }
-  function closeLead(){ overlay.style.display = 'none'; }
-
-  function focusLead(){
-    closeLead();
-    leadForm.scrollIntoView({behavior:'smooth', block:'center'});
-    setTimeout(()=>document.getElementById('name').focus(), 250);
-  }
-
-  overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closeLead(); });
-  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLead(); });
-
-  leadForm.addEventListener('submit', async (e)=>{
-    e.preventDefault();
-
-    const formData = new FormData(leadForm);
-    const name = formData.get('Имя');
-    const company = formData.get('Компания');
-    const phone = formData.get('Телефон');
-    const role = formData.get('Вакансия');
-    const region = formData.get('Регион');
-    const deadline = formData.get('Срок');
-    const msg = formData.get('Со
+        <div class="step"><div class="n">2</div><h4>Запускаем поиск</h4><p>Кандидатская ворон
