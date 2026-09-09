@@ -1,17 +1,9 @@
-Вот **полный обновлённый код** с новым подходом:
-
-1. **Убрана отдельная форма** в сайдбаре (она дублировалась)
-2. **Бесплатный пакет** → кнопка открывает Telegram-бота (готовая ссылка)
-3. **Платные пакеты** → открывают форму сбора контактов
-4. Все данные уходят в Telegram
-
-```html
 <!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HRD Анна Ермакова — HR-услуги для компаний</title>
+  <title>HR Анна Ермакова — HR-услуги для компаний</title>
   <style>
     :root{
       --bg: #f7f5f2;
@@ -54,6 +46,7 @@
     .nav{
       display:flex; align-items:center; justify-content:space-between;
       padding: 14px 0; gap:12px;
+      flex-wrap:wrap;
     }
     .logo{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
     .mark{
@@ -81,7 +74,7 @@
     }
     .navlinks a:hover{background: rgba(255, 255, 255, 0.5); color: var(--text);}
 
-    .cta{display:flex; gap:10px; align-items:center;}
+    .cta{display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
     .btn{
       border:1px solid rgba(128, 0, 32, 0.15);
       background: rgba(255, 255, 255, 0.6);
@@ -104,6 +97,31 @@
       color: #ffffff;
     }
     .btn.primary:hover{filter: brightness(1.05); transform: translateY(-1px);}
+    .btn.burgundy{
+      border: none;
+      background: var(--burgundy-accent);
+      box-shadow: 0 10px 25px rgba(128, 0, 32, 0.25);
+      color: #ffffff;
+    }
+    .btn.burgundy:hover{background: #a0002a; transform: translateY(-1px);}
+    .btn-telegram {
+      background: #0088cc;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 14px;
+      font-weight: 800;
+      transition: .2s ease;
+      cursor:pointer;
+    }
+    .btn-telegram:hover {
+      background: #0077b3;
+      transform: translateY(-1px);
+    }
 
     .hero{padding: 58px 0 26px;}
     .grid-hero{display:grid; grid-template-columns: 1.1fr .9fr; gap: 22px; align-items: start;}
@@ -283,6 +301,28 @@
     .result-card .result-desc { font-size: 14px; color: var(--muted); margin: 0; }
     .result-card .result-author { font-size: 13px; font-weight: 700; color: var(--burgundy-accent); margin-top: 10px; display: block; }
 
+    /* ===== АУДИТОРИЯ ===== */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 20px 0;
+    }
+    @media (max-width: 780px) { .audience-grid { grid-template-columns: 1fr; } }
+    .audience-item {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(128, 0, 32, 0.08);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+    }
+    .audience-item:hover { transform: translateY(-3px); }
+    .audience-item .emoji { font-size: 32px; display: block; margin-bottom: 8px; }
+    .audience-item h4 { margin: 0 0 4px; font-size: 15px; color: var(--text); }
+    .audience-item p { margin: 0; font-size: 13px; color: var(--muted); }
+
     /* ===== БАННЕР CTA ===== */
     .cta-banner {
       background: linear-gradient(135deg, var(--burgundy-accent), #4a0012);
@@ -410,7 +450,10 @@
       font-size: 16px;
     }
     .free-package .btn:hover { background: #a0002a; transform: translateY(-2px); }
-    @media (max-width: 680px) { .free-package .price-card-desc { max-width: 100%; } .free-package::before { font-size: 11px; padding: 4px 30px; top: 10px; right: -20px; } }
+    @media (max-width: 680px) { 
+      .free-package .price-card-desc { max-width: 100%; } 
+      .free-package::before { font-size: 11px; padding: 4px 30px; top: 10px; right: -20px; }
+    }
 
     /* ===== ШАГИ ===== */
     .steps{display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px;}
@@ -476,7 +519,7 @@
     }
     .small{color: var(--muted); font-size:12px}
 
-    /* ===== МОДАЛЬНАЯ ФОРМА (только для платных пакетов) ===== */
+    /* ===== МОДАЛЬНАЯ ФОРМА ===== */
     .modalForm {
       display: none;
       position: fixed;
@@ -511,7 +554,8 @@
       border: none;
     }
     .modalForm-content .close-btn:hover { color: var(--text); }
-    .modalForm-content input {
+    .modalForm-content input,
+    .modalForm-content select {
       width: 100%;
       padding: 12px 14px;
       border: 1px solid rgba(128, 0, 32, 0.15);
@@ -520,7 +564,8 @@
       margin-bottom: 10px;
       background: rgba(255,255,255,0.8);
     }
-    .modalForm-content input:focus {
+    .modalForm-content input:focus,
+    .modalForm-content select:focus {
       outline: none;
       border-color: var(--brand);
       box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
@@ -562,25 +607,19 @@
       display: inline-block;
     }
 
-    /* ===== КНОПКА TELEGRAM ===== */
-    .btn-telegram {
-      background: #0088cc;
-      color: #fff;
-      border: none;
-      padding: 14px 20px;
-      font-size: 16px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      justify-content: center;
-    }
-    .btn-telegram:hover {
-      background: #0077b3;
-      transform: translateY(-2px);
-    }
-    .btn-telegram::before {
-      content: "✈️";
-      font-size: 18px;
+    .form-row{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    @media (max-width: 520px){.form-row{grid-template-columns: 1fr}}
+
+    .okbar{
+      display:none;
+      margin-top: 12px;
+      border-radius: 16px;
+      padding: 12px 12px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      background: var(--burgundy-soft);
+      color: var(--text);
+      font-weight:700;
+      text-align: center;
     }
   </style>
 </head>
@@ -598,8 +637,8 @@
         </div>
       </div>
       <nav class="navlinks">
-        <a href="#results">Результаты</a>
         <a href="#services">Услуги</a>
+        <a href="#results">Результаты</a>
         <a href="#process">Как работаем</a>
         <a href="#faq">FAQ</a>
       </nav>
@@ -634,7 +673,7 @@
           </div>
         </div>
 
-        <!-- БОКОВАЯ ПАНЕЛЬ С КОНТАКТАМИ -->
+        <!-- БОКОВАЯ ПАНЕЛЬ -->
         <aside class="panel">
           <h3>📱 Начните прямо сейчас</h3>
           <div class="sub">Выберите способ связи — и я подготовлю решение под вашу задачу.</div>
@@ -642,8 +681,8 @@
             <button class="btn primary" type="button" onclick="openConsultForm()" style="width:100%;">
               📩 Оставить заявку
             </button>
-            <a href="https://t.me/anna_ermakova_hr" target="_blank" class="btn btn-telegram" style="width:100%; text-align:center; text-decoration:none;">
-              Написать в Telegram
+            <a href="https://t.me/anna_ermakova_hr" target="_blank" class="btn btn-telegram" style="width:100%; text-align:center; text-decoration:none; justify-content:center;">
+              ✈️ Написать в Telegram
             </a>
             <div style="font-size:13px; color:var(--muted); text-align:center; margin-top:4px;">
               ⏱ Отвечаю в течение 30 минут
@@ -653,32 +692,4 @@
       </div>
     </section>
 
-    <!-- ===== БЛОК ЦИФР ===== -->
-    <section>
-      <div class="stats-grid">
-        <div class="stat-item"><span class="stat-number">9+</span><span class="stat-label">лет опыта</span><span class="stat-desc">в HR и управлении</span></div>
-        <div class="stat-item"><span class="stat-number">200+</span><span class="stat-label">закрытых вакансий</span><span class="stat-desc">для компаний разных сфер</span></div>
-        <div class="stat-item"><span class="stat-number">87%</span><span class="stat-label">проходят испытательный срок</span><span class="stat-desc">качество найма</span></div>
-        <div class="stat-item"><span class="stat-number">до 40%</span><span class="stat-label">снижение текучки</span><span class="stat-desc">у моих клиентов</span></div>
-      </div>
-    </section>
-
-    <!-- ===== БЛОК ПРОБЛЕМ ===== -->
-    <section>
-      <h2 class="section-title">Узнали <b>себя</b>?</h2>
-      <p class="section-sub">Эти проблемы я решаю каждый день.</p>
-      <div class="problems-grid">
-        <div class="problem-item">
-          <span class="problem-icon">😤</span>
-          <div><h4>Вакансия висит месяцами</h4><p>Рекрутеры сливают резюме, а толковых кандидатов нет. Вы теряете деньги и время.</p></div>
-        </div>
-        <div class="problem-item">
-          <span class="problem-icon">💸</span>
-          <div><h4>Текучка съедает бюджет</h4><p>Каждый уволенный сотрудник — это минус 3-6 месячных окладов на поиск и адаптацию нового.</p></div>
-        </div>
-        <div class="problem-item">
-          <span class="problem-icon">🤷</span>
-          <div><h4>Не понимаете, почему уходят</h4><p>Обратная связь — «не вписался», а что это значит — непонятно. Система оценки отсутствует.</p></div>
-        </div>
-        <div class="problem-item">
-          <span class="problem
+    <!-- ===== Б
