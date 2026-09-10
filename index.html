@@ -172,17 +172,17 @@
     
     .hero-actions{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top: 10px;}
 
-    /* === ГОРИЗОНТАЛЬНЫЙ БЛОК АУДИТА === */
+    /* === ГОРИЗОНТАЛЬНЫЙ БЛОК АУДИТА (С ЦЕННОСТЬЮ) === */
     .audit-banner {
       background: linear-gradient(90deg, rgba(245, 230, 232, 0.8), rgba(255, 255, 255, 0.95));
       border: 2px solid var(--brand);
       border-radius: var(--radius2);
-      padding: 20px 24px;
+      padding: 24px;
       margin-bottom: 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 24px;
       box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
       position: relative;
       overflow: hidden;
@@ -194,17 +194,19 @@
       width: 6px;
       background: var(--burgundy-accent);
     }
-    .audit-content {
-      flex: 1;
+    
+    .audit-main {
+      flex: 1 1 30%;
     }
     .audit-title {
       font-size: 18px;
       font-weight: 800;
       color: var(--text);
-      margin: 0 0 4px;
+      margin: 0 0 6px;
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
     .audit-badge {
       background: var(--burgundy-accent);
@@ -216,13 +218,44 @@
       text-transform: uppercase;
     }
     .audit-desc {
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--muted);
       margin: 0;
       line-height: 1.4;
     }
-    .audit-btn {
+
+    .audit-features {
+      flex: 1 1 40%;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border-left: 1px solid rgba(128, 0, 32, 0.1);
+      border-right: 1px solid rgba(128, 0, 32, 0.1);
+      padding: 0 20px;
+    }
+    .audit-features li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .audit-features .icon {
+      color: var(--brand);
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .audit-action {
       flex: 0 0 auto;
+      text-align: right;
+    }
+    .audit-btn {
       background: var(--burgundy-accent);
       color: #fff;
       border: none;
@@ -233,15 +266,30 @@
       cursor: pointer;
       transition: all 0.2s ease;
       white-space: nowrap;
+      box-shadow: 0 8px 20px rgba(128, 0, 32, 0.2);
     }
     .audit-btn:hover {
       background: #a0002a;
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(128, 0, 32, 0.2);
     }
-    @media (max-width: 600px) {
-      .audit-banner { flex-direction: column; text-align: center; padding: 20px; }
+
+    @media (max-width: 900px) {
+      .audit-banner { 
+        flex-direction: column; 
+        text-align: center; 
+        padding: 20px;
+        gap: 16px;
+      }
       .audit-title { justify-content: center; }
+      .audit-features {
+        border: none;
+        padding: 10px 0;
+        border-top: 1px solid rgba(128, 0, 32, 0.1);
+        border-bottom: 1px solid rgba(128, 0, 32, 0.1);
+        align-items: flex-start;
+        text-align: left;
+      }
+      .audit-action { width: 100%; }
       .audit-btn { width: 100%; }
     }
 
@@ -620,16 +668,25 @@
         </div>
       </div>
 
-      <!-- НОВЫЙ ГОРИЗОНТАЛЬНЫЙ БЛОК АУДИТА -->
+      <!-- НОВЫЙ ГОРИЗОНТАЛЬНЫЙ БЛОК АУДИТА (С ЦЕННОСТЬЮ) -->
       <div class="audit-banner">
-        <div class="audit-content">
+        <div class="audit-main">
           <div class="audit-title">
-            Бесплатный расчёт потерь от найма
+            Бесплатный расчёт потерь
             <span class="audit-badge">0 ₽</span>
           </div>
-          <p class="audit-desc">За 5–7 минут узнайте, сколько денег уходит из-за текучки и долгого закрытия вакансий.</p>
+          <p class="audit-desc">Узнайте, сколько денег компания теряет из-за плохого найма.</p>
         </div>
-        <button class="audit-btn" type="button" onclick="openLead('Бесплатный расчёт потерь')">Рассчитать потери</button>
+        
+        <ul class="audit-features">
+          <li><span class="icon">✓</span> Анкета всего на 5–7 вопросов</li>
+          <li><span class="icon">✓</span> Автоматический расчет суммы потерь</li>
+          <li><span class="icon">✓</span> Персональная рекомендация</li>
+        </ul>
+
+        <div class="audit-action">
+          <button class="audit-btn" type="button" onclick="openLead('Бесплатный расчёт потерь')">Рассчитать потери</button>
+        </div>
       </div>
 
     </section>
