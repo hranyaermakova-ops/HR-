@@ -99,10 +99,9 @@
     .btn:disabled{opacity: 0.7; cursor: not-allowed; transform: none !important;}
 
     /* === HERO === */
-    .hero{padding: 30px 0 20px;}
-    .grid-hero{display:grid; grid-template-columns: 1fr; gap: 20px;}
+    .hero{padding: 30px 0 10px;}
     h1{
-      margin: 8px 0 8px;
+      margin: 0 0 10px;
       font-size: clamp(28px, 3vw, 42px);
       line-height:1.1;
       letter-spacing:-.6px;
@@ -112,45 +111,66 @@
       color: var(--brand);
       font-weight: inherit;
     }
-    .lead{color: rgba(44, 30, 33, 0.85); font-size: 15px; max-width: 56ch; margin: 0 0 12px;}
+    .lead{color: rgba(44, 30, 33, 0.85); font-size: 15px; max-width: 60ch; margin: 0 0 16px;}
+
+    /* Компактный блок: опыт + фото рядом */
+    .about-row {
+      display: flex;
+      gap: 16px;
+      align-items: stretch;
+      margin: 0 0 20px;
+    }
+    @media (max-width: 768px) {
+      .about-row { flex-direction: column; }
+    }
+    
     .experience-text{
+      flex: 1;
       color: var(--text);
       font-size: 14px;
-      line-height: 1.5;
-      margin: 12px 0;
-      max-width: 56ch;
-      background: rgba(255, 255, 255, 0.4);
-      padding: 10px 14px;
+      line-height: 1.55;
+      background: rgba(255, 255, 255, 0.5);
+      padding: 14px 18px;
       border-radius: 14px;
       border-left: 3px solid var(--brand);
     }
-    .hero-actions{display:flex; flex-wrap:wrap; gap:10px; margin-top: 14px; align-items:center;}
-
+    
     .hero-photo-container {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-top: 16px;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(128, 0, 32, 0.08);
+      border-radius: 14px;
+      padding: 10px 14px;
+      flex: 0 0 auto;
+      box-shadow: var(--shadow);
+      min-width: 220px;
     }
     .hero-photo {
-      width: 80px;
-      height: 80px;
+      width: 64px;
+      height: 64px;
       object-fit: cover;
       border-radius: 50%;
       border: 3px solid var(--burgundy-accent);
-      box-shadow: 0 10px 25px rgba(128, 0, 32, 0.15);
+      box-shadow: 0 8px 20px rgba(128, 0, 32, 0.15);
       background: var(--burgundy-soft);
       flex-shrink:0;
     }
     .hero-photo-text {
       font-size: 13px;
-      line-height: 1.4;
+      line-height: 1.3;
+      color: var(--text);
     }
     .hero-photo-text b {
       color: var(--burgundy-accent);
       display: block;
-      font-size: 14px;
+      font-size: 15px;
+      margin-bottom: 2px;
+      font-weight: 800;
     }
+    
+    .hero-actions{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top: 10px;}
 
     /* === БЛОК "УЗНАЛИ СЕБЯ?" === */
     .pain-section { padding: 20px 0; }
@@ -456,28 +476,6 @@
       text-align: center;
     }
 
-    /* === БАННЕР === */
-    .cta-banner {
-      margin-top: 24px;
-      padding: 24px 20px;
-      background: linear-gradient(135deg, rgba(245, 230, 232, 0.5), rgba(255,255,255,0.9));
-      border: 2px solid var(--brand);
-      border-radius: var(--radius2);
-      box-shadow: 0 10px 20px rgba(128, 0, 32, 0.1);
-      text-align: center;
-    }
-    .cta-banner h3 {
-      margin: 0 0 10px;
-      font-size: 20px;
-      color: var(--text);
-    }
-    .cta-banner p {
-      margin: 0 auto 14px;
-      color: var(--text);
-      font-size: 14px;
-      max-width: 700px;
-    }
-
     /* === ФОРМА === */
     form{display:grid; gap:12px; position:relative; z-index:2}
     label{font-size:13px; color: var(--text); font-weight: 600;}
@@ -584,7 +582,6 @@
       border: 2px solid rgba(128, 0, 32, 0.1);
     }
 
-    /* Отладочное сообщение об ошибке */
     .debug-box {
       display: none;
       margin-top: 10px;
@@ -611,9 +608,8 @@
         </div>
       </div>
       <nav class="navlinks" aria-label="Навигация">
-        <a href="#services">Услуги</a>
         <a href="#pain">Проблемы</a>
-        <a href="#faq">FAQ</a>
+        <a href="#services">Услуги</a>
       </nav>
       <div class="cta">
         <button class="btn primary" type="button" onclick="openLead('Общая консультация')">Получить консультацию</button>
@@ -626,30 +622,31 @@
   <div class="container">
     <!-- HERO -->
     <section class="hero" aria-label="Главный экран">
-      <div class="grid-hero">
-        <div>
-          <h1>Сделаем найм <b>управляемым</b> и поможем закрывать вакансии <b>быстрее</b></h1>
-          <p class="lead">
-            HR Анна Ермакова помогает выстроить воронку под ваши требования, ускорить подбор и повысить качество кандидатов.
-            Оформим процесс так, чтобы прогресс был виден и решения принимались без "тишины".
-          </p>
-          <div class="experience-text">
-            Дипломированный HR‑практик с 9+ лет опыта в e‑commerce, маркетплейсах и ритейле.
-            Специализируюсь на выстраивании HR‑процессов с нуля: найм, адаптация, мотивация, корпоративная культура и автоматизация.
-            Помогаю малому и среднему бизнесу быстро запускать HR‑отдел, снижать текучку и увеличивать операционную прибыль через систему KPI и внедрение «бесшовных» процессов.
-          </div>
-          <div class="hero-photo-container">
-            <img src="https://i.ibb.co/dwtxr66G/image.png" alt="HR Анна Ермакова" class="hero-photo" onerror="this.src='https://i.ibb.co/XYZ123/placeholder.png';">
-            <div class="hero-photo-text">
-              <b>Анна Ермакова</b>
-              Ваш персональный HR-партнёр
-            </div>
-          </div>
-          <div class="hero-actions" style="margin-top:16px;">
-            <button class="btn primary" type="button" onclick="openLead('Бесплатная консультация')">Бесплатная консультация</button>
-            <button class="btn" type="button" onclick="scrollToId('services')">Что входит</button>
+      <h1>Сделаем найм <b>управляемым</b> и поможем закрывать вакансии <b>быстрее</b></h1>
+      <p class="lead">
+        HR Анна Ермакова помогает выстроить воронку под ваши требования, ускорить подбор и повысить качество кандидатов.
+        Оформим процесс так, чтобы прогресс был виден и решения принимались без "тишины".
+      </p>
+
+      <!-- Опыт + фото рядом, компактно -->
+      <div class="about-row">
+        <div class="experience-text">
+          Дипломированный HR‑практик с 9+ лет опыта в e‑commerce, маркетплейсах и ритейле.
+          Специализируюсь на выстраивании HR‑процессов с нуля: найм, адаптация, мотивация, корпоративная культура и автоматизация.
+          Помогаю малому и среднему бизнесу быстро запускать HR‑отдел, снижать текучку и увеличивать операционную прибыль через систему KPI и внедрение «бесшовных» процессов.
+        </div>
+        <div class="hero-photo-container">
+          <img src="https://i.ibb.co/dwtxr66G/image.png" alt="HR Анна Ермакова" class="hero-photo" onerror="this.src='https://i.ibb.co/XYZ123/placeholder.png';">
+          <div class="hero-photo-text">
+            <b>Анна Ермакова</b>
+            Ваш персональный HR-партнёр
           </div>
         </div>
+      </div>
+
+      <div class="hero-actions">
+        <button class="btn primary" type="button" onclick="openLead('Бесплатная консультация')">Бесплатная консультация</button>
+        <button class="btn" type="button" onclick="scrollToId('services')">Что входит</button>
       </div>
     </section>
 
@@ -773,13 +770,6 @@
           </ul>
           <button class="btn" type="button" onclick="openLead('HR-партнёрство на 3 месяца')">Запросить расчёт</button>
         </div>
-      </div>
-
-      <!-- БАННЕР -->
-      <div class="cta-banner">
-        <h3>Запишитесь на бесплатную консультацию</h3>
-        <p>Оставьте свои контакты, чтобы мы автоматически связались с вами и помогли решить вашу задачу.</p>
-        <button class="btn primary" style="padding:12px 22px; font-size:15px;" onclick="openLead('Общая консультация')">Оставить контакты</button>
       </div>
     </section>
   </div>
