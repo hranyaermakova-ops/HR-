@@ -523,7 +523,7 @@
     }
     .small{color: var(--muted); font-size:12px}
 
-    /* === МОДАЛЬНОЕ ОКНО (ОБЩЕЕ) === */
+    /* === МОДАЛЬНОЕ ОКНО === */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -573,6 +573,7 @@
       cursor: pointer;
       transition: .2s ease;
       line-height: 1;
+      z-index: 10;
     }
     .modal-close:hover {
       background: var(--burgundy-soft);
@@ -719,6 +720,77 @@
       border-color: var(--brand);
     }
 
+    .calc-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 500px) {
+      .calc-row { grid-template-columns: 1fr; }
+    }
+
+    /* Toggle-переключатель */
+    .toggle-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .toggle-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(128, 0, 32, 0.1);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .toggle-item:hover {
+      border-color: var(--brand);
+      background: rgba(255, 255, 255, 0.9);
+    }
+    .toggle-item.active {
+      background: linear-gradient(135deg, rgba(245, 230, 232, 0.6), rgba(255, 255, 255, 0.9));
+      border-color: var(--brand);
+    }
+    .toggle-label {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text);
+      flex: 1;
+    }
+    .toggle-switch {
+      width: 42px;
+      height: 24px;
+      background: rgba(128, 0, 32, 0.15);
+      border-radius: 12px;
+      position: relative;
+      transition: background 0.2s ease;
+      flex-shrink: 0;
+      margin-left: 10px;
+    }
+    .toggle-switch::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+    .toggle-item.active .toggle-switch {
+      background: var(--burgundy-accent);
+    }
+    .toggle-item.active .toggle-switch::after {
+      transform: translateX(18px);
+    }
+
     .calc-nav {
       display: flex;
       gap: 10px;
@@ -782,11 +854,6 @@
       color: var(--muted);
       font-weight: 600;
       margin-left: 4px;
-    }
-    .calc-result-period {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 4px;
     }
 
     .calc-breakdown {
@@ -901,9 +968,9 @@
         </div>
         
         <ul class="audit-features">
-          <li><span class="icon">✓</span> Анкета всего на 3 шага</li>
-          <li><span class="icon">✓</span> Автоматический расчет суммы потерь</li>
-          <li><span class="icon">✓</span> Персональная рекомендация</li>
+          <li><span class="icon">✓</span> Анкета на 4 шага по вашей методологии</li>
+          <li><span class="icon">✓</span> Расчёт простоя вакансий и процесса найма</li>
+          <li><span class="icon">✓</span> Персональные рекомендации от Анны</li>
         </ul>
 
         <div class="audit-action">
@@ -1077,7 +1144,7 @@
     <div class="calc-header">
       <div class="calc-header-icon">💰</div>
       <h3>Калькулятор потерь от найма</h3>
-      <p>Ответьте на 7 вопросов и узнайте, сколько денег теряет ваша компания</p>
+      <p>Ответьте на 4 шага и узнайте точную сумму потерь</p>
     </div>
 
     <!-- Прогресс-бар -->
@@ -1085,30 +1152,29 @@
       <div class="calc-progress-step active" data-step="1"></div>
       <div class="calc-progress-step" data-step="2"></div>
       <div class="calc-progress-step" data-step="3"></div>
+      <div class="calc-progress-step" data-step="4"></div>
     </div>
 
-    <!-- ШАГ 1: О компании -->
+    <!-- ШАГ 1: Что считаем + выручка -->
     <div class="calc-step active" data-step="1">
-      <div class="calc-step-label">Шаг 1 из 3</div>
-      <div class="calc-step-title">О вашей компании</div>
+      <div class="calc-step-label">Шаг 1 из 4</div>
+      <div class="calc-step-title">Что считаем и экономика</div>
 
-      <div class="calc-field">
-        <label for="calc_company_size">Размер команды</label>
-        <select id="calc_company_size">
-          <option value="">Выберите...</option>
-          <option value="10">до 10 человек</option>
-          <option value="25">10–30 человек</option>
-          <option value="75">30–100 человек</option>
-          <option value="200">100–300 человек</option>
-          <option value="500">более 300 человек</option>
-        </select>
-        <div class="hint">Нужно для оценки масштаба потерь</div>
+      <div class="toggle-group">
+        <div class="toggle-item" data-toggle="calc_idle" onclick="toggleSwitch(this)">
+          <span class="toggle-label">⏳ Считать потери от простоя вакансии</span>
+          <span class="toggle-switch"></span>
+        </div>
+        <div class="toggle-item active" data-toggle="calc_process" onclick="toggleSwitch(this)">
+          <span class="toggle-label">📊 Считать потери от процесса найма</span>
+          <span class="toggle-switch"></span>
+        </div>
       </div>
 
       <div class="calc-field">
-        <label for="calc_salary">Средняя зарплата сотрудника, ₽/мес</label>
-        <input type="number" id="calc_salary" placeholder="Например, 80000" min="0">
-        <div class="hint">Укажите среднюю по компании — от этого зависит точность расчёта</div>
+        <label for="calc_revenue">Выручка/прибыль на 1 сотрудника в месяц, ₽</label>
+        <input type="number" id="calc_revenue" placeholder="Например, 300000" min="0">
+        <div class="hint">Нужно для расчёта упущенной выгоды от простоя вакансий</div>
       </div>
 
       <div class="calc-nav">
@@ -1116,38 +1182,71 @@
       </div>
     </div>
 
-    <!-- ШАГ 2: Проблемы найма -->
+    <!-- ШАГ 2: Данные о вакансиях -->
     <div class="calc-step" data-step="2">
-      <div class="calc-step-label">Шаг 2 из 3</div>
-      <div class="calc-step-title">Проблемы найма</div>
+      <div class="calc-step-label">Шаг 2 из 4</div>
+      <div class="calc-step-title">Данные о вакансиях</div>
 
-      <div class="calc-field">
-        <label for="calc_turnover">Сколько сотрудников уволилось за последний год?</label>
-        <input type="number" id="calc_turnover" placeholder="Например, 5" min="0">
-        <div class="hint">Только те, кто ушёл сам или по инициативе компании</div>
-      </div>
-
-      <div class="calc-field">
-        <label for="calc_vacancies">Сколько вакансий сейчас висит открытыми больше 2 месяцев?</label>
-        <input type="number" id="calc_vacancies" placeholder="Например, 3" min="0">
-        <div class="hint">Долгий простой вакансии = прямые убытки</div>
-      </div>
-
-      <div class="calc-field">
-        <label for="calc_offers">Сколько кандидатов отказались от оффера за полгода?</label>
-        <input type="number" id="calc_offers" placeholder="Например, 2" min="0">
-        <div class="hint">Те, кому вы сделали предложение, но они не вышли</div>
+      <div class="calc-row">
+        <div class="calc-field">
+          <label for="calc_vacancies_count">Кол-во открытых вакансий</label>
+          <input type="number" id="calc_vacancies_count" placeholder="Например, 5" min="0">
+        </div>
+        <div class="calc-field">
+          <label for="calc_vacancy_days">Средний срок закрытия, дни</label>
+          <input type="number" id="calc_vacancy_days" placeholder="Например, 45" min="0">
+          <div class="hint">Сколько в среднем висит вакансия</div>
+        </div>
       </div>
 
       <div class="calc-nav">
         <button type="button" class="btn btn-back" onclick="calcPrev(2)">← Назад</button>
-        <button type="button" class="btn primary" onclick="calcNext(2)">Рассчитать →</button>
+        <button type="button" class="btn primary" onclick="calcNext(2)">Далее →</button>
       </div>
     </div>
 
-    <!-- ШАГ 3: Контакты -->
+    <!-- ШАГ 3: Процесс найма -->
     <div class="calc-step" data-step="3">
-      <div class="calc-step-label">Шаг 3 из 3</div>
+      <div class="calc-step-label">Шаг 3 из 4</div>
+      <div class="calc-step-title">Процесс найма (на 1 вакансию)</div>
+
+      <div class="calc-field">
+        <label for="calc_ad_cost">Затраты на рекламу, ₽</label>
+        <input type="number" id="calc_ad_cost" placeholder="Например, 5000" min="0">
+      </div>
+
+      <div class="calc-row">
+        <div class="calc-field">
+          <label for="calc_hr_hours">Часы HR/Руководителя</label>
+          <input type="number" id="calc_hr_hours" placeholder="Например, 20" min="0" step="0.5">
+        </div>
+        <div class="calc-field">
+          <label for="calc_hr_rate">Ставка часа, ₽</label>
+          <input type="number" id="calc_hr_rate" placeholder="Например, 1500" min="0">
+        </div>
+      </div>
+
+      <div class="calc-row">
+        <div class="calc-field">
+          <label for="calc_soe_hours">Часы SOE на собеседования</label>
+          <input type="number" id="calc_soe_hours" placeholder="Например, 5" min="0" step="0.5">
+          <div class="hint">Время специалистов на интервью</div>
+        </div>
+        <div class="calc-field">
+          <label for="calc_soe_rate">Ставка часа SOE, ₽</label>
+          <input type="number" id="calc_soe_rate" placeholder="Например, 2000" min="0">
+        </div>
+      </div>
+
+      <div class="calc-nav">
+        <button type="button" class="btn btn-back" onclick="calcPrev(3)">← Назад</button>
+        <button type="button" class="btn primary" onclick="calcNext(3)">Далее →</button>
+      </div>
+    </div>
+
+    <!-- ШАГ 4: Контакты -->
+    <div class="calc-step" data-step="4">
+      <div class="calc-step-label">Шаг 4 из 4</div>
       <div class="calc-step-title">Куда отправить результат</div>
 
       <div class="calc-field">
@@ -1162,8 +1261,8 @@
       </div>
 
       <div class="calc-nav">
-        <button type="button" class="btn btn-back" onclick="calcPrev(3)">← Назад</button>
-        <button type="button" class="btn primary" onclick="calcNext(3)">Узнать результат</button>
+        <button type="button" class="btn btn-back" onclick="calcPrev(4)">← Назад</button>
+        <button type="button" class="btn primary" onclick="calcNext(4)">Узнать результат</button>
       </div>
     </div>
 
@@ -1173,23 +1272,11 @@
         <div class="calc-result-label">Ваши потери от найма</div>
         <div class="calc-result-total">
           <div class="calc-result-sum" id="resultSum">0 ₽</div>
-          <div class="calc-result-period">в год</div>
         </div>
 
-        <div class="calc-breakdown">
+        <div class="calc-breakdown" id="resultBreakdown">
           <div class="calc-breakdown-title">Из чего складывается сумма</div>
-          <div class="calc-breakdown-row">
-            <span class="label">💸 Текучка кадров</span>
-            <span class="value" id="resultTurnover">0 ₽</span>
-          </div>
-          <div class="calc-breakdown-row">
-            <span class="label">⏳ Простой вакансий</span>
-            <span class="value" id="resultVacancies">0 ₽</span>
-          </div>
-          <div class="calc-breakdown-row">
-            <span class="label">❌ Сорванные офферы</span>
-            <span class="value" id="resultOffers">0 ₽</span>
-          </div>
+          <!-- Заполняется динамически -->
         </div>
 
         <div class="calc-result-note">
@@ -1310,10 +1397,15 @@
   });
 
   // ============================================
-  // КАЛЬКУЛЯТОР ПОТЕРЬ
+  // КАЛЬКУЛЯТОР ПОТЕРЬ (по методологии Excel)
   // ============================================
   let calcCurrentStep = 1;
   let calcData = {};
+
+  // Переключатели
+  function toggleSwitch(el) {
+    el.classList.toggle('active');
+  }
 
   function openCalculator() {
     const modal = document.getElementById('calcModal');
@@ -1331,58 +1423,101 @@
   function resetCalculator() {
     calcCurrentStep = 1;
     calcData = {};
-    updateCalcUI();
+    
     // Сброс полей
-    document.getElementById('calc_company_size').value = '';
-    document.getElementById('calc_salary').value = '';
-    document.getElementById('calc_turnover').value = '';
-    document.getElementById('calc_vacancies').value = '';
-    document.getElementById('calc_offers').value = '';
+    document.getElementById('calc_revenue').value = '';
+    document.getElementById('calc_vacancies_count').value = '';
+    document.getElementById('calc_vacancy_days').value = '';
+    document.getElementById('calc_ad_cost').value = '';
+    document.getElementById('calc_hr_hours').value = '';
+    document.getElementById('calc_hr_rate').value = '';
+    document.getElementById('calc_soe_hours').value = '';
+    document.getElementById('calc_soe_rate').value = '';
     document.getElementById('calc_name').value = '';
     document.getElementById('calc_contact').value = '';
+
+    // Сброс переключателей: idle=FALSE, process=TRUE (как в Excel)
+    document.querySelector('[data-toggle="calc_idle"]').classList.remove('active');
+    document.querySelector('[data-toggle="calc_process"]').classList.add('active');
+
     const debugBox = document.getElementById('calcDebugBox');
     if (debugBox) debugBox.classList.remove('show');
+
+    updateCalcUI();
   }
 
   function updateCalcUI() {
-    // Обновить шаги
     document.querySelectorAll('.calc-step').forEach(step => {
       step.classList.remove('active');
       if (String(step.dataset.step) === String(calcCurrentStep)) {
         step.classList.add('active');
       }
     });
-    // Обновить прогресс-бар
     document.querySelectorAll('.calc-progress-step').forEach(bar => {
       const s = parseInt(bar.dataset.step);
       bar.classList.remove('active', 'done');
-      if (s < calcCurrentStep) bar.classList.add('done');
-      else if (s === calcCurrentStep) bar.classList.add('active');
+      if (typeof calcCurrentStep === 'number') {
+        if (s < calcCurrentStep) bar.classList.add('done');
+        else if (s === calcCurrentStep) bar.classList.add('active');
+      } else {
+        bar.classList.add('done');
+      }
     });
   }
 
   function calcNext(step) {
     if (step === 1) {
-      const size = document.getElementById('calc_company_size').value;
-      const salary = parseFloat(document.getElementById('calc_salary').value);
-      if (!size) { alert('Пожалуйста, выберите размер команды'); return; }
-      if (!salary || salary <= 0) { alert('Укажите среднюю зарплату'); return; }
-      calcData.company_size = size;
-      calcData.salary = salary;
-      calcCurrentStep = 2;
-    } else if (step === 2) {
-      const turnover = parseFloat(document.getElementById('calc_turnover').value) || 0;
-      const vacancies = parseFloat(document.getElementById('calc_vacancies').value) || 0;
-      const offers = parseFloat(document.getElementById('calc_offers').value) || 0;
-      if (turnover === 0 && vacancies === 0 && offers === 0) {
-        alert('Укажите хотя бы одно значение — иначе потери будут нулевыми 🙂');
+      const revenue = parseFloat(document.getElementById('calc_revenue').value);
+      if (!revenue || revenue <= 0) { 
+        alert('Укажите выручку/прибыль на 1 сотрудника в месяц'); 
+        return; 
+      }
+      calcData.count_idle = document.querySelector('[data-toggle="calc_idle"]').classList.contains('active');
+      calcData.count_process = document.querySelector('[data-toggle="calc_process"]').classList.contains('active');
+      
+      if (!calcData.count_idle && !calcData.count_process) {
+        alert('Включите хотя бы один блок расчёта');
         return;
       }
-      calcData.turnover = turnover;
+      
+      calcData.revenue = revenue;
+      calcData.revenue_per_day = revenue / 30;
+      calcCurrentStep = 2;
+    } else if (step === 2) {
+      const vacancies = parseFloat(document.getElementById('calc_vacancies_count').value) || 0;
+      const days = parseFloat(document.getElementById('calc_vacancy_days').value) || 0;
+      
+      if (vacancies <= 0) { 
+        alert('Укажите количество открытых вакансий'); 
+        return; 
+      }
+      if (calcData.count_idle && days <= 0) {
+        alert('Укажите средний срок закрытия вакансии');
+        return;
+      }
+      
       calcData.vacancies = vacancies;
-      calcData.offers = offers;
+      calcData.vacancy_days = days;
       calcCurrentStep = 3;
     } else if (step === 3) {
+      const adCost = parseFloat(document.getElementById('calc_ad_cost').value) || 0;
+      const hrHours = parseFloat(document.getElementById('calc_hr_hours').value) || 0;
+      const hrRate = parseFloat(document.getElementById('calc_hr_rate').value) || 0;
+      const soeHours = parseFloat(document.getElementById('calc_soe_hours').value) || 0;
+      const soeRate = parseFloat(document.getElementById('calc_soe_rate').value) || 0;
+      
+      if (calcData.count_process && adCost === 0 && hrHours === 0 && soeHours === 0) {
+        alert('Введите хотя бы одно значение для процесса найма');
+        return;
+      }
+      
+      calcData.ad_cost = adCost;
+      calcData.hr_hours = hrHours;
+      calcData.hr_rate = hrRate;
+      calcData.soe_hours = soeHours;
+      calcData.soe_rate = soeRate;
+      calcCurrentStep = 4;
+    } else if (step === 4) {
       const name = document.getElementById('calc_name').value.trim();
       const contact = document.getElementById('calc_contact').value.trim();
       if (!name) { alert('Пожалуйста, укажите имя'); return; }
@@ -1390,7 +1525,6 @@
       calcData.name = name;
       calcData.contact = contact;
       
-      // Считаем и показываем результат
       calculateLosses();
       calcCurrentStep = 'result';
     }
@@ -1407,34 +1541,55 @@
   }
 
   function calculateLosses() {
-    const salary = calcData.salary;
-    const turnover = calcData.turnover;
-    const vacancies = calcData.vacancies;
-    const offers = calcData.offers;
+    // Потери от простоя вакансии (если включено)
+    // = кол-во вакансий × срок закрытия × выручка/день
+    let lossIdle = 0;
+    if (calcData.count_idle) {
+      lossIdle = calcData.vacancies * calcData.vacancy_days * calcData.revenue_per_day;
+    }
 
-    // Формулы потерь (годовые)
-    // 1. Текучка: каждый уволенный = 4 оклада на замену (по методологии SHRM)
-    const lossTurnover = turnover * salary * 4;
+    // Потери от процесса найма (если включено)
+    // = кол-во вакансий × (реклама + часы_HR × ставка_HR + часы_SOE × ставка_SOE)
+    let lossProcess = 0;
+    if (calcData.count_process) {
+      const costPerVacancy = calcData.ad_cost 
+        + (calcData.hr_hours * calcData.hr_rate) 
+        + (calcData.soe_hours * calcData.soe_rate);
+      lossProcess = calcData.vacancies * costPerVacancy;
+    }
 
-    // 2. Простой вакансий: каждая зависшая вакансия = 0.5 оклада в месяц × 12 месяцев
-    const lossVacancies = vacancies * salary * 0.5 * 12;
+    const totalLoss = lossIdle + lossProcess;
 
-    // 3. Сорванные офферы: каждый отказ = 1 оклад (месяц работы рекрутера впустую)
-    const lossOffers = offers * salary * 1;
-
-    const totalLoss = lossTurnover + lossVacancies + lossOffers;
-
-    // Сохраняем для отправки
-    calcData.lossTurnover = lossTurnover;
-    calcData.lossVacancies = lossVacancies;
-    calcData.lossOffers = lossOffers;
+    // Сохраняем
+    calcData.lossIdle = lossIdle;
+    calcData.lossProcess = lossProcess;
     calcData.totalLoss = totalLoss;
 
     // Отображаем
     document.getElementById('resultSum').textContent = formatMoney(totalLoss);
-    document.getElementById('resultTurnover').textContent = formatMoney(lossTurnover);
-    document.getElementById('resultVacancies').textContent = formatMoney(lossVacancies);
-    document.getElementById('resultOffers').textContent = formatMoney(lossOffers);
+
+    // Формируем разбивку (только активные блоки)
+    const breakdown = document.getElementById('resultBreakdown');
+    let breakdownHTML = '<div class="calc-breakdown-title">Из чего складывается сумма</div>';
+    
+    if (calcData.count_idle) {
+      breakdownHTML += `
+        <div class="calc-breakdown-row">
+          <span class="label">⏳ Потери от простоя вакансии</span>
+          <span class="value">${formatMoney(lossIdle)}</span>
+        </div>
+      `;
+    }
+    if (calcData.count_process) {
+      breakdownHTML += `
+        <div class="calc-breakdown-row">
+          <span class="label">📊 Потери от процесса найма</span>
+          <span class="value">${formatMoney(lossProcess)}</span>
+        </div>
+      `;
+    }
+    
+    breakdown.innerHTML = breakdownHTML;
   }
 
   async function sendCalcToTelegram() {
@@ -1443,37 +1598,36 @@
     btn.textContent = 'Отправка...';
     btn.disabled = true;
 
-    const sizeLabels = {
-      '10': 'до 10 человек',
-      '25': '10–30 человек',
-      '75': '30–100 человек',
-      '200': '100–300 человек',
-      '500': 'более 300 человек'
-    };
-
     const text = 
-`💰 <b>НОВЫЙ РАСЧЁТ ПОТЕРЬ</b>
+`💰 <b>НОВЫЙ РАСЧЁТ ПОТЕРЬ ОТ НАЙМА</b>
 
 👤 <b>Имя:</b> ${calcData.name}
 📞 <b>Контакт:</b> ${calcData.contact}
 
-🏢 <b>Компания:</b> ${sizeLabels[calcData.company_size] || calcData.company_size}
-💵 <b>Средняя зарплата:</b> ${formatMoney(calcData.salary)}
+📈 <b>ВЫРУЧКА НА СОТРУДНИКА:</b>
+• В месяц: ${formatMoney(calcData.revenue)}
+• В день: ${formatMoney(calcData.revenue_per_day)}
 
-📊 <b>ВВОДНЫЕ ДАННЫЕ:</b>
-• Уволилось за год: ${calcData.turnover} чел.
-• Вакансий висит >2 мес: ${calcData.vacancies}
-• Сорванных офферов: ${calcData.offers}
+📋 <b>ВАКАНСИИ:</b>
+• Открытых вакансий: ${calcData.vacancies}
+• Средний срок закрытия: ${calcData.vacancy_days} дн.
 
-💥 <b>ИТОГО ПОТЕРЬ В ГОД:</b>
+🔧 <b>ПРОЦЕСС НАЙМА (на 1 вакансию):</b>
+• Реклама: ${formatMoney(calcData.ad_cost)}
+• HR/Руководитель: ${calcData.hr_hours} ч × ${formatMoney(calcData.hr_rate)} = ${formatMoney(calcData.hr_hours * calcData.hr_rate)}
+• SOE: ${calcData.soe_hours} ч × ${formatMoney(calcData.soe_rate)} = ${formatMoney(calcData.soe_hours * calcData.soe_rate)}
+
+📊 <b>ЧТО СЧИТАЛИ:</b>
+• Простой вакансий: ${calcData.count_idle ? '✅ ДА' : '❌ НЕТ'}
+• Процесс найма: ${calcData.count_process ? '✅ ДА' : '❌ НЕТ'}
+
+💥 <b>ИТОГО ПОТЕРИ:</b>
 ━━━━━━━━━━━━━━━━━━
 🔥 <b>${formatMoney(calcData.totalLoss)}</b>
 ━━━━━━━━━━━━━━━━━━
 
 📉 <b>Разбивка:</b>
-• Текучка: ${formatMoney(calcData.lossTurnover)}
-• Простой вакансий: ${formatMoney(calcData.lossVacancies)}
-• Сорванные офферы: ${formatMoney(calcData.lossOffers)}
+${calcData.count_idle ? '• От простоя: ' + formatMoney(calcData.lossIdle) + '\n' : ''}${calcData.count_process ? '• От процесса найма: ' + formatMoney(calcData.lossProcess) : ''}
 
 📅 ${new Date().toLocaleString('ru-RU')}`;
 
@@ -1491,18 +1645,16 @@
       const result = await response.json();
 
       if (result.ok) {
-        // Показываем "спасибо"
         btn.textContent = '✓ Отправлено!';
         btn.style.background = 'linear-gradient(135deg, #2d7a3e, #3d9a4e)';
         
         setTimeout(() => {
           closeCalculator();
-          // Показываем обычную форму с предзаполненным пакетом
           setTimeout(() => {
             openLead('Рекомендации после расчёта потерь');
             document.getElementById('name').value = calcData.name;
             document.getElementById('contact').value = calcData.contact;
-            document.getElementById('message').value = 'Прошёл калькулятор потерь. Хочу получить персональные рекомендации.';
+            document.getElementById('message').value = `Прошёл калькулятор. Итого потерь: ${formatMoney(calcData.totalLoss)}. Хочу получить персональные рекомендации.`;
           }, 300);
         }, 1500);
       } else {
