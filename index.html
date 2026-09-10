@@ -172,8 +172,81 @@
     
     .hero-actions{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top: 10px;}
 
+    /* === ГОРИЗОНТАЛЬНЫЙ БЛОК АУДИТА === */
+    .audit-banner {
+      background: linear-gradient(90deg, rgba(245, 230, 232, 0.8), rgba(255, 255, 255, 0.95));
+      border: 2px solid var(--brand);
+      border-radius: var(--radius2);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .audit-banner::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 6px;
+      background: var(--burgundy-accent);
+    }
+    .audit-content {
+      flex: 1;
+    }
+    .audit-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      margin: 0 0 4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .audit-badge {
+      background: var(--burgundy-accent);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+    .audit-desc {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.4;
+    }
+    .audit-btn {
+      flex: 0 0 auto;
+      background: var(--burgundy-accent);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .audit-btn:hover {
+      background: #a0002a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(128, 0, 32, 0.2);
+    }
+    @media (max-width: 600px) {
+      .audit-banner { flex-direction: column; text-align: center; padding: 20px; }
+      .audit-title { justify-content: center; }
+      .audit-btn { width: 100%; }
+    }
+
     /* === БЛОК "УЗНАЛИ СЕБЯ?" === */
-    .pain-section { padding: 20px 0; }
+    .pain-section { padding: 10px 0 20px; }
     .pain-header {
       display: flex;
       align-items: center;
@@ -277,103 +350,6 @@
     section{padding: 16px 0;}
     .section-title{font-size: 20px; margin: 0 0 6px; letter-spacing:-.2px; color: var(--text);}
     .section-sub{color: var(--muted); margin: 0 0 12px; max-width: 80ch; font-size: 14px;}
-
-    /* === ПЛАШКА "БЕСПЛАТНО" СПРАВА === */
-    .free-package-wrapper {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 16px;
-    }
-    .free-package {
-      background: linear-gradient(135deg, rgba(245, 230, 232, 0.6), rgba(255, 255, 255, 0.95));
-      border: 2px solid var(--brand);
-      border-radius: var(--radius2);
-      padding: 24px 22px;
-      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
-      position: relative;
-      overflow: hidden;
-      max-width: 400px;
-      width: 100%;
-      transition: all 0.3s ease;
-    }
-    .free-package:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 25px 55px rgba(212, 175, 55, 0.3);
-    }
-    .free-package::before {
-      content: "БЕСПЛАТНО";
-      position: absolute;
-      top: 16px;
-      right: -32px;
-      background: var(--burgundy-accent);
-      color: #fff;
-      font-weight: 900;
-      font-size: 11px;
-      padding: 5px 40px;
-      transform: rotate(45deg);
-      letter-spacing: 1px;
-      box-shadow: 0 4px 10px rgba(128, 0, 32, 0.3);
-    }
-    .free-package .price-title {
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--text);
-      margin: 0 0 6px;
-      padding-right: 25px;
-      line-height: 1.2;
-    }
-    .free-package .price-value {
-      color: var(--burgundy-accent);
-      font-size: 24px;
-      font-weight: 900;
-      margin-bottom: 10px;
-    }
-    .free-package .price-card-desc {
-      font-size: 13.5px;
-      color: var(--text);
-      margin-bottom: 12px;
-      line-height: 1.45;
-    }
-    .free-package .price-features {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 16px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      border-top: 1px solid rgba(212, 175, 55, 0.3);
-      padding-top: 12px;
-    }
-    .free-package .price-features li {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      font-size: 13px;
-      color: var(--text);
-      line-height: 1.3;
-    }
-    .free-package .price-features .icon {
-      color: var(--brand);
-      font-weight: bold;
-      flex-shrink: 0;
-    }
-    .free-package .btn {
-      background: var(--burgundy-accent);
-      color: #fff;
-      border: none;
-      padding: 12px 18px;
-      font-size: 14px;
-      width: 100%;
-      text-align: center;
-      cursor: pointer;
-      border-radius: 14px;
-      font-weight: 800;
-      transition: all 0.2s ease;
-    }
-    .free-package .btn:hover {
-      background: #a0002a;
-      transform: translateY(-2px);
-    }
 
     /* === ПАКЕТЫ УСЛУГ === */
     .pricing-grid {
@@ -644,10 +620,18 @@
         </div>
       </div>
 
-      <div class="hero-actions">
-        <button class="btn primary" type="button" onclick="openLead('Бесплатная консультация')">Бесплатная консультация</button>
-        <button class="btn" type="button" onclick="scrollToId('services')">Что входит</button>
+      <!-- НОВЫЙ ГОРИЗОНТАЛЬНЫЙ БЛОК АУДИТА -->
+      <div class="audit-banner">
+        <div class="audit-content">
+          <div class="audit-title">
+            Бесплатный расчёт потерь от найма
+            <span class="audit-badge">0 ₽</span>
+          </div>
+          <p class="audit-desc">За 5–7 минут узнайте, сколько денег уходит из-за текучки и долгого закрытия вакансий.</p>
+        </div>
+        <button class="audit-btn" type="button" onclick="openLead('Бесплатный расчёт потерь')">Рассчитать потери</button>
       </div>
+
     </section>
 
     <!-- БЛОК "УЗНАЛИ СЕБЯ?" -->
@@ -699,24 +683,6 @@
     <section id="services" aria-label="Услуги">
       <h2 class="section-title">Пакеты HR-услуг</h2>
       <p class="section-sub">Выберите подходящий формат работы под ваши задачи и масштаб бизнеса.</p>
-
-      <!-- ПЛАШКА "БЕСПЛАТНО" СПРАВА -->
-      <div class="free-package-wrapper">
-        <div class="free-package">
-          <div class="price-title">Сколько денег компания теряет из-за плохого найма</div>
-          <div class="price-value">Бесплатно</div>
-          <div class="price-card-desc">
-            За 5–7 минут узнаёте примерную сумму потерь от текучки, долгого закрытия вакансий и ошибок в найме.
-          </div>
-          <ul class="price-features">
-            <li><span class="icon">✓</span> Короткая анкета (5–7 вопросов о компании и найме)</li>
-            <li><span class="icon">✓</span> Автоматический расчёт суммы потерь</li>
-            <li><span class="icon">✓</span> Персональный результат с рекомендацией следующего шага</li>
-            <li><span class="icon">✓</span> <b>Кому подходит:</b> всем, кто ещё сомневается, есть ли у него проблема с наймом.</li>
-          </ul>
-          <button class="btn" type="button" onclick="openLead('Бесплатный расчёт потерь')">Пройти тест</button>
-        </div>
-      </div>
 
       <!-- Остальные пакеты -->
       <div class="pricing-grid">
