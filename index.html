@@ -755,6 +755,7 @@ var packTitles = {
 var params = new URLSearchParams(window.location.search);
 var packParam = params.get('pack');
 var calcParam = params.get('calc');
+var aiCalcParam = params.get('aicalc');
 
 if(packParam && packTitles[packParam]){
   currentPack = packParam;
@@ -772,6 +773,10 @@ if(packParam && packTitles[packParam]){
 if(calcParam){
   resetCalc();
   setTimeout(function(){ $('#calc').showModal(); }, 600);
+} 
+if(aiCalcParam){
+  resetAiCalc();
+  setTimeout(function(){ $('#ai_calc').showModal(); }, 600);
 }
 
 /* Управление диалогами */
