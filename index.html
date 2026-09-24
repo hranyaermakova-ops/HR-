@@ -87,7 +87,6 @@ input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border
 .rows{margin:12px 0;font-size:15px}.rows div{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line)}
 .err{color:#B3261E;font-size:13.5px;margin-top:8px}
 
-/* Стили для карточек системных решений с выровненными кнопками */
 .system-card{display:flex;flex-direction:column;text-align:center;padding:32px 24px;min-height:380px}
 .system-card .ico{font-size:36px;margin-bottom:12px}
 .system-card h3{font-size:20px;margin-bottom:14px;color:var(--burgundy)}
@@ -102,9 +101,11 @@ input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border
 <body>
 
 <header><div class="wrap"><a class="logo" href="#top">Анна Ермакова</a>
-<nav><a class="hide" href="#results">Результаты</a><a class="hide" href="#services">Услуги</a><a class="hide" href="#faq">Вопросы</a><a class="btn" style="padding:9px 18px" href="#" data-open="lead" data-pack="Консультация">Записаться</a></nav></div></header>
+<nav><a class="hide" href="#about">Обо мне</a><a class="hide" href="#results">Результаты</a><a class="hide" href="#services">Услуги</a><a class="hide" href="#faq">Вопросы</a><a class="btn" style="padding:9px 18px" href="#" data-open="lead" data-pack="Консультация">Записаться</a></nav></div></header>
 
 <main id="top">
+
+<!-- HERO -->
 <div class="hero"><div class="wrap">
 <div>
 <h1>Выстрою HR-систему, которая <span>снижает текучку</span> и <span>ускоряет найм</span></h1>
@@ -115,6 +116,19 @@ input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border
 <div class="person"><img src="https://i.ibb.co/dwtxr66G/image.png" alt="Анна Ермакова, HR-директор" loading="eager" onerror="this.style.display='none'"><b>Анна Ермакова</b><span>Ваш персональный HR-партнёр</span></div>
 </div></div>
 
+<!-- ОБО МНЕ — ПЕРВЫМ -->
+<section id="about" style="background:#fff"><div class="wrap"><div class="about">
+<div><h2>Обо мне</h2><p class="lead" style="margin-bottom:14px">Дипломированный HR-практик с 9 годами опыта. Специализируюсь на выстраивании HR-процессов с нуля: найм, адаптация, мотивация, корпоративная культура и автоматизация.</p>
+<p style="color:var(--mut)">Мой принцип: в бизнесе нет проблем, есть задачи, требующие решения. Поэтому работаю с цифрами, сроками и понятным результатом.</p></div>
+<ul>
+<li>HR-процессы внедряла в 5 компаниях, в 3 из них выстраивала с нуля</li>
+<li>Выстроила HR-департамент за 1,5 месяца</li>
+<li>Внедряла системы оценки 180 и 360 градусов, ИПР, KPI, кадровый резерв</li>
+<li>Опыт подбора от линейных позиций до топ-менеджмента</li>
+<li>Прошла обучение по HR BP, HR-стратегии, HR-метрикам, наставничеству и коучингу</li>
+</ul></div></div></section>
+
+<!-- КЕЙСЫ — ВТОРЫМИ -->
 <section id="results" style="padding-top:0"><div class="wrap">
 <div class="stats">
 <div class="stat"><b>79% → 17%</b><span>снижение общей текучести кадров</span></div>
@@ -124,8 +138,25 @@ input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border
 </div>
 </div></section>
 
-<!-- Блок системных решений перемещен сразу после статистики -->
-<section style="padding-top:40px"><div class="wrap">
+<!-- ПЛАТНЫЕ ПАКЕТЫ УСЛУГ — ТРЕТЬИМИ (ВЫШЕ) -->
+<section id="services"><div class="wrap">
+<h2>Форматы работы</h2><p class="lead">Начните с диагностики и переходите к тому, что решит вашу задачу. Стоимость проектов, помеченных «по запросу», зависит от масштаба и определяется после аудита.</p>
+<div class="grid g3">
+<div class="card pk"><h3>Диагностика найма за 48 часов</h3><div class="price">7 900 ₽</div><p>Находим, где найм теряет деньги и время: разбираем воронку, вакансии и процесс подбора.</p>
+<ul><li>Разбор 1–3 текущих вакансий и воронки</li><li>Анализ узких мест: где теряются кандидаты</li><li>Видеоразбор с рекомендациями</li><li>Письменный отчёт с приоритетами</li><li><b>Кому:</b> тем, кто чувствует, что найм работает не так, но не понимает, в чём проблема</li></ul>
+<a class="btn dark" href="#" data-open="lead" data-pack="Диагностика найма за 48 часов">Заказать диагностику</a></div>
+
+<div class="card pk rec"><span class="badge">Рекомендуем</span><h3>Найм под ключ за 4 недели</h3><div class="price">от 89 000 ₽</div><p>Полный цикл подбора 1–2 приоритетных вакансий: от портрета кандидата до выхода на работу.</p>
+<ul><li>Профиль вакансии и портрет кандидата</li><li>Публикация и продвижение вакансии</li><li>Первичный отбор и интервью</li><li>Презентация финалистов с рекомендациями</li><li>Гарантия замены в испытательный срок (условия в договоре)</li><li><b>Кому:</b> тем, кому нужно предсказуемо закрыть 1–2 ключевые позиции</li></ul>
+<a class="btn" href="#" data-open="lead" data-pack="Найм под ключ за 4 недели">Обсудить проект</a></div>
+
+<div class="card pk"><h3>HR-партнёрство</h3><div class="price">от 249 000 ₽ / 3 мес.</div><p>Не просто подбор, а выстраивание системы найма и HR-процессов на 3 месяца.</p>
+<ul><li>Аудит и перестройка процесса найма</li><li>Закрытие до 3 вакансий</li><li>HR-инструменты и регламенты под вашу команду</li><li>Регулярные стратегические сессии с руководителем</li><li>Обучение внутренней команды самостоятельному найму</li><li><b>Кому:</b> компаниям в стадии активного роста</li></ul>
+<a class="btn dark" href="#" data-open="lead" data-pack="HR-партнёрство">Запросить расчёт</a></div>
+</div>
+
+<!-- СИСТЕМНЫЕ РЕШЕНИЯ — ЧЕТВЁРТЫМИ (НИЖЕ) -->
+<div style="margin-top:48px">
 <h2 style="text-align:center;font-size:clamp(20px,3vw,30px);margin-bottom:32px">Системные HR-решения для зрелого бизнеса</h2>
 <div class="grid g3">
 <div class="card system-card">
@@ -149,8 +180,11 @@ input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border
 <a class="btn dark" href="#" data-open="lead" data-pack="Автоматизация HR-процессов">Узнать подробности</a>
 </div>
 </div>
+</div>
+
 </div></section>
 
+<!-- УЗНАЛИ СЕБЯ -->
 <section style="padding-top:20px"><div class="wrap">
 <h2>Узнали себя?</h2><p class="lead">Если хотя бы одна ситуация знакома, самое время навести порядок.</p>
 <div class="grid g4">
@@ -160,42 +194,16 @@ input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border
 <div class="card"><div class="ico">🙈</div><h3>Найм работает вслепую</h3><p>Нет воронки, метрик и прогноза. Решения принимаются на интуиции, и результат не масштабируется.</p></div>
 </div></div></section>
 
+<!-- КАЛЬКУЛЯТОР -->
 <section style="padding-top:10px"><div class="wrap"><div class="calc">
 <div><h2>Бесплатный расчёт потерь от найма</h2>
 <p>Узнайте, сколько денег компания теряет из-за простоя вакансий и затянутого найма. Займёт 2 минуты.</p>
 <ul><li>4 коротких шага</li><li>Расчёт потерь от простоя и от процесса подбора</li><li>Рекомендации от Анны по итогам</li></ul>
 <a class="btn" href="#" data-open="calc">Рассчитать потери</a></div>
-<div style="text-align:center;font-family:'Unbounded',sans-serif"><div style="font-size:64px">📊</div><div class="price" style="color:var(--gold);background:var(--burgundy);display:inline-block;padding:8px 16px;border-radius:8px;font-size:22px">0 ₽</div><span style="color:#fffdd0;font-size:14px;font-family:'Onest',sans-serif;display:block;margin-top:8px">Результат сразу на экране</span></div>
+<div style="text-align:center;font-family:'Unbounded',sans-serif"><div style="font-size:64px"></div><div class="price" style="color:var(--gold);background:var(--burgundy);display:inline-block;padding:8px 16px;border-radius:8px;font-size:22px">0 ₽</div><span style="color:#fffdd0;font-size:14px;font-family:'Onest',sans-serif;display:block;margin-top:8px">Результат сразу на экране</span></div>
 </div></div></section>
 
-<section id="services"><div class="wrap">
-<h2>Форматы работы</h2><p class="lead">Начните с диагностики и переходите к тому, что решит вашу задачу. Стоимость проектов, помеченных «по запросу», зависит от масштаба и определяется после аудита.</p>
-<div class="grid g3">
-<div class="card pk"><h3>Диагностика найма за 48 часов</h3><div class="price">7 900 ₽</div><p>Находим, где найм теряет деньги и время: разбираем воронку, вакансии и процесс подбора.</p>
-<ul><li>Разбор 1–3 текущих вакансий и воронки</li><li>Анализ узких мест: где теряются кандидаты</li><li>Видеоразбор с рекомендациями</li><li>Письменный отчёт с приоритетами</li><li><b>Кому:</b> тем, кто чувствует, что найм работает не так, но не понимает, в чём проблема</li></ul>
-<a class="btn dark" href="#" data-open="lead" data-pack="Диагностика найма за 48 часов">Заказать диагностику</a></div>
-
-<div class="card pk rec"><span class="badge">Рекомендуем</span><h3>Найм под ключ за 4 недели</h3><div class="price">от 89 000 ₽</div><p>Полный цикл подбора 1–2 приоритетных вакансий: от портрета кандидата до выхода на работу.</p>
-<ul><li>Профиль вакансии и портрет кандидата</li><li>Публикация и продвижение вакансии</li><li>Первичный отбор и интервью</li><li>Презентация финалистов с рекомендациями</li><li>Гарантия замены в испытательный срок (условия в договоре)</li><li><b>Кому:</b> тем, кому нужно предсказуемо закрыть 1–2 ключевые позиции</li></ul>
-<a class="btn" href="#" data-open="lead" data-pack="Найм под ключ за 4 недели">Обсудить проект</a></div>
-
-<div class="card pk"><h3>HR-партнёрство</h3><div class="price">от 249 000 ₽ / 3 мес.</div><p>Не просто подбор, а выстраивание системы найма и HR-процессов на 3 месяца.</p>
-<ul><li>Аудит и перестройка процесса найма</li><li>Закрытие до 3 вакансий</li><li>HR-инструменты и регламенты под вашу команду</li><li>Регулярные стратегические сессии с руководителем</li><li>Обучение внутренней команды самостоятельному найму</li><li><b>Кому:</b> компаниям в стадии активного роста</li></ul>
-<a class="btn dark" href="#" data-open="lead" data-pack="HR-партнёрство">Запросить расчёт</a></div>
-</div>
-</div></section>
-
-<section style="background:#fff"><div class="wrap"><div class="about">
-<div><h2>Обо мне</h2><p class="lead" style="margin-bottom:14px">Дипломированный HR-практик с 9 годами опыта. Специализируюсь на выстраивании HR-процессов с нуля: найм, адаптация, мотивация, корпоративная культура и автоматизация.</p>
-<p style="color:var(--mut)">Мой принцип: в бизнесе нет проблем, есть задачи, требующие решения. Поэтому работаю с цифрами, сроками и понятным результатом.</p></div>
-<ul>
-<li>HR-процессы внедряла в 5 компаниях, в 3 из них выстраивала с нуля</li>
-<li>Выстроила HR-департамент за 1,5 месяца</li>
-<li>Внедряла системы оценки 180 и 360 градусов, ИПР, KPI, кадровый резерв</li>
-<li>Опыт подбора от линейных позиций до топ-менеджмента</li>
-<li>Прошла обучение по HR BP, HR-стратегии, HR-метрикам, наставничеству и коучингу</li>
-</ul></div></div></section>
-
+<!-- КАК ПРОХОДИТ РАБОТА -->
 <section><div class="wrap">
 <h2>Как проходит работа</h2><p class="lead">Понятный процесс без сюрпризов.</p>
 <div class="grid g4 steps">
@@ -205,6 +213,7 @@ input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border
 <div class="card"><h3>Передача</h3><p>Обучаем команду, фиксируем регламенты и метрики.</p></div>
 </div></div></section>
 
+<!-- FAQ -->
 <section id="faq" style="padding-top:20px"><div class="wrap" style="max-width:820px">
 <h2>Частые вопросы</h2>
 <details><summary>Сколько длится диагностика и что я получу?</summary><p>48 часов после получения данных. Вы получите видеоразбор, письменный отчёт и приоритетный список точек роста.</p></details>
@@ -214,6 +223,7 @@ input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border
 <details><summary>Как рассчитывается цена проекта?</summary><p>Зависит от числа вакансий, масштаба компании и глубины внедрения. После диагностики называю точную стоимость и состав работ.</p></details>
 <div style="text-align:center;margin-top:26px"><a class="btn" href="#" data-open="lead" data-pack="Консультация">Записаться на консультацию</a></div>
 </div></section>
+
 </main>
 
 <footer><div class="wrap">
