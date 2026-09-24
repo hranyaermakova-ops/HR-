@@ -265,7 +265,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <p class="lead">Если хотя бы два пункта про вас — HR-система работает против вас, а не на вас. И это стоит денег каждый месяц.</p>
 <div class="pain-grid">
 <div class="pain"><div class="ico">⏳</div><div><h3>Вакансия висит месяцами</h3><p>Резюме не те, толковых кандидатов нет, каждый день простоя — это упущенная выручка.</p></div></div>
-<div class="pain"><div class="ico">💸</div><div><h3>Текучка съедает бюджет</h3><p>Поиск, обучение, адаптация, потерянная выгода. Один уход стоит 3–6 окладов.</p></div></div>
+<div class="pain"><div class="ico"></div><div><h3>Текучка съедает бюджет</h3><p>Поиск, обучение, адаптация, потерянная выгода. Один уход стоит 3–6 окладов.</p></div></div>
 <div class="pain"><div class="ico">❓</div><div><h3>Непонятно, почему уходят</h3><p>«Не вписался в коллектив» — это не причина. Нужна система, которая показывает реальные точки оттока.</p></div></div>
 <div class="pain"><div class="ico">🎲</div><div><h3>Найм на интуиции</h3><p>Нет воронки, метрик, прогноза. Решения принимаются «на глаз», результат не масштабируется.</p></div></div>
 </div>
@@ -440,7 +440,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <h2>Готовы навести порядок в HR?</h2>
 <p>Начните с бесплатного расчёта потерь или запишитесь на диагностику за 48 часов. Это конкретный первый шаг, а не «обсудим возможности».</p>
 <div class="cta-row" style="justify-content:center">
-<a class="btn" href="#" data-open="calc">🧮 Рассчитать потери от найма</a>
+<a class="btn" href="#" data-open="calc"> Рассчитать потери от найма</a>
 <a class="btn ghost" href="#" data-open="lead" data-pack="Диагностика найма за 48 часов">Записаться на диагностику</a>
 </div>
 </div>
@@ -611,8 +611,26 @@ var tg=function(t){return 'https://t.me/'+TELEGRAM+'?text='+encodeURIComponent(t
 $('#tglink').href='https://t.me/'+TELEGRAM;
 if(BOT_URL){$('#botlink').href=BOT_URL}else{$('#botwrap').hidden=true}
 
-/* Универсальное управление диалогами */
 var pack='Консультация';
+
+/* АВТООТКРЫТИЕ ФОРМЫ ПО ССЫЛКЕ ИЗ БОТА (?pack=...) */
+var params = new URLSearchParams(window.location.search);
+var packParam = params.get('pack');
+if(packParam){
+  var packNames = {
+    'diagnostika': 'Диагностика найма за 48 часов',
+    'ai_hr': 'AI HR System',
+    'question': 'Консультация / Вопрос',
+    'kpi': 'Система KPI и грейдов',
+    'reglament': 'HR-регламенты и документы',
+    'automation': 'Автоматизация HR-процессов'
+  };
+  pack = packNames[packParam] || 'Консультация';
+  $('#packname').textContent = pack;
+  setTimeout(function(){ $('#lead').showModal(); }, 600);
+}
+
+/* Универсальное управление диалогами */
 $$('[data-open]').forEach(function(a){
   a.addEventListener('click',function(e){
     var id=a.dataset.open;
@@ -799,4 +817,5 @@ function calculateAiResult(name,contact){
 
 showAiCalc();
 </script>
-</body></html>
+</body>
+</html>
