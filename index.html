@@ -11,15 +11,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{--burgundy:#8B1538;--burgundy-dark:#6B0F2A;--gold:#D4A843;--gold-light:#E5C158;--cream:#F9F7F4;--ink:#2B2B2B;--mut:#6B6B6B;--line:#E8E0D8;--r:16px}
+:root{--burgundy:#8B1538;--burgundy-dark:#6B0F2A;--gold:#D4A843;--gold-light:#E5C158;--gold-soft:#F5ECD0;--gold-bg:#FFFDF5;--cream:#F9F7F4;--ink:#2B2B2B;--mut:#6B6B6B;--line:#E8E0D8;--r:16px}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 body{font-family:'Onest',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;color:var(--ink);background:var(--cream);line-height:1.55;font-size:17px;overflow-x:hidden}
 h1,h2,h3{font-family:'Unbounded','Onest',system-ui,sans-serif;line-height:1.15;letter-spacing:-.01em}
 a{color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
-section{padding:72px 0}
-h2{font-size:clamp(24px,3.4vw,38px);margin-bottom:14px}
+section{padding:72px 0;position:relative}
+h2{font-size:clamp(24px,3.4vw,38px);margin-bottom:14px;position:relative;display:inline-block}
+h2::after{content:"";position:absolute;left:0;bottom:-8px;width:60px;height:3px;background:var(--gold);border-radius:2px}
 .lead{color:var(--mut);max-width:62ch;margin-bottom:34px}
 .btn{display:inline-block;background:var(--gold);color:#2B2B2B;font-weight:600;padding:14px 26px;border-radius:99px;border:0;cursor:pointer;font:inherit;font-weight:600;text-decoration:none;transition:transform .15s,box-shadow .15s;text-align:center}
 .btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px #D4A84355}
@@ -37,36 +38,40 @@ nav{display:flex;gap:22px;align-items:center;font-size:15px}
 nav a{text-decoration:none;color:var(--ink)}nav a:hover{color:var(--burgundy)}
 
 /* HERO */
-.hero{background:linear-gradient(135deg,#fff 0%,var(--cream) 100%);color:var(--ink);padding:80px 0 100px}
-.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:44px;align-items:center}
-.hero .eyebrow{display:inline-block;font-size:13px;font-weight:600;color:var(--burgundy);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;padding:6px 14px;background:#fff;border:1px solid var(--line);border-radius:99px}
-.hero h1{font-size:clamp(30px,4.6vw,54px);margin-bottom:22px}
+.hero{background:linear-gradient(135deg,#fff 0%,var(--cream) 100%);color:var(--ink);padding:80px 0 100px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:0;right:0;width:40%;height:100%;background:linear-gradient(135deg,transparent 0%,var(--gold-bg) 100%);opacity:0.6;pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:44px;align-items:center;position:relative;z-index:1}
+.hero .eyebrow{display:inline-block;font-size:13px;font-weight:600;color:var(--burgundy);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;padding:6px 14px;background:#fff;border:1px solid var(--gold);border-radius:99px}
+.hero h1{font-size:clamp(30px,4.6vw,54px);margin-bottom:22px;padding-left:18px;border-left:4px solid var(--gold)}
 .hero h1 span{color:var(--burgundy)}
 .hero p{color:var(--mut);margin-bottom:14px;max-width:56ch}
-.hero .for-whom{margin-top:20px;padding:18px 22px;background:#fff;border-left:3px solid var(--gold);border-radius:8px;max-width:56ch}
+.hero .for-whom{margin-top:20px;padding:18px 22px;background:#fff;border-left:3px solid var(--gold);border-radius:8px;max-width:56ch;box-shadow:0 4px 16px #D4A84322}
 .hero .for-whom b{color:var(--ink);display:block;margin-bottom:6px;font-size:15px}
 .hero .for-whom span{color:var(--mut);font-size:14.5px}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.person{background:#fff;border:2px solid var(--line);border-radius:22px;padding:12px;text-align:center;box-shadow:0 4px 20px #00000008;max-width:280px;margin:0 auto}
+.person{background:#fff;border:2px solid var(--gold);border-radius:22px;padding:12px;text-align:center;box-shadow:0 8px 24px #D4A84333;max-width:280px;margin:0 auto;position:relative}
+.person::before{content:"";position:absolute;inset:-4px;border-radius:26px;border:1px solid var(--gold-light);opacity:0.4;pointer-events:none}
 .person img{width:100%;border-radius:14px;display:block;aspect-ratio:4/5;object-fit:cover;background:#f0f0f0}
 .person b{display:block;margin-top:10px;font-family:'Unbounded',sans-serif;font-size:15px;color:var(--burgundy)}
 .person span{color:var(--mut);font-size:13px}
 
 /* STATS */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.stat{background:#fff;border:2px solid var(--line);border-radius:var(--r);padding:22px 18px}
+.stat{background:#fff;border:1px solid var(--gold-light);border-radius:var(--r);padding:22px 18px;position:relative;overflow:hidden}
+.stat::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light))}
 .stat b{display:block;font-family:'Unbounded',sans-serif;font-size:clamp(20px,2.4vw,28px);color:var(--burgundy);margin-bottom:6px;line-height:1.2}
 .stat span{font-size:14px;color:var(--mut);display:block;line-height:1.35}
 
 /* PAIN */
 .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.pain{background:#fff;border:2px solid var(--line);border-radius:var(--r);padding:28px;display:flex;gap:16px;align-items:flex-start}
-.pain .ico{font-size:32px;flex-shrink:0;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:var(--cream);border-radius:12px}
+.pain{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;gap:16px;align-items:flex-start;transition:border-color .2s}
+.pain:hover{border-color:var(--gold-light)}
+.pain .ico{font-size:32px;flex-shrink:0;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:var(--gold-bg);border-radius:12px;border:1px solid var(--gold-light)}
 .pain h3{font-size:17px;margin-bottom:6px;color:var(--burgundy)}
 .pain p{color:var(--mut);font-size:15px;margin:0}
 
-/* COST — компактный */
-.cost{background:#fff;border-radius:20px;padding:36px 40px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;border:1px solid var(--line)}
+/* COST */
+.cost{background:linear-gradient(135deg,var(--gold-bg) 0%,#fff 100%);border-radius:20px;padding:36px 40px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;border:1px solid var(--gold-light);box-shadow:0 8px 24px #D4A84322}
 .cost h2{color:var(--ink);font-size:clamp(22px,3vw,32px);margin-bottom:12px}
 .cost p{color:var(--mut);margin-bottom:14px}
 .cost ul{list-style:none;margin:16px 0 20px;color:var(--mut);padding:0}
@@ -74,7 +79,7 @@ nav a{text-decoration:none;color:var(--ink)}nav a:hover{color:var(--burgundy)}
 .cost li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700;font-size:16px}
 .cost .visual{text-align:center}
 .cost .visual .sub{color:var(--mut);font-size:14px;margin-bottom:12px}
-.cost .visual .price-tag{display:inline-block;background:var(--cream);color:var(--burgundy);padding:8px 18px;border-radius:10px;font-size:15px;font-weight:600;border:1px solid var(--line)}
+.cost .visual .price-tag{display:inline-block;background:#fff;color:var(--burgundy);padding:10px 20px;border-radius:12px;font-size:15px;font-weight:600;border:2px solid var(--gold)}
 
 /* PROOF */
 .proof{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
@@ -86,59 +91,65 @@ nav a{text-decoration:none;color:var(--ink)}nav a:hover{color:var(--burgundy)}
 .proof-list li:last-child{border-bottom:0}
 
 /* SOLUTION */
-.solution{background:#fff;border-radius:24px;padding:48px;border:2px solid var(--line)}
+.solution{background:#fff;border-radius:24px;padding:48px;border:1px solid var(--gold-light);box-shadow:0 8px 24px #D4A84311}
 .solution h2{text-align:center;margin-bottom:12px}
+.solution h2::after{left:50%;transform:translateX(-50%)}
 .solution .lead{text-align:center;margin-left:auto;margin-right:auto;margin-bottom:40px}
 .solution-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
-.solution-step{position:relative;padding:28px 22px 22px;background:var(--cream);border-radius:var(--r);border:2px solid var(--line)}
-.solution-step:before{counter-increment:s;content:counter(s);position:absolute;top:-18px;left:22px;font-family:'Unbounded',sans-serif;color:#fff;background:var(--burgundy);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700}
+.solution-step{position:relative;padding:28px 22px 22px;background:var(--gold-bg);border-radius:var(--r);border:1px solid var(--gold-light)}
+.solution-step:before{counter-increment:s;content:counter(s);position:absolute;top:-18px;left:22px;font-family:'Unbounded',sans-serif;color:#fff;background:var(--burgundy);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;border:2px solid var(--gold)}
 .solution-step h3{font-size:16px;margin-bottom:8px;color:var(--burgundy)}
 .solution-step p{color:var(--mut);font-size:14.5px;margin:0}
 
 /* SERVICES */
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.pk{display:flex;flex-direction:column;position:relative;background:#fff;border:2px solid var(--line);border-radius:20px;padding:32px 28px;box-shadow:0 8px 24px #00000006;transition:transform .2s}
-.pk:hover{transform:translateY(-4px)}
+.pk{display:flex;flex-direction:column;position:relative;background:#fff;border:1px solid var(--gold-light);border-radius:20px;padding:32px 28px;box-shadow:0 8px 24px #D4A84311;transition:transform .2s,box-shadow .2s}
+.pk:hover{transform:translateY(-4px);box-shadow:0 12px 32px #D4A84322}
+.pk::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:20px 20px 0 0}
 .pk h3{font-size:20px;margin-bottom:10px;color:var(--burgundy)}
 .pk .price{font-family:'Unbounded',sans-serif;font-size:26px;margin:8px 0 14px;color:var(--burgundy)}
 .pk p{color:var(--mut);font-size:15px;margin-bottom:14px}
 .pk ul{list-style:none;padding:0;margin:0 0 20px;color:var(--mut);font-size:14.5px}
 .pk li{padding-left:24px;position:relative;margin-bottom:8px;line-height:1.4}.pk li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700;font-size:16px}
 .pk .btn{margin-top:auto;text-align:center;width:100%}
-.pk.rec{border:3px solid var(--gold);background:linear-gradient(180deg, #fff 0%, #FFFDF5 100%)}
+.pk.rec{border:2px solid var(--gold);background:linear-gradient(180deg, var(--gold-bg) 0%, #fff 100%)}
 .badge{position:absolute;top:-14px;left:28px;background:var(--gold);color:#2B2B2B;font-size:12px;font-weight:700;padding:4px 14px;border-radius:99px;text-transform:uppercase;letter-spacing:0.04em}
 
-/* SYSTEM — 4 карточки */
+/* SYSTEM — 4 карточки с золотом */
 .system-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
-.system-card{display:flex;flex-direction:column;padding:28px 22px;background:#fff;border:1px solid var(--line);border-radius:var(--r);transition:transform .2s,box-shadow .2s}
-.system-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px #00000008}
-.system-card .ico{font-size:28px;margin-bottom:10px}
-.system-card h3{font-size:17px;margin-bottom:10px;color:var(--burgundy);line-height:1.25}
+.system-card{display:flex;flex-direction:column;padding:28px 22px;background:#fff;border:1px solid var(--gold-light);border-radius:var(--r);transition:transform .2s,box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
+.system-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));opacity:0.6;transition:opacity .2s}
+.system-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px #D4A84322;border-color:var(--gold)}
+.system-card:hover::before{opacity:1}
+.system-card .ico-wrap{width:48px;height:48px;border-radius:12px;background:var(--gold-bg);border:1px solid var(--gold-light);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.system-card .ico{font-size:24px}
+.system-card h3{font-size:17px;margin-bottom:6px;color:var(--burgundy);line-height:1.25}
+.system-card .subtitle{font-size:13px;color:var(--gold);font-weight:600;margin-bottom:12px;line-height:1.35}
 .system-card p{color:var(--mut);font-size:14px;line-height:1.5;flex-grow:1}
-.system-card .btn{margin-top:16px;width:100%;padding:12px 20px;font-size:14px}
+.system-card .features{list-style:none;padding:0;margin:14px 0;text-align:left;border-top:1px dashed var(--gold-light);padding-top:14px}
+.system-card .features li{padding:5px 0 5px 22px;position:relative;font-size:13.5px;color:var(--ink);border-bottom:1px dashed var(--line)}
+.system-card .features li:last-child{border-bottom:0}
+.system-card .features li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700;font-size:14px}
+.system-card .btn{margin-top:14px;width:100%;padding:12px 20px;font-size:14px}
 
-/* AI FLAGSHIP — чище и спокойнее */
-.ai-card{position:relative;background:#fff;border:1px solid var(--gold);border-radius:var(--r);padding:28px 22px;box-shadow:0 4px 16px #D4A84322}
+/* AI FLAGSHIP */
+.ai-card{background:linear-gradient(145deg,#fff 0%,var(--gold-bg) 100%);border:2px solid var(--gold);box-shadow:0 8px 28px #D4A84333}
+.ai-card::before{height:4px;background:linear-gradient(90deg,var(--burgundy),var(--gold),var(--burgundy));opacity:1}
+.ai-card .ico-wrap{background:linear-gradient(135deg,var(--gold-bg),var(--gold-soft));border-color:var(--gold)}
 .ai-card .flagship-badge{position:absolute;top:12px;right:12px;background:var(--burgundy);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;text-transform:uppercase;letter-spacing:0.06em}
-.ai-card .ico{font-size:28px;margin-bottom:10px}
-.ai-card h3{font-size:18px;margin-bottom:10px;color:var(--burgundy);line-height:1.25}
-.ai-card .subtitle{font-size:13px;color:var(--mut);margin-bottom:14px;line-height:1.4}
-.ai-card p{color:var(--ink);font-size:14px;line-height:1.5;flex-grow:1}
-.ai-card .features{list-style:none;padding:0;margin:14px 0;text-align:left}
-.ai-card .features li{padding:6px 0 6px 22px;position:relative;font-size:13.5px;color:var(--ink);border-bottom:1px dashed var(--line)}
-.ai-card .features li:last-child{border-bottom:0}
-.ai-card .features li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700;font-size:14px}
-.ai-card .btn{margin-top:14px;width:100%;padding:12px 20px;font-size:14px}
 
 /* FAQ */
 .faq{max-width:820px;margin:0 auto}
-details{background:#fff;border:2px solid var(--line);border-radius:12px;padding:18px 22px;margin-bottom:12px}
+details{background:#fff;border:1px solid var(--gold-light);border-radius:12px;padding:18px 22px;margin-bottom:12px;transition:border-color .2s}
+details[open]{border-color:var(--gold)}
 summary{cursor:pointer;font-weight:600;color:var(--burgundy);font-size:16px}
 details p{margin-top:12px;color:var(--mut);font-size:15px}
 
-/* CTA FINAL — аккуратный, без ощущения второго hero */
-.cta-final{background:#fff;border-radius:20px;padding:40px 48px;text-align:center;border:1px solid var(--line)}
+/* CTA FINAL */
+.cta-final{background:linear-gradient(135deg,var(--gold-bg) 0%,#fff 100%);border-radius:20px;padding:40px 48px;text-align:center;border:1px solid var(--gold-light);box-shadow:0 8px 24px #D4A84311;position:relative;overflow:hidden}
+.cta-final::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .cta-final h2{color:var(--ink);font-size:clamp(22px,3vw,32px);margin-bottom:12px}
+.cta-final h2::after{left:50%;transform:translateX(-50%)}
 .cta-final p{color:var(--mut);max-width:56ch;margin:0 auto 24px;font-size:16px}
 
 footer{background:var(--burgundy);color:#fff;padding:36px 0;font-size:14.5px}
@@ -157,7 +168,7 @@ dialog::backdrop{background:#8B1538aa}
 label{display:block;font-size:14px;font-weight:600;margin:16px 0 6px;color:var(--ink)}
 label .req{color:var(--burgundy);margin-left:2px}
 input[type=text],input[type=number],input[type=tel],textarea,select{width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:10px;font:inherit;background:#fff;color:var(--ink);transition:border-color .15s}
-input:focus,textarea:focus,select:focus{outline:none;border-color:var(--burgundy)}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold)}
 input.error,textarea.error,select.error{border-color:#B3261E}
 .hint{font-size:13px;color:var(--mut);margin-top:4px}
 .err{color:#B3261E;font-size:13.5px;margin-top:6px;font-weight:500}
@@ -172,12 +183,13 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 .rows div b{color:var(--burgundy);font-family:'Unbounded',sans-serif;font-size:16px}
 
 /* AI CALC SPECIFIC */
-.ai-calc-header{background:linear-gradient(135deg,var(--burgundy),var(--burgundy-dark));color:#fff;padding:24px 28px;margin:-32px -32px 24px;border-radius:20px 20px 0 0}
+.ai-calc-header{background:linear-gradient(135deg,var(--burgundy),var(--burgundy-dark));color:#fff;padding:24px 28px;margin:-32px -32px 24px;border-radius:20px 20px 0 0;position:relative}
+.ai-calc-header::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold)}
 .ai-calc-header h3{color:#fff;margin-bottom:6px}
 .ai-calc-header p{color:#fffdd0;font-size:14px;margin:0}
 .ai-role-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
 .ai-role{padding:16px;border-radius:12px;border:2px solid var(--line)}
-.ai-role.ai-side{background:#FFF8F0;border-color:var(--gold)}
+.ai-role.ai-side{background:var(--gold-bg);border-color:var(--gold)}
 .ai-role.human-side{background:#F5F7FB;border-color:var(--line)}
 .ai-role h4{font-size:14px;margin-bottom:8px;font-family:'Unbounded',sans-serif}
 .ai-role.ai-side h4{color:var(--burgundy)}
@@ -190,10 +202,10 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 .impl-steps{counter-reset:imp;margin:20px 0}
 .impl-step{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
 .impl-step:last-child{border-bottom:0}
-.impl-step:before{counter-increment:imp;content:counter(imp);flex-shrink:0;width:32px;height:32px;background:var(--burgundy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:14px;font-weight:700}
+.impl-step:before{counter-increment:imp;content:counter(imp);flex-shrink:0;width:32px;height:32px;background:var(--burgundy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-size:14px;font-weight:700;border:2px solid var(--gold)}
 .impl-step div b{display:block;font-size:15px;margin-bottom:4px;color:var(--ink)}
 .impl-step div span{font-size:13.5px;color:var(--mut)}
-.disclaimer{background:var(--cream);border-left:3px solid var(--gold);padding:12px 16px;border-radius:8px;font-size:13px;color:var(--mut);margin:16px 0;line-height:1.45}
+.disclaimer{background:var(--gold-bg);border-left:3px solid var(--gold);padding:12px 16px;border-radius:8px;font-size:13px;color:var(--mut);margin:16px 0;line-height:1.45}
 
 @media(max-width:900px){
   .hero .wrap,.cost,.proof,.pain-grid,.services-grid,.solution-steps{grid-template-columns:1fr}
@@ -203,6 +215,8 @@ input.error,textarea.error,select.error{border-color:#B3261E}
   .cta-final{padding:32px 24px}
   .cost,.solution{padding:32px 24px}
   .ai-role-grid{grid-template-columns:1fr}
+  .hero h1{border-left:none;padding-left:0}
+  .hero h1::before{display:none}
 }
 @media(max-width:520px){
   .stats{grid-template-columns:1fr}
@@ -238,7 +252,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <span>Собственники и руководители компаний 20–150 человек, где найм тормозит рост, текучесть съедает бюджет, а HR-вопросы решаются «по настроению».</span>
 </div>
 <div class="cta-row">
-<a class="btn big" href="#" data-open="calc"> Рассчитать потери от найма</a>
+<a class="btn big" href="#" data-open="calc">🧮 Рассчитать потери от найма</a>
 <a class="btn ghost big" href="#" data-open="lead" data-pack="Диагностика найма за 48 часов">Записаться на диагностику</a>
 </div>
 </div>
@@ -250,14 +264,14 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <h2>Узнали свою ситуацию?</h2>
 <p class="lead">Если хотя бы два пункта про вас — HR-система работает против вас, а не на вас. И это стоит денег каждый месяц.</p>
 <div class="pain-grid">
-<div class="pain"><div class="ico"></div><div><h3>Вакансия висит месяцами</h3><p>Резюме не те, толковых кандидатов нет, каждый день простоя — это упущенная выручка.</p></div></div>
+<div class="pain"><div class="ico">⏳</div><div><h3>Вакансия висит месяцами</h3><p>Резюме не те, толковых кандидатов нет, каждый день простоя — это упущенная выручка.</p></div></div>
 <div class="pain"><div class="ico">💸</div><div><h3>Текучка съедает бюджет</h3><p>Поиск, обучение, адаптация, потерянная выгода. Один уход стоит 3–6 окладов.</p></div></div>
 <div class="pain"><div class="ico">❓</div><div><h3>Непонятно, почему уходят</h3><p>«Не вписался в коллектив» — это не причина. Нужна система, которая показывает реальные точки оттока.</p></div></div>
 <div class="pain"><div class="ico">🎲</div><div><h3>Найм на интуиции</h3><p>Нет воронки, метрик, прогноза. Решения принимаются «на глаз», результат не масштабируется.</p></div></div>
 </div>
 </div></section>
 
-<!-- COST — компактный -->
+<!-- COST -->
 <section id="cost" style="padding-top:0"><div class="wrap">
 <div class="cost">
 <div>
@@ -339,10 +353,10 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 
 <div class="system-grid">
 
-<!-- AI FLAGSHIP — первая, чище и спокойнее -->
+<!-- AI FLAGSHIP -->
 <div class="system-card ai-card">
 <span class="flagship-badge">Флагман</span>
-<div class="ico">🤖</div>
+<div class="ico-wrap"><div class="ico">🤖</div></div>
 <h3>AI HR System</h3>
 <p class="subtitle">Автоматизация HR-процессов с помощью искусственного интеллекта</p>
 <p>Внедряем AI-инструменты, которые берут на себя рутину: скрининг резюме, первичные интервью, адаптационные чат-боты, генерация документов. Вы получаете часы свободного времени команды и предсказуемые процессы — без замены живых людей.</p>
@@ -355,24 +369,51 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <a class="btn ai" href="#" data-open="ai_calc">✨ Рассчитать потенциал AI</a>
 </div>
 
+<!-- KPI & ГРЕЙДЫ -->
 <div class="system-card">
-<div class="ico">🎯</div>
+<div class="ico-wrap"><div class="ico">🎯</div></div>
 <h3>Система KPI и грейдов</h3>
-<p>Прозрачная система мотивации, где каждый сотрудник понимает, как его действия влияют на бонус. Грейдирование для справедливого оценивания, роста зарплат и удержания лучших.</p>
+<p class="subtitle">Прозрачная мотивация, которая работает на результат</p>
+<p>Сотрудники понимают, за что получают бонус. Руководители видят вклад каждого. Вы строите справедливую систему роста зарплат и удержания лучших — без «обид» и субъективных оценок.</p>
+<ul class="features">
+<li>KPI по ролям с измеримыми показателями</li>
+<li>Грейдирование и матрица компетенций</li>
+<li>Схемы бонусов и нематериальной мотивации</li>
+<li>Регламент пересмотра зарплат</li>
+<li>Обучение руководителей работе с KPI</li>
+</ul>
 <a class="btn dark" href="#" data-open="lead" data-pack="Система KPI и грейдов">Обсудить внедрение</a>
 </div>
 
+<!-- РЕГЛАМЕНТЫ -->
 <div class="system-card">
-<div class="ico"></div>
+<div class="ico-wrap"><div class="ico">📑</div></div>
 <h3>HR-регламенты и документы</h3>
-<p>Должностные инструкции, положения об оплате труда, правила внутреннего распорядка, регламенты процессов. Порядок, который защищает бизнес от трудовых споров и хаоса.</p>
+<p class="subtitle">Порядок, который защищает бизнес и экономит время</p>
+<p>Должностные инструкции, положения, регламенты процессов. Всё, что нужно для юридической защиты и предсказуемой работы команды без хаоса и «устных договорённостей».</p>
+<ul class="features">
+<li>Должностные инструкции по всем ролям</li>
+<li>Положение об оплате труда и премировании</li>
+<li>Правила внутреннего трудового распорядка</li>
+<li>Регламенты HR-процессов (найм, адаптация, увольнение)</li>
+<li>Шаблоны и формы для повседневной работы</li>
+</ul>
 <a class="btn dark" href="#" data-open="lead" data-pack="HR-регламенты и документы">Заказать разработку</a>
 </div>
 
+<!-- АВТОМАТИЗАЦИЯ -->
 <div class="system-card">
-<div class="ico">⚙️</div>
+<div class="ico-wrap"><div class="ico">⚙️</div></div>
 <h3>Автоматизация HR-процессов</h3>
-<p>CRM для рекрутмента, системы электронного документооборота (КЭДО), чат-боты для адаптации. Экономим десятки часов времени HR и руководителя ежемесячно.</p>
+<p class="subtitle">CRM, КЭДО и чат-боты вместо рутины</p>
+<p>Внедряем инструменты, которые экономят десятки часов ежемесячно: CRM для рекрутмента, электронный документооборот, чат-боты для адаптации и ответов на вопросы сотрудников.</p>
+<ul class="features">
+<li>CRM для управления воронкой найма</li>
+<li>КЭДО — электронный документооборот</li>
+<li>Чат-боты адаптации и онбординга</li>
+<li>Автоматические отчёты и дашборды</li>
+<li>Интеграции с 1С, Битрикс24 и другими системами</li>
+</ul>
 <a class="btn dark" href="#" data-open="lead" data-pack="Автоматизация HR-процессов">Узнать подробности</a>
 </div>
 
@@ -393,13 +434,13 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 </div>
 </div></section>
 
-<!-- CTA FINAL — аккуратный, без ощущения второго hero -->
+<!-- CTA FINAL -->
 <section style="padding-top:0"><div class="wrap">
 <div class="cta-final">
 <h2>Готовы навести порядок в HR?</h2>
 <p>Начните с бесплатного расчёта потерь или запишитесь на диагностику за 48 часов. Это конкретный первый шаг, а не «обсудим возможности».</p>
 <div class="cta-row" style="justify-content:center">
-<a class="btn" href="#" data-open="calc"> Рассчитать потери от найма</a>
+<a class="btn" href="#" data-open="calc">🧮 Рассчитать потери от найма</a>
 <a class="btn ghost" href="#" data-open="lead" data-pack="Диагностика найма за 48 часов">Записаться на диагностику</a>
 </div>
 </div>
@@ -461,7 +502,6 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <div style="padding:0 32px 32px">
 <div class="dots" id="ai_dots"><i></i><i></i><i></i><i></i></div>
 
-<!-- AI STEP 1: Company size -->
 <div id="ai_s1">
 <p class="hint">Шаг 1 из 4. Масштаб компании</p>
 <label for="ai_employees">Количество сотрудников<span class="req">*</span></label>
@@ -482,7 +522,6 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 </select>
 </div>
 
-<!-- AI STEP 2: Task breakdown -->
 <div id="ai_s2" hidden>
 <p class="hint">Шаг 2 из 4. Где уходит время</p>
 <label>Отметьте задачи, которые занимают больше всего времени (можно несколько)</label>
@@ -494,7 +533,6 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <label class="chk" style="color:var(--ink)"><input type="checkbox" id="ai_t6"><span>Планирование и координация собеседований</span></label>
 </div>
 
-<!-- AI STEP 3: Contact -->
 <div id="ai_s3" hidden>
 <p class="hint">Шаг 3 из 4. Куда отправить результат</p>
 <label for="ai_name">Ваше имя<span class="req">*</span></label>
@@ -504,7 +542,6 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <label class="chk"><input type="checkbox" id="ai_consent"><span>Соглашаюсь на обработку персональных данных и с <a href="#" data-open="privacy">политикой конфиденциальности</a></span></label>
 </div>
 
-<!-- AI STEP 4: Result -->
 <div id="ai_s4" hidden>
 <p class="hint">Шаг 4 из 4. Ваш потенциал автоматизации</p>
 <div class="res" id="ai_hours_result">0 ч/мес</div>
@@ -522,7 +559,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 </ul>
 </div>
 <div class="ai-role human-side">
-<h4>👤 Что остаётся человеку</h4>
+<h4> Что остаётся человеку</h4>
 <ul>
 <li>Финальное решение по кандидатам</li>
 <li>Сложные переговоры и офферы</li>
@@ -586,7 +623,6 @@ $$('[data-open]').forEach(function(a){
     var cur=document.querySelector('dialog[open]');
     if(cur&&cur.id!==id&&id!=='privacy')cur.close();
     $('#'+id).showModal();
-    // Фокус на первый интерактивный элемент
     setTimeout(function(){
       var dlg=$('#'+id);
       var focusable=dlg.querySelector('input,button,[tabindex]:not([tabindex="-1"])');
@@ -606,7 +642,6 @@ document.addEventListener('keydown',function(e){
 /* Заявка */
 $('#lsend').addEventListener('click',function(){
   var n=$('#ln').value.trim(),c=$('#lc').value.trim(),e=$('#lerr');
-  // Сброс ошибок
   $('#ln').classList.remove('error');$('#lc').classList.remove('error');
   if(!n||!c){
     e.textContent='Пожалуйста, укажите имя и телефон или Telegram.';
@@ -680,7 +715,6 @@ $('#ai_back').addEventListener('click',function(){
 $('#ai_next').addEventListener('click',function(){
   var er=$('#ai_err');
   er.textContent='';
-  // Сброс ошибок
   $$('#ai_calc input, #ai_calc select').forEach(function(el){el.classList.remove('error')});
 
   if(aiStep===1){
@@ -695,7 +729,6 @@ $('#ai_next').addEventListener('click',function(){
   }
 
   if(aiStep===2){
-    // Проверяем, что выбран хотя бы один чекбокс
     var anyChecked=$('#ai_t1').checked||$('#ai_t2').checked||$('#ai_t3').checked||$('#ai_t4').checked||$('#ai_t5').checked||$('#ai_t6').checked;
     if(!anyChecked){er.textContent='Отметьте хотя бы одну задачу, чтобы расчёт был точным.';return}
   }
@@ -709,7 +742,6 @@ $('#ai_next').addEventListener('click',function(){
       return;
     }
     if(!$('#ai_consent').checked){er.textContent='Нужно согласие на обработку персональных данных.';return}
-    // Переходим к результату
     calculateAiResult(n,c);
     return;
   }
@@ -723,52 +755,41 @@ function calculateAiResult(name,contact){
   var hrsPerWeek=parseFloat($('#ai_hr_hours').value)||0;
   var hrsPerMonth=hrsPerWeek*4.33;
 
-  // Коэффициенты автоматизации по задачам
   var tasks=[
-    {id:'ai_t1',factor:0.7,weight:0.25}, // скрининг - высокая автоматизация
-    {id:'ai_t2',factor:0.6,weight:0.20}, // ответы на вопросы
-    {id:'ai_t3',factor:0.75,weight:0.15}, // документы
-    {id:'ai_t4',factor:0.5,weight:0.15}, // адаптация
-    {id:'ai_t5',factor:0.65,weight:0.15}, // отчёты
-    {id:'ai_t6',factor:0.7,weight:0.10}  // координация
+    {id:'ai_t1',factor:0.7,weight:0.25},
+    {id:'ai_t2',factor:0.6,weight:0.20},
+    {id:'ai_t3',factor:0.75,weight:0.15},
+    {id:'ai_t4',factor:0.5,weight:0.15},
+    {id:'ai_t5',factor:0.65,weight:0.15},
+    {id:'ai_t6',factor:0.7,weight:0.10}
   ];
 
-  var checkedCount=0;
   var totalFactor=0;
   var totalWeight=0;
   tasks.forEach(function(t){
     if($('#'+t.id).checked){
       totalFactor+=t.factor*t.weight;
       totalWeight+=t.weight;
-      checkedCount++;
     }
   });
 
-  // Нормализованный коэффициент
   var avgFactor=totalWeight>0?totalFactor/totalWeight:0;
-
-  // Базовый расчёт: часы в месяц * коэффициент автоматизации
   var aiHours=Math.round(hrsPerMonth*avgFactor);
 
-  // Корректировка по зрелости процессов
   var proc=$('#ai_processes').value;
   var procMultiplier=1;
-  if(proc==='none')procMultiplier=0.7; // меньше автоматизации при нулевой базе
+  if(proc==='none')procMultiplier=0.7;
   else if(proc==='basic')procMultiplier=0.9;
   else if(proc==='mid')procMultiplier=1.0;
   else if(proc==='advanced')procMultiplier=1.15;
 
   aiHours=Math.round(aiHours*procMultiplier);
 
-  // Ограничения
   if(aiHours>hrsPerMonth)aiHours=Math.round(hrsPerMonth*0.85);
   if(aiHours<0)aiHours=0;
 
   $('#ai_hours_result').textContent=aiHours+' ч/мес';
 
-  // Формируем сообщение для Telegram
-  var taskNames=[];
-  tasks.forEach(function(t){if($('#'+t.id).checked)taskNames.push(t.id.replace('ai_t','Задача '))});
   var t='Заявка на AI HR System\nИмя: '+name+'\nКонтакт: '+contact+'\nСотрудников: '+emp+'\nЧасов рутины в неделю: '+hrsPerWeek+'\nПроцессы: '+proc+'\nПотенциал автоматизации: '+aiHours+' ч/мес';
   $('#ai_discuss').href=tg(t);
 
