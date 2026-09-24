@@ -31,7 +31,8 @@ h2::after{content:"";position:absolute;left:0;bottom:-8px;width:60px;height:3px;
 .btn.ai{background:linear-gradient(135deg,var(--burgundy) 0%,var(--burgundy-dark) 100%);color:#fff;border:2px solid var(--gold)}
 .btn.ai:hover{box-shadow:0 6px 20px #8B153855}
 :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-header{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 2px 10px #00000011}
+header{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 2px 10px #00000011;transition:box-shadow .25s}
+header.scrolled{box-shadow:0 4px 18px #00000022}
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
 .logo{font-family:'Unbounded',sans-serif;font-weight:700;text-decoration:none;font-size:16px;color:var(--burgundy)}
 nav{display:flex;gap:22px;align-items:center;font-size:15px}
@@ -61,8 +62,8 @@ nav a{text-decoration:none;color:var(--ink)}nav a:hover{color:var(--burgundy)}
 .stat span{font-size:14px;color:var(--mut);display:block;line-height:1.35}
 
 .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.pain{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;gap:16px;align-items:flex-start;transition:border-color .2s}
-.pain:hover{border-color:var(--gold-light)}
+.pain{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;gap:16px;align-items:flex-start;transition:border-color .2s,transform .2s}
+.pain:hover{border-color:var(--gold-light);transform:translateY(-2px)}
 .pain .ico{font-size:32px;flex-shrink:0;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:var(--gold-bg);border-radius:12px;border:1px solid var(--gold-light)}
 .pain h3{font-size:17px;margin-bottom:6px;color:var(--burgundy)}
 .pain p{color:var(--mut);font-size:15px;margin:0}
@@ -85,12 +86,24 @@ nav a{text-decoration:none;color:var(--ink)}nav a:hover{color:var(--burgundy)}
 .proof-list li:before{content:"✓";position:absolute;left:0;top:14px;color:var(--gold);font-weight:700;font-size:18px}
 .proof-list li:last-child{border-bottom:0}
 
+/* === КОМПАКТНЫЕ КЕЙСЫ === */
+.cases-mini{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cm{background:#fff;border:1px solid var(--gold-light);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.cm::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+.cm:hover{transform:translateY(-3px);box-shadow:0 12px 26px #D4A84322}
+.cm .tag{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.03em}
+.cm .num{font-family:'Unbounded',sans-serif;font-size:22px;color:var(--burgundy);line-height:1.2;margin:4px 0 2px}
+.cm p{font-size:12.5px;color:var(--mut);line-height:1.4;margin:0}
+@media(max-width:900px){.cases-mini{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.cases-mini{grid-template-columns:1fr}}
+
 .solution{background:#fff;border-radius:24px;padding:48px;border:1px solid var(--gold-light);box-shadow:0 8px 24px #D4A84311}
 .solution h2{text-align:center;margin-bottom:12px}
 .solution h2::after{left:50%;transform:translateX(-50%)}
 .solution .lead{text-align:center;margin-left:auto;margin-right:auto;margin-bottom:40px}
 .solution-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
-.solution-step{position:relative;padding:28px 22px 22px;background:var(--gold-bg);border-radius:var(--r);border:1px solid var(--gold-light)}
+.solution-step{position:relative;padding:28px 22px 22px;background:var(--gold-bg);border-radius:var(--r);border:1px solid var(--gold-light);transition:transform .2s}
+.solution-step:hover{transform:translateY(-3px)}
 .solution-step:before{counter-increment:s;content:counter(s);position:absolute;top:-18px;left:22px;font-family:'Unbounded',sans-serif;color:#fff;background:var(--burgundy);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;border:2px solid var(--gold)}
 .solution-step h3{font-size:16px;margin-bottom:8px;color:var(--burgundy)}
 .solution-step p{color:var(--mut);font-size:14.5px;margin:0}
@@ -116,18 +129,24 @@ nav a{text-decoration:none;color:var(--ink)}nav a:hover{color:var(--burgundy)}
 .system-card .ico-wrap{width:48px;height:48px;border-radius:12px;background:var(--gold-bg);border:1px solid var(--gold-light);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
 .system-card .ico{font-size:24px}
 .system-card h3{font-size:17px;margin-bottom:6px;color:var(--burgundy);line-height:1.25}
-.system-card .subtitle{font-size:13px;color:var(--gold);font-weight:600;margin-bottom:12px;line-height:1.35}
+.system-card .subtitle{font-size:13px;color:var(--gold);font-weight:600;margin-bottom:4px;line-height:1.35}
+.system-card .price{font-family:'Unbounded',sans-serif;font-size:20px;color:var(--burgundy);margin:4px 0 10px}
 .system-card p{color:var(--mut);font-size:14px;line-height:1.5;flex-grow:1}
 .system-card .features{list-style:none;padding:0;margin:14px 0;text-align:left;border-top:1px dashed var(--gold-light);padding-top:14px}
 .system-card .features li{padding:5px 0 5px 22px;position:relative;font-size:13.5px;color:var(--ink);border-bottom:1px dashed var(--line)}
 .system-card .features li:last-child{border-bottom:0}
 .system-card .features li:before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700;font-size:14px}
+.system-card .tier{border-top:1px dashed var(--gold-light);margin-top:14px;padding-top:14px}
+.system-card .tier b{font-size:13.5px;color:var(--burgundy);display:block;margin-bottom:2px}
+.system-card .tier .tprice{font-family:'Unbounded',sans-serif;font-size:16px;color:var(--burgundy);margin-bottom:6px}
 .system-card .btn{margin-top:14px;width:100%;padding:12px 20px;font-size:14px}
 
 .ai-card{background:linear-gradient(145deg,#fff 0%,var(--gold-bg) 100%);border:2px solid var(--gold);box-shadow:0 8px 28px #D4A84333}
 .ai-card::before{height:4px;background:linear-gradient(90deg,var(--burgundy),var(--gold),var(--burgundy));opacity:1}
 .ai-card .ico-wrap{background:linear-gradient(135deg,var(--gold-bg),var(--gold-soft));border-color:var(--gold)}
 .ai-card .flagship-badge{position:absolute;top:12px;right:12px;background:var(--burgundy);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;text-transform:uppercase;letter-spacing:0.06em}
+.ai-card .flagship-badge{animation:pulseBadge 2.6s ease-in-out infinite}
+@keyframes pulseBadge{0%,100%{box-shadow:0 0 0 0 #8B153855}50%{box-shadow:0 0 0 6px #8B153800}}
 
 .faq{max-width:820px;margin:0 auto}
 details{background:#fff;border:1px solid var(--gold-light);border-radius:12px;padding:18px 22px;margin-bottom:12px;transition:border-color .2s}
@@ -194,6 +213,10 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 .impl-step div span{font-size:13.5px;color:var(--mut)}
 .disclaimer{background:var(--gold-bg);border-left:3px solid var(--gold);padding:12px 16px;border-radius:8px;font-size:13px;color:var(--mut);margin:16px 0;line-height:1.45}
 
+/* === ЛЁГКИЙ SCROLL-REVEAL === */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease-out,transform .6s ease-out}
+.reveal.in{opacity:1;transform:none}
+
 @media(max-width:900px){
   .hero .wrap,.cost,.proof,.pain-grid,.services-grid,.solution-steps{grid-template-columns:1fr}
   .stats{grid-template-columns:repeat(2,1fr)}
@@ -217,13 +240,13 @@ input.error,textarea.error,select.error{border-color:#B3261E}
   .nav2{flex-direction:column-reverse}
   .nav2 .btn{width:100%}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}.reveal{opacity:1;transform:none;transition:none}.ai-card .flagship-badge{animation:none}}
 </style>
 </head>
 <body>
 
-<header><div class="wrap"><a class="logo" href="#top">Анна Ермакова</a>
-<nav><a class="hide" href="#proof">Результаты</a><a class="hide" href="#services">Услуги</a><a class="hide" href="#faq">Вопросы</a><a class="btn" style="padding:9px 18px" href="#" data-open="lead" data-pack="Консультация">Записаться</a></nav></div></header>
+<header id="siteHeader"><div class="wrap"><a class="logo" href="#top">Анна Ермакова</a>
+<nav><a class="hide" href="#proof">Результаты</a><a class="hide" href="#cases">Кейсы</a><a class="hide" href="#services">Услуги</a><a class="hide" href="#faq">Вопросы</a><a class="btn" style="padding:9px 18px" href="#" data-open="lead" data-pack="default">Записаться</a></nav></div></header>
 
 <main id="top">
 
@@ -238,7 +261,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 </div>
 <div class="cta-row">
 <a class="btn big" href="#" data-open="calc">🧮 Рассчитать потери от найма</a>
-<a class="btn ghost big" href="#" data-open="lead" data-pack="Диагностика найма за 48 часов">Записаться на диагностику</a>
+<a class="btn ghost big" href="#" data-open="lead" data-pack="diagnostika">Записаться на диагностику</a>
 </div>
 </div>
 <div class="person"><img src="https://i.ibb.co/dwtxr66G/image.png" alt="Анна Ермакова, HR-директор" loading="eager" onerror="this.style.display='none'"><b>Анна Ермакова</b><span>Ваш HR-партнёр</span></div>
@@ -248,15 +271,15 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <h2>Узнали свою ситуацию?</h2>
 <p class="lead">Если хотя бы два пункта про вас — HR-система работает против вас, а не на вас. И это стоит денег каждый месяц.</p>
 <div class="pain-grid">
-<div class="pain"><div class="ico">⏳</div><div><h3>Вакансия висит месяцами</h3><p>Резюме не те, толковых кандидатов нет, каждый день простоя — это упущенная выручка.</p></div></div>
-<div class="pain"><div class="ico">💸</div><div><h3>Текучка съедает бюджет</h3><p>Поиск, обучение, адаптация, потерянная выгода. Один уход стоит 3–6 окладов.</p></div></div>
-<div class="pain"><div class="ico">❓</div><div><h3>Непонятно, почему уходят</h3><p>«Не вписался в коллектив» — это не причина. Нужна система, которая показывает реальные точки оттока.</p></div></div>
-<div class="pain"><div class="ico">🎲</div><div><h3>Найм на интуиции</h3><p>Нет воронки, метрик, прогноза. Решения принимаются «на глаз», результат не масштабируется.</p></div></div>
+<div class="pain reveal"><div class="ico">⏳</div><div><h3>Вакансия висит месяцами</h3><p>Резюме не те, толковых кандидатов нет, каждый день простоя — это упущенная выручка.</p></div></div>
+<div class="pain reveal"><div class="ico">💸</div><div><h3>Текучка съедает бюджет</h3><p>Поиск, обучение, адаптация, потерянная выгода. По моей практике один уход обходится в несколько окладов.</p></div></div>
+<div class="pain reveal"><div class="ico">❓</div><div><h3>Непонятно, почему уходят</h3><p>«Не вписался в коллектив» — это не причина. Нужна система, которая показывает реальные точки оттока.</p></div></div>
+<div class="pain reveal"><div class="ico">🎲</div><div><h3>Найм на интуиции</h3><p>Нет воронки, метрик, прогноза. Решения принимаются «на глаз», результат не масштабируется.</p></div></div>
 </div>
 </div></section>
 
 <section id="cost" style="padding-top:0"><div class="wrap">
-<div class="cost">
+<div class="cost reveal">
 <div>
 <h2>Сколько вы теряете прямо сейчас?</h2>
 <p>Большинство собственников недооценивают стоимость плохого найма в 3–5 раз. Посчитайте за 2 минуты — это бесплатно и без обязательств.</p>
@@ -276,15 +299,15 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 
 <section id="proof"><div class="wrap">
 <div class="proof">
-<div class="proof-text">
+<div class="proof-text reveal">
 <h2>Результаты, которые можно проверить</h2>
 <p>Это не маркетинговые обещания — это цифры из реальных проектов. В трёх компаниях я выстраивала HR с нуля, в пяти — внедряла процессы.</p>
 <p>Мой принцип: в бизнесе нет проблем, есть задачи, требующие решения. Поэтому работаю с цифрами, сроками и понятным результатом.</p>
 </div>
-<div>
+<div class="reveal">
 <div class="stats" style="margin-top:0">
 <div class="stat"><b>79% → 17%</b><span>снижение общей текучести кадров</span></div>
-<div class="stat"><b>53% → 22%</b><span>снижение текучести на испытательном сроке</span></div>
+<div class="stat"><b>9</b><span>проектов в разных сферах: e-commerce, продажи, реклама, стройка, колл-центр</span></div>
 <div class="stat"><b>62% → 87%</b><span>рост вовлечённости команды (eNPS)</span></div>
 <div class="stat"><b>+14%</b><span>рост прибыли за 3 месяца после внедрения KPI</span></div>
 </div>
@@ -298,8 +321,31 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 </div>
 </div></section>
 
+<section id="cases"><div class="wrap">
+<h2>Кейсы</h2>
+<p class="lead">Реальные проекты: e-commerce, продажи, реклама, стройка, колл-центр.</p>
+<div class="cases-mini">
+
+<div class="cm reveal"><span class="tag">E-commerce · MEIWERK</span><div class="num">79% → 17%</div><p>Текучесть. HR-департамент с нуля за 1,5 месяца, KPI, адаптация с наставником.</p></div>
+
+<div class="cm reveal"><span class="tag">E-commerce · PanovShop</span><div class="num">×3</div><p>Рост штата. HR-система с нуля, запущено консалтинговое направление.</p></div>
+
+<div class="cm reveal"><span class="tag">Продажи B2C · Печь.ру</span><div class="num">100%</div><p>Команда шоу-рума в Москве укомплектована, +8% к среднему чеку.</p></div>
+
+<div class="cm reveal"><span class="tag">Продажи B2B · Grass</span><div class="num">до ТОП</div><p>Закрытие вакансий всех уровней, ускоренная адаптация и обучение.</p></div>
+
+<div class="cm reveal"><span class="tag">E-commerce · Vegganva</span><div class="num">53% → 30%</div><p>Текучесть. Должностные инструкции, регламенты, штат ×1,5.</p></div>
+
+<div class="cm reveal"><span class="tag">E-commerce · LedExpert</span><div class="num">+27%</div><p>Выручка на новых рынках за 4 мес. KPI и поощрения.</p></div>
+
+<div class="cm reveal"><span class="tag">Стройка · ТеремЬ</span><div class="num">89%</div><p>Потребность в персонале закрыта, бригады с нуля.</p></div>
+
+<div class="cm reveal"><span class="tag">Реклама · Хомсбокс</span><div class="num">×2,5</div><p>Рост штата, текучесть −12%, прибыль +15%.</p></div>
+
+</div></div></section>
+
 <section id="solution" style="background:#fff"><div class="wrap">
-<div class="solution">
+<div class="solution reveal">
 <h2>Как мы будем работать</h2>
 <p class="lead">Понятный процесс без сюрпризов. Вы всегда знаете, что происходит, сколько это стоит и какой результат получите.</p>
 <div class="solution-steps">
@@ -315,17 +361,17 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <h2>Форматы работы</h2>
 <p class="lead">Начните с диагностики — это быстрый способ понять, где именно у вас теряются деньги. Дальше выбираете формат под задачу.</p>
 <div class="services-grid">
-<div class="pk"><h3>Диагностика найма за 48 часов</h3><div class="price">7 900 ₽</div><p>Находим, где найм теряет деньги и время: разбираем воронку, вакансии и процесс подбора.</p>
+<div class="pk reveal"><h3>Диагностика найма за 48 часов</h3><div class="price">7 900 ₽</div><p>Находим, где найм теряет деньги и время: разбираем воронку, вакансии и процесс подбора.</p>
 <ul><li>Разбор 1–3 текущих вакансий и воронки</li><li>Анализ узких мест: где теряются кандидаты</li><li>Видеоразбор с рекомендациями</li><li>Письменный отчёт с приоритетами</li></ul>
-<a class="btn dark" href="#" data-open="lead" data-pack="Диагностика найма за 48 часов">Заказать диагностику</a></div>
+<a class="btn dark" href="#" data-open="lead" data-pack="diagnostika">Заказать диагностику</a></div>
 
-<div class="pk rec"><span class="badge">Рекомендуем</span><h3>Найм под ключ за 4 недели</h3><div class="price">от 89 000 ₽</div><p>Полный цикл подбора 1–2 приоритетных вакансий: от портрета кандидата до выхода на работу.</p>
+<div class="pk rec reveal"><span class="badge">Рекомендуем</span><h3>Найм под ключ за 4 недели</h3><div class="price">от 89 000 ₽</div><p>Полный цикл подбора 1–2 приоритетных вакансий: от портрета кандидата до выхода на работу.</p>
 <ul><li>Профиль вакансии и портрет кандидата</li><li>Публикация и продвижение вакансии</li><li>Первичный отбор и интервью</li><li>Презентация финалистов с рекомендациями</li><li>Гарантия замены в испытательный срок</li></ul>
-<a class="btn" href="#" data-open="lead" data-pack="Найм под ключ за 4 недели">Обсудить проект</a></div>
+<a class="btn" href="#" data-open="lead" data-pack="hiring">Обсудить проект</a></div>
 
-<div class="pk"><h3>HR-партнёрство</h3><div class="price">от 249 000 ₽ / 3 мес.</div><p>Не просто подбор, а выстраивание системы найма и HR-процессов на 3 месяца.</p>
+<div class="pk reveal"><h3>HR-партнёрство</h3><div class="price">от 249 000 ₽ / 3 мес.</div><p>Не просто подбор, а выстраивание системы найма и HR-процессов на 3 месяца.</p>
 <ul><li>Аудит и перестройка процесса найма</li><li>Закрытие до 3 вакансий</li><li>HR-инструменты и регламенты под вашу команду</li><li>Регулярные стратегические сессии с руководителем</li><li>Обучение внутренней команды самостоятельному найму</li></ul>
-<a class="btn dark" href="#" data-open="lead" data-pack="HR-партнёрство">Запросить расчёт</a></div>
+<a class="btn dark" href="#" data-open="lead" data-pack="hiring">Запросить расчёт</a></div>
 </div>
 
 <h2 style="text-align:center;font-size:clamp(20px,3vw,30px);margin-top:56px;margin-bottom:12px">Системные HR-решения</h2>
@@ -333,25 +379,41 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 
 <div class="system-grid">
 
-<div class="system-card ai-card">
+<div class="system-card ai-card reveal">
 <span class="flagship-badge">Флагман</span>
 <div class="ico-wrap"><div class="ico">🤖</div></div>
 <h3>AI HR System</h3>
-<p class="subtitle">Автоматизация HR-процессов с помощью искусственного интеллекта</p>
-<p>Внедряем AI-инструменты, которые берут на себя рутину: скрининг резюме, первичные интервью, адаптационные чат-боты, генерация документов. Вы получаете часы свободного времени команды и предсказуемые процессы — без замены живых людей.</p>
+<p class="subtitle">No-code автоматизация HR-рутины без разработчиков</p>
+<div class="price">от 45 000 ₽</div>
+<p>Настраиваю готовые AI-инструменты под вашу HR-рутину: чат-боты, фильтрацию откликов и библиотеку AI-промптов для документов. Без разработки с нуля — быстро и без больших бюджетов.</p>
+
+<div class="tier">
+<b>Быстрый старт</b><div class="tprice">от 45 000 ₽</div>
 <ul class="features">
-<li>AI-скрининг резюме и первичный отбор</li>
-<li>Чат-боты адаптации и онбординга</li>
-<li>Автоматическая генерация HR-документов</li>
-<li>Аналитика и отчёты в реальном времени</li>
+<li>Чат-бот адаптации: ответы на частые вопросы, план первой недели</li>
+<li>Библиотека AI-промптов для офферов, ДИ и регламентов</li>
+<li>Срок: 2 недели</li>
 </ul>
+</div>
+
+<div class="tier">
+<b>Полное внедрение</b><div class="tprice">от 90 000 ₽</div>
+<ul class="features">
+<li>Всё из «Быстрого старта»</li>
+<li>Бот-фильтр для отсева кандидатов на входе в вакансию</li>
+<li>Анализ пульс-опросов через AI + дашборд в Looker Studio</li>
+<li>Срок: 4 недели</li>
+</ul>
+</div>
+
 <a class="btn ai" href="#" data-open="ai_calc">✨ Рассчитать потенциал AI</a>
 </div>
 
-<div class="system-card">
-<div class="ico-wrap"><div class="ico"></div></div>
+<div class="system-card reveal">
+<div class="ico-wrap"><div class="ico">🎯</div></div>
 <h3>Система KPI и грейдов</h3>
 <p class="subtitle">Прозрачная мотивация, которая работает на результат</p>
+<div class="price">от 60 000 ₽</div>
 <p>Сотрудники понимают, за что получают бонус. Руководители видят вклад каждого. Вы строите справедливую систему роста зарплат и удержания лучших — без «обид» и субъективных оценок.</p>
 <ul class="features">
 <li>KPI по ролям с измеримыми показателями</li>
@@ -360,13 +422,14 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <li>Регламент пересмотра зарплат</li>
 <li>Обучение руководителей работе с KPI</li>
 </ul>
-<a class="btn dark" href="#" data-open="lead" data-pack="Система KPI и грейдов">Обсудить внедрение</a>
+<a class="btn dark" href="#" data-open="lead" data-pack="default">Обсудить внедрение</a>
 </div>
 
-<div class="system-card">
+<div class="system-card reveal">
 <div class="ico-wrap"><div class="ico">📑</div></div>
 <h3>HR-регламенты и документы</h3>
 <p class="subtitle">Порядок, который защищает бизнес и экономит время</p>
+<div class="price">от 40 000 ₽</div>
 <p>Должностные инструкции, положения, регламенты процессов. Всё, что нужно для юридической защиты и предсказуемой работы команды без хаоса и «устных договорённостей».</p>
 <ul class="features">
 <li>Должностные инструкции по всем ролям</li>
@@ -375,22 +438,22 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <li>Регламенты HR-процессов (найм, адаптация, увольнение)</li>
 <li>Шаблоны и формы для повседневной работы</li>
 </ul>
-<a class="btn dark" href="#" data-open="lead" data-pack="HR-регламенты и документы">Заказать разработку</a>
+<a class="btn dark" href="#" data-open="lead" data-pack="default">Заказать разработку</a>
 </div>
 
-<div class="system-card">
+<div class="system-card reveal">
 <div class="ico-wrap"><div class="ico">⚙️</div></div>
 <h3>Автоматизация HR-процессов</h3>
-<p class="subtitle">CRM, КЭДО и чат-боты вместо рутины</p>
-<p>Внедряем инструменты, которые экономят десятки часов ежемесячно: CRM для рекрутмента, электронный документооборот, чат-боты для адаптации и ответов на вопросы сотрудников.</p>
+<p class="subtitle">No-code инструменты вместо рутины</p>
+<div class="price">от 35 000 ₽</div>
+<p>Внедряем инструменты, которые экономят десятки часов ежемесячно: чат-боты для адаптации и ответов на вопросы сотрудников, автоматические отчёты и дашборды.</p>
 <ul class="features">
-<li>CRM для управления воронкой найма</li>
-<li>КЭДО — электронный документооборот</li>
 <li>Чат-боты адаптации и онбординга</li>
+<li>Бот-фильтр откликов на вакансии</li>
 <li>Автоматические отчёты и дашборды</li>
-<li>Интеграции с 1С, Битрикс24 и другими системами</li>
+<li>Дашборды в Google Таблицах и Looker Studio</li>
 </ul>
-<a class="btn dark" href="#" data-open="lead" data-pack="Автоматизация HR-процессов">Узнать подробности</a>
+<a class="btn dark" href="#" data-open="lead" data-pack="default">Узнать подробности</a>
 </div>
 
 </div>
@@ -409,12 +472,12 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 </div></section>
 
 <section style="padding-top:0"><div class="wrap">
-<div class="cta-final">
+<div class="cta-final reveal">
 <h2>Готовы навести порядок в HR?</h2>
 <p>Начните с бесплатного расчёта потерь или запишитесь на диагностику за 48 часов. Это конкретный первый шаг, а не «обсудим возможности».</p>
 <div class="cta-row" style="justify-content:center">
 <a class="btn" href="#" data-open="calc">🧮 Рассчитать потери от найма</a>
-<a class="btn ghost" href="#" data-open="lead" data-pack="Диагностика найма за 48 часов">Записаться на диагностику</a>
+<a class="btn ghost" href="#" data-open="lead" data-pack="diagnostika">Записаться на диагностику</a>
 </div>
 </div>
 </div></section>
@@ -427,10 +490,58 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 </div></footer>
 
 <dialog id="lead"><div class="dlg"><button class="x" data-close aria-label="Закрыть">×</button>
-<h3>Оставить заявку</h3><p class="subtitle">Вы выбрали: <b id="packname">Консультация</b></p>
+<h3 id="lead-title">Оставить заявку</h3>
+<p class="subtitle" id="lead-subtitle">Заполните форму, и Анна свяжется с вами</p>
 
-<label for="l_industry">Направление компании<span class="req">*</span></label>
-<select id="l_industry" required>
+<!-- Базовые поля (всегда видны) -->
+<label for="ln">Ваше имя<span class="req">*</span></label><input id="ln" type="text" autocomplete="name" required>
+<label for="lc">Телефон или Telegram<span class="req">*</span></label><input id="lc" type="text" autocomplete="tel" required>
+
+<!-- Вопросы для Диагностики -->
+<div id="q-diagnostika" class="form-questions" style="display:none">
+<label for="d_vacancies">Сколько вакансий сейчас открыто и «висит»?<span class="req">*</span></label>
+<select id="d_vacancies">
+<option value="">— выберите —</option>
+<option value="1-2">1-2 вакансии</option>
+<option value="3-5">3-5 вакансий</option>
+<option value="Больше 5">Больше 5</option>
+</select>
+
+<label for="d_pain">Какая главная боль прямо сейчас?<span class="req">*</span></label>
+<select id="d_pain">
+<option value="">— выберите —</option>
+<option value="Нет релевантных резюме">Нет релевантных резюме</option>
+<option value="Кандидаты сливаются на оффере">Кандидаты сливаются на оффере</option>
+<option value="Нет времени вести воронку">Нет времени вести воронку</option>
+</select>
+</div>
+
+<!-- Вопросы для Найма под ключ -->
+<div id="q-hiring" class="form-questions" style="display:none">
+<label for="h_position">Кого нужно найти или какую задачу закрыть?<span class="req">*</span></label>
+<textarea id="h_position" rows="3" placeholder="Например: Нужен HR-менеджер с опытом в e-commerce"></textarea>
+
+<label for="h_deadline">Какие сроки «горят»?<span class="req">*</span></label>
+<select id="h_deadline">
+<option value="">— выберите —</option>
+<option value="Нужно было еще вчера">Нужно было еще вчера</option>
+<option value="В течение месяца">В течение месяца</option>
+<option value="Планируем на квартал">Планируем на квартал</option>
+</select>
+
+<label for="h_budget">Рассматриваете ли вы бюджет на подбор/сопровождение?<span class="req">*</span></label>
+<select id="h_budget">
+<option value="">— выберите —</option>
+<option value="Да, бюджет заложен">Да, бюджет заложен</option>
+<option value="Смотрим по стоимости">Смотрим по стоимости</option>
+<option value="Пока просто прицениваемся">Пока просто прицениваемся</option>
+</select>
+</div>
+
+<!-- Универсальные вопросы -->
+<div id="q-default" class="form-questions" style="display:none">
+<label for="u_industry">Направление компании<span class="req">*</span></label>
+<select id="u_industry">
 <option value="">— выберите сферу бизнеса —</option>
 <option value="E-commerce / Маркетплейсы">E-commerce / Маркетплейсы</option>
 <option value="Услуги / Сервис">Услуги / Сервис</option>
@@ -441,8 +552,8 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <option value="Другое">Другое</option>
 </select>
 
-<label for="l_size">Численность сотрудников<span class="req">*</span></label>
-<select id="l_size" required>
+<label for="u_size">Численность сотрудников<span class="req">*</span></label>
+<select id="u_size">
 <option value="">— выберите численность —</option>
 <option value="До 20 человек">До 20 человек</option>
 <option value="20–50 человек">20–50 человек</option>
@@ -450,8 +561,8 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <option value="Более 150 человек">Более 150 человек</option>
 </select>
 
-<label for="l_pain">Что болит сильнее всего?<span class="req">*</span></label>
-<select id="l_pain" required>
+<label for="u_pain">Что болит сильнее всего?<span class="req">*</span></label>
+<select id="u_pain">
 <option value="">— выберите основную проблему —</option>
 <option value="Вакансии висят месяцами">Вакансии висят месяцами</option>
 <option value="Высокая текучесть кадров">Высокая текучесть кадров</option>
@@ -460,9 +571,8 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <option value="Нужна система KPI и мотивации">Нужна система KPI и мотивации</option>
 <option value="Другое">Другое</option>
 </select>
+</div>
 
-<label for="ln">Ваше имя<span class="req">*</span></label><input id="ln" type="text" autocomplete="name" required>
-<label for="lc">Телефон или Telegram<span class="req">*</span></label><input id="lc" type="text" autocomplete="tel" required>
 <label for="lm">Комментарий (необязательно)</label><textarea id="lm" rows="3"></textarea>
 <label class="chk"><input type="checkbox" id="lp"><span>Соглашаюсь на обработку персональных данных и с <a href="#" data-open="privacy">политикой конфиденциальности</a></span></label>
 <div class="err" id="lerr" role="alert"></div>
@@ -562,7 +672,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 </ul>
 </div>
 <div class="ai-role human-side">
-<h4> Что остаётся человеку</h4>
+<h4>👤 Что остаётся человеку</h4>
 <ul>
 <li>Финальное решение по кандидатам</li>
 <li>Сложные переговоры и офферы</li>
@@ -633,23 +743,28 @@ function sendToTelegram(text, successCallback) {
 
 var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
 
-/* АВТООТКРЫТИЕ ОКОН ПО ССЫЛКЕ ИЗ БОТА */
+var currentPack = 'default';
+var packTitles = {
+  'diagnostika': { title: 'Заявка на экспресс-диагностику', subtitle: 'Диагностика найма за 48 часов (7 900 ₽)' },
+  'hiring': { title: 'Заявка на подбор / HR-партнёрство', subtitle: 'Найм под ключ или долгосрочное сопровождение' },
+  'default': { title: 'Оставить заявку Анне', subtitle: 'Заполните форму, и Анна свяжется с вами' }
+};
+
+/* АВТООТКРЫТИЕ ОКОН ПО ССЫЛКЕ */
 var params = new URLSearchParams(window.location.search);
 var packParam = params.get('pack');
 var calcParam = params.get('calc');
-var pack='Консультация';
 
-if(packParam){
-  var packNames = {
-    'diagnostika': 'Диагностика найма за 48 часов',
-    'ai_hr': 'AI HR System',
-    'question': 'Консультация / Вопрос',
-    'kpi': 'Система KPI и грейдов',
-    'reglament': 'HR-регламенты и документы',
-    'automation': 'Автоматизация HR-процессов'
-  };
-  pack = packNames[packParam] || 'Консультация';
-  $('#packname').textContent = pack;
+if(packParam && packTitles[packParam]){
+  currentPack = packParam;
+  var info = packTitles[currentPack];
+  $('#lead-title').textContent = info.title;
+  $('#lead-subtitle').textContent = info.subtitle;
+  
+  // Показываем нужный блок вопросов
+  $$('.form-questions').forEach(function(q){ q.style.display = 'none'; });
+  $('#q-' + currentPack).style.display = 'block';
+  
   setTimeout(function(){ $('#lead').showModal(); }, 600);
 }
 
@@ -662,7 +777,16 @@ if(calcParam){
 $$('[data-open]').forEach(function(a){
   a.addEventListener('click',function(e){
     var id=a.dataset.open;
-    if(id==='lead'){pack=a.dataset.pack||'Консультация';$('#packname').textContent=pack}
+    var pack=a.dataset.pack||'default';
+    
+    if(id==='lead'){
+      currentPack = pack;
+      var info = packTitles[currentPack] || packTitles['default'];
+      $('#lead-title').textContent = info.title;
+      $('#lead-subtitle').textContent = info.subtitle;
+      $$('.form-questions').forEach(function(q){ q.style.display = 'none'; });
+      $('#q-' + currentPack).style.display = 'block';
+    }
     if(id==='calc'){resetCalc()}
     if(id==='ai_calc'){resetAiCalc()}
     e.preventDefault();
@@ -685,56 +809,80 @@ document.addEventListener('keydown',function(e){
   }
 });
 
-/* 1. ОТПРАВКА ОСНОВНОЙ ЗАЯВКИ */
+/* ОТПРАВКА ЗАЯВКИ */
 $('#lsend').addEventListener('click',function(){
-  var industry=$('#l_industry').value.trim();
-  var size=$('#l_size').value.trim();
-  var pain=$('#l_pain').value.trim();
   var n=$('#ln').value.trim();
   var c=$('#lc').value.trim();
   var lm=$('#lm').value.trim();
   var e=$('#lerr');
 
-  $('#l_industry').classList.remove('error');
-  $('#l_size').classList.remove('error');
-  $('#l_pain').classList.remove('error');
   $('#ln').classList.remove('error');
   $('#lc').classList.remove('error');
 
-  if(!industry||!size||!pain||!n||!c){
-    e.textContent='Пожалуйста, заполните все обязательные поля.';
-    if(!industry)$('#l_industry').classList.add('error');
-    if(!size)$('#l_size').classList.add('error');
-    if(!pain)$('#l_pain').classList.add('error');
+  if(!n||!c){
+    e.textContent='Пожалуйста, укажите имя и контакт.';
     if(!n)$('#ln').classList.add('error');
     if(!c)$('#lc').classList.add('error');
     return;
   }
   if(!$('#lp').checked){e.textContent='Нужно согласие на обработку персональных данных.';return}
-  e.textContent='';
 
-  var text = ` <b>Новая заявка с сайта</b>\n\n` +
-    `📦 <b>Формат:</b> ${pack}\n` +
-    `🏭 <b>Направление:</b> ${industry}\n` +
-    `👥 <b>Численность:</b> ${size}\n` +
-    `🔥 <b>Боль:</b> ${pain}\n` +
-    ` <b>Имя:</b> ${n}\n` +
+  var extraData = '';
+  if(currentPack === 'diagnostika'){
+    var vac = $('#d_vacancies').value;
+    var pain = $('#d_pain').value;
+    if(!vac||!pain){
+      e.textContent='Пожалуйста, ответьте на все вопросы.';
+      if(!vac)$('#d_vacancies').classList.add('error');
+      if(!pain)$('#d_pain').classList.add('error');
+      return;
+    }
+    extraData = `\n📊 <b>Вакансий висит:</b> ${vac}\n🔥 <b>Главная боль:</b> ${pain}`;
+  } else if(currentPack === 'hiring'){
+    var pos = $('#h_position').value.trim();
+    var dead = $('#h_deadline').value;
+    var bud = $('#h_budget').value;
+    if(!pos||!dead||!bud){
+      e.textContent='Пожалуйста, ответьте на все вопросы.';
+      if(!pos)$('#h_position').classList.add('error');
+      if(!dead)$('#h_deadline').classList.add('error');
+      if(!bud)$('#h_budget').classList.add('error');
+      return;
+    }
+    extraData = `\n🎯 <b>Позиция/задача:</b> ${pos}\n⏰ <b>Сроки:</b> ${dead}\n💰 <b>Бюджет:</b> ${bud}`;
+  } else {
+    var ind = $('#u_industry').value;
+    var sz = $('#u_size').value;
+    var pn = $('#u_pain').value;
+    if(!ind||!sz||!pn){
+      e.textContent='Пожалуйста, ответьте на все вопросы.';
+      if(!ind)$('#u_industry').classList.add('error');
+      if(!sz)$('#u_size').classList.add('error');
+      if(!pn)$('#u_pain').classList.add('error');
+      return;
+    }
+    extraData = `\n🏭 <b>Направление:</b> ${ind}\n👥 <b>Численность:</b> ${sz}\n🔥 <b>Боль:</b> ${pn}`;
+  }
+
+  e.textContent='';
+  var info = packTitles[currentPack] || packTitles['default'];
+  var text = `🔔 <b>${info.title}</b>\n\n` +
+    `👤 <b>Имя:</b> ${n}\n` +
     `📞 <b>Контакт:</b> ${c}` +
+    extraData +
     (lm ? `\n💬 <b>Комментарий:</b> ${lm}` : '');
 
   sendToTelegram(text, function(){
     $('#lead').close();
-    $('#l_industry').value='';
-    $('#l_size').value='';
-    $('#l_pain').value='';
     $('#ln').value='';
     $('#lc').value='';
     $('#lm').value='';
     $('#lp').checked=false;
+    $$('.form-questions select, .form-questions textarea').forEach(function(el){ el.value=''; el.classList.remove('error'); });
   });
 });
 
-/* 2. КАЛЬКУЛЯТОР ПОТЕРЬ */
+/* КАЛЬКУЛЯТОР ПОТЕРЬ */
 var step=1,fmt=function(v){return Math.round(v).toLocaleString('ru-RU')+' ₽'};
 var num=function(id){var v=parseFloat($('#'+id).value);return isNaN(v)||v<0?0:v};
 function showCalc(){for(var i=1;i<=5;i++)$('#s'+i).hidden=(i!==step);
@@ -781,12 +929,12 @@ function finishCalc(n,c){
 
 $('#sendres_btn').addEventListener('click', function(){
     if(!calcData.n) return;
-    var text = ` <b>Результат калькулятора потерь</b>\n\n` +
-        ` <b>Имя:</b> ${calcData.n}\n` +
+    var text = `🧮 <b>Результат калькулятора потерь</b>\n\n` +
+        `👤 <b>Имя:</b> ${calcData.n}\n` +
         `📞 <b>Контакт:</b> ${calcData.c}\n` +
         `📊 <b>Вакансий:</b> ${calcData.v}, срок: ${calcData.d} дн.\n` +
         `📉 <b>Потери от простоя:</b> ${fmt(calcData.dl)}\n` +
-        `️ <b>Затраты на процесс:</b> ${fmt(calcData.pl)}\n` +
+        `⚙️ <b>Затраты на процесс:</b> ${fmt(calcData.pl)}\n` +
         `💰 <b>Итого потери:</b> ${fmt(calcData.tot)}`;
     
     sendToTelegram(text, function(){
@@ -796,7 +944,7 @@ $('#sendres_btn').addEventListener('click', function(){
 });
 showCalc();
 
-/* 3. AI КАЛЬКУЛЯТОР */
+/* AI КАЛЬКУЛЯТОР */
 var aiStep=1;
 function showAiCalc(){
   for(var i=1;i<=4;i++)$('#ai_s'+i).hidden=(i!==aiStep);
@@ -892,6 +1040,25 @@ $('#ai_sendres_btn').addEventListener('click', function(){
 });
 
 showAiCalc();
+
+/* === ЛЁГКИЙ SCROLL-REVEAL === */
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  },{threshold:0.12});
+  $$('.reveal').forEach(function(el){ io.observe(el); });
+  setTimeout(function(){ $$('.reveal').forEach(function(el){ el.classList.add('in'); }); }, 1500);
+} else {
+  $$('.reveal').forEach(function(el){ el.classList.add('in'); });
+}
+
+/* Тень у шапки при прокрутке */
+var hdr=$('#siteHeader');
+window.addEventListener('scroll',function(){
+  hdr.classList.toggle('scrolled', window.scrollY>4);
+},{passive:true});
 </script>
 </body>
 </html>
