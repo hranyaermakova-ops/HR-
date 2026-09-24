@@ -37,12 +37,13 @@ nav a{text-decoration:none;color:var(--ink)}nav a:hover{color:var(--burgundy)}
 .hero h1 span{color:var(--gold)}
 .hero p{color:var(--mut);margin-bottom:14px;max-width:56ch}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.person{background:#fff;border:2px solid var(--line);border-radius:22px;padding:14px;text-align:center;box-shadow:0 4px 20px #00000008}
-.person img{width:100%;border-radius:14px;display:block;aspect-ratio:4/5;object-fit:cover;background:#f0f0f0}
-.person b{display:block;margin-top:12px;font-family:'Unbounded',sans-serif;font-size:16px;color:var(--burgundy)}
-.person span{color:var(--mut);font-size:14px}
 
-/* Компактные блоки статистики */
+/* Изменения здесь: делаем фото компактным */
+.person{background:#fff;border:2px solid var(--line);border-radius:22px;padding:12px;text-align:center;box-shadow:0 4px 20px #00000008; max-width: 280px; margin: 0 auto;}
+.person img{width:100%;border-radius:14px;display:block;aspect-ratio:4/5;object-fit:cover;background:#f0f0f0}
+.person b{display:block;margin-top:10px;font-family:'Unbounded',sans-serif;font-size:15px;color:var(--burgundy)}
+.person span{color:var(--mut);font-size:13px}
+
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:-30px;position:relative}
 .stat{background:#fff;border:2px solid var(--line);border-radius:var(--r);padding:18px 16px}
 .stat b{display:block;font-family:'Unbounded',sans-serif;font-size:clamp(18px,2.2vw,24px);color:var(--burgundy);margin-bottom:6px;line-height:1.2}
@@ -59,7 +60,6 @@ nav a{text-decoration:none;color:var(--ink)}nav a:hover{color:var(--burgundy)}
 .calc h2{color:#fff}.calc p{color:#fffdd0}
 .calc ul{list-style:none;margin:14px 0 20px;color:#fffdd0;padding:0}.calc li:before{content:"✓ ";color:var(--gold)}
 
-/* Увеличенные и акцентные пакеты услуг */
 .price{font-family:'Unbounded',sans-serif;font-size:28px;margin:10px 0 14px;color:var(--burgundy)}
 .pk{display:flex;flex-direction:column;position:relative;background:#fff;border:2px solid var(--line);border-radius:20px;padding:32px 28px;box-shadow:0 8px 24px #00000006;transition:transform .2s}
 .pk:hover{transform:translateY(-4px)}
@@ -131,7 +131,7 @@ input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border
 <div class="card"><div class="ico">⏳</div><h3>Вакансия висит месяцами</h3><p>Резюме приходят не те, толковых кандидатов нет, а каждый день простоя стоит бизнесу денег.</p></div>
 <div class="card"><div class="ico">💸</div><h3>Текучка съедает бюджет</h3><p>Каждый уход — это поиск, обучение, адаптация и потерянная выгода. Вместе они стоят нескольких окладов.</p></div>
 <div class="card"><div class="ico">❓</div><h3>Непонятно, почему уходят</h3><p>Причина «не вписался» ничего не объясняет. Нужна система, которая показывает реальные причины.</p></div>
-<div class="card"><div class="ico">🙈</div><h3>Найм работает вслепую</h3><p>Нет воронки, метрик и прогноза. Решения принимаются на интуиции, и результат не масштабируется.</p></div>
+<div class="card"><div class="ico"></div><h3>Найм работает вслепую</h3><p>Нет воронки, метрик и прогноза. Решения принимаются на интуиции, и результат не масштабируется.</p></div>
 </div></div></section>
 
 <section style="padding-top:10px"><div class="wrap"><div class="calc">
@@ -158,12 +158,11 @@ input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border
 <a class="btn dark" href="#" data-open="lead" data-pack="HR-партнёрство">Запросить расчёт</a></div>
 </div>
 
-<!-- Дополнительные системные услуги -->
 <div style="margin-top:48px">
 <h2 style="text-align:center;font-size:clamp(20px,3vw,30px);margin-bottom:24px">Системные HR-решения для зрелого бизнеса</h2>
 <div class="grid g3">
 <div class="card" style="text-align:center;padding:32px 24px">
-<div class="ico" style="font-size:36px">🎯</div>
+<div class="ico" style="font-size:36px"></div>
 <h3 style="font-size:20px;margin-bottom:12px">Система KPI и грейдов</h3>
 <p>Разработка прозрачной системы мотивации, где каждый сотрудник понимает, как его действия влияют на бонус. Внедрение грейдов для справедливого оценивания, роста зарплат и удержания лучших кадров.</p>
 <a class="btn dark" style="margin-top:20px;width:100%" href="#" data-open="lead" data-pack="Система KPI и грейдов">Обсудить внедрение</a>
@@ -177,7 +176,7 @@ input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border
 </div>
 
 <div class="card" style="text-align:center;padding:32px 24px">
-<div class="ico" style="font-size:36px">⚙️</div>
+<div class="ico" style="font-size:36px">️</div>
 <h3 style="font-size:20px;margin-bottom:12px">Автоматизация HR-процессов</h3>
 <p>Внедрение CRM для рекрутмента, систем электронного документооборота (КЭДО) и чат-ботов для адаптации. Экономим десятки часов времени HR и руководителя ежемесячно.</p>
 <a class="btn dark" style="margin-top:20px;width:100%" href="#" data-open="lead" data-pack="Автоматизация HR-процессов">Узнать подробности</a>
@@ -223,7 +222,6 @@ input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border
 <div><a href="#" data-open="privacy">Политика конфиденциальности</a> · <a href="#" id="tglink" target="_blank" rel="noopener">Telegram</a><span id="botwrap"> · <a href="#" id="botlink" target="_blank" rel="noopener">Ищете работу в HR? Материалы в боте</a></span></div>
 </div></footer>
 
-<!-- Заявка -->
 <dialog id="lead"><div class="dlg"><button class="x" data-close aria-label="Закрыть">×</button>
 <h3>Оставить заявку</h3><p class="hint">Вы выбрали: <b id="packname">Консультация</b></p>
 <label for="ln">Ваше имя</label><input id="ln" type="text" autocomplete="name">
@@ -234,7 +232,6 @@ input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border
 <div class="nav2"><span class="hint">Откроется Telegram с готовым сообщением, останется нажать «Отправить».</span><button class="btn" id="lsend">Отправить</button></div>
 </div></dialog>
 
-<!-- Калькулятор -->
 <dialog id="calc"><div class="dlg"><button class="x" data-close aria-label="Закрыть">×</button>
 <h3>Калькулятор потерь от найма</h3><div class="dots" id="dots"><i></i><i></i><i></i><i></i></div>
 <div id="s1"><p class="hint">Шаг 1 из 4. Что считаем</p>
@@ -261,15 +258,13 @@ input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border
 <div class="nav2" id="nav"><button class="btn ghost" style="color:var(--ink);border-color:var(--line)" id="back">← Назад</button><button class="btn" id="next">Далее →</button></div>
 </div></dialog>
 
-<!-- Политика -->
 <dialog id="privacy"><div class="dlg"><button class="x" data-close aria-label="Закрыть">×</button>
 <h3>Политика конфиденциальности</h3>
 <p class="hint" style="margin-top:12px">[Вставьте текст политики обработки персональных данных: кто оператор (ФИО или реквизиты), какие данные собираются, цели, срок хранения, как отозвать согласие, контакты. Подготовьте текст со специалистом по 152-ФЗ.]</p></div></dialog>
 
 <script>
-/* НАСТРОЙКИ */
-var TELEGRAM='AnnaErmakova77';           // ваш ник в Telegram без @
-var BOT_URL='';                          // ссылка на бота для соискателей, например https://t.me/ваш_бот (пусто = скрыть)
+var TELEGRAM='AnnaErmakova77';
+var BOT_URL='';
 
 var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
 var tg=function(t){return 'https://t.me/'+TELEGRAM+'?text='+encodeURIComponent(t)};
@@ -284,7 +279,6 @@ $$('[data-open]').forEach(function(a){a.addEventListener('click',function(e){e.p
 $$('[data-close]').forEach(function(b){b.addEventListener('click',function(){b.closest('dialog').close()})});
 $$('dialog').forEach(function(d){d.addEventListener('click',function(e){if(e.target===d)d.close()})});
 
-/* Заявка */
 $('#lsend').addEventListener('click',function(){
  var n=$('#ln').value.trim(),c=$('#lc').value.trim(),e=$('#lerr');
  if(!n||!c){e.textContent='Укажите имя и телефон или Telegram.';e.hidden=false;return}
@@ -293,7 +287,6 @@ $('#lsend').addEventListener('click',function(){
  var t='Заявка с сайта\nФормат: '+pack+'\nИмя: '+n+'\nКонтакт: '+c+($('#lm').value.trim()?'\nКомментарий: '+$('#lm').value.trim():'');
  window.open(tg(t),'_blank','noopener');$('#lead').close()});
 
-/* Калькулятор */
 var step=1,fmt=function(v){return Math.round(v).toLocaleString('ru-RU')+' ₽'};
 var num=function(id){var v=parseFloat($('#'+id).value);return isNaN(v)||v<0?0:v};
 function show(){for(var i=1;i<=5;i++)$('#s'+i).hidden=(i!==step);
