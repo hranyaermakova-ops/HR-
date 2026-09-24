@@ -754,8 +754,8 @@ var packTitles = {
 /* АВТООТКРЫТИЕ ОКОН ПО ССЫЛКЕ */
 var params = new URLSearchParams(window.location.search);
 var packParam = params.get('pack');
-var calcParam = params.get('calc');
-var aiCalcParam = params.get('aicalc');
+var calcParam = params.has('calc');
+var aiCalcParam = params.has('aicalc');
 
 if(packParam && packTitles[packParam]){
   currentPack = packParam;
