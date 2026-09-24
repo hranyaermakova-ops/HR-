@@ -349,7 +349,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 </div>
 
 <div class="system-card">
-<div class="ico-wrap"><div class="ico">🎯</div></div>
+<div class="ico-wrap"><div class="ico"></div></div>
 <h3>Система KPI и грейдов</h3>
 <p class="subtitle">Прозрачная мотивация, которая работает на результат</p>
 <p>Сотрудники понимают, за что получают бонус. Руководители видят вклад каждого. Вы строите справедливую систему роста зарплат и удержания лучших — без «обид» и субъективных оценок.</p>
@@ -423,7 +423,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 
 <footer><div class="wrap">
 <div>© 2026 HRD Анна Ермакова. Все права защищены.</div>
-<div><a href="#" data-open="privacy">Политика конфиденциальности</a> · <a href="#" id="tglink" target="_blank" rel="noopener">Telegram</a><span id="botwrap"> · <a href="#" id="botlink" target="_blank" rel="noopener">Ищете работу в HR? Материалы в боте</a></span></div>
+<div><a href="#" data-open="privacy">Политика конфиденциальности</a></div>
 </div></footer>
 
 <dialog id="lead"><div class="dlg"><button class="x" data-close aria-label="Закрыть">×</button>
@@ -466,7 +466,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <label for="lm">Комментарий (необязательно)</label><textarea id="lm" rows="3"></textarea>
 <label class="chk"><input type="checkbox" id="lp"><span>Соглашаюсь на обработку персональных данных и с <a href="#" data-open="privacy">политикой конфиденциальности</a></span></label>
 <div class="err" id="lerr" role="alert"></div>
-<div class="nav2"><span class="hint">Откроется Telegram с готовым сообщением, останется нажать «Отправить».</span><button class="btn" id="lsend" type="button">Отправить</button></div>
+<div class="nav2"><span class="hint">Заявка будет отправлена напрямую Анне в Telegram</span><button class="btn" id="lsend" type="button">Отправить</button></div>
 </div></dialog>
 
 <dialog id="calc"><div class="dlg"><button class="x" data-close aria-label="Закрыть">×</button>
@@ -491,7 +491,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <label class="chk"><input type="checkbox" id="cp"><span>Соглашаюсь на обработку персональных данных и с <a href="#" data-open="privacy">политикой конфиденциальности</a></span></label></div>
 <div id="s5" hidden><p class="hint">Ваши потери от найма</p><div class="res" id="total">0 ₽</div><div class="rows" id="rows"></div>
 <p class="hint"><b>Это ориентировочная оценка.</b> Точные цифры зависят от специфики отрасли. Анна разберёт вашу ситуацию и предложит решение.</p>
-<div class="nav2"><span></span><a class="btn" id="sendres" href="#" target="_blank" rel="noopener">Получить рекомендации от Анны</a></div></div>
+<div class="nav2"><span></span><button class="btn" id="sendres_btn" type="button">📩 Отправить результат Анне</button></div></div>
 <div class="err" id="cerr" role="alert"></div>
 <div class="nav2" id="nav"><button class="btn ghost" style="color:var(--ink);border-color:var(--line)" id="back" type="button">← Назад</button><button class="btn" id="next" type="button">Далее →</button></div>
 </div></dialog>
@@ -562,7 +562,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 </ul>
 </div>
 <div class="ai-role human-side">
-<h4>👤 Что остаётся человеку</h4>
+<h4> Что остаётся человеку</h4>
 <ul>
 <li>Финальное решение по кандидатам</li>
 <li>Сложные переговоры и офферы</li>
@@ -587,7 +587,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 
 <div class="nav2" style="margin-top:24px">
 <span></span>
-<a class="btn ai" id="ai_discuss" href="#" data-open="lead" data-pack="AI HR System">Обсудить AI HR System</a>
+<button class="btn ai" id="ai_sendres_btn" type="button">📩 Отправить результат Анне</button>
 </div>
 </div>
 
@@ -604,21 +604,40 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <p class="hint" style="margin-top:12px">[Вставьте текст политики обработки персональных данных: кто оператор (ФИО или реквизиты), какие данные собираются, цели, срок хранения, как отозвать согласие, контакты. Подготовьте текст со специалистом по 152-ФЗ.]</p></div></dialog>
 
 <script>
-/* НАСТРОЙКИ */
-var TELEGRAM='AnnaErmakova77';
-var BOT_URL='';
+/* === НАСТРОЙКИ TELEGRAM БОТА === */
+const BOT_TOKEN = '8634522740:AAEN333dy-Bd_6LuD6-grbSThobIkUDmbWc';
+const CHAT_ID = '2064552434';
+
+function sendToTelegram(text, successCallback) {
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: CHAT_ID,
+            text: text,
+            parse_mode: 'HTML'
+        })
+    }).then(response => {
+        if (response.ok) {
+            if (successCallback) successCallback();
+            alert('✅ Заявка успешно отправлена! Анна свяжется с вами в ближайшее время.');
+        } else {
+            alert('❌ Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз.');
+        }
+    }).catch(error => {
+        console.error('Error:', error);
+        alert('❌ Ошибка сети. Проверьте подключение к интернету.');
+    });
+}
 
 var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
-var tg=function(t){return 'https://t.me/'+TELEGRAM+'?text='+encodeURIComponent(t)};
-$('#tglink').href='https://t.me/'+TELEGRAM;
-if(BOT_URL){$('#botlink').href=BOT_URL}else{$('#botwrap').hidden=true}
-
-var pack='Консультация';
 
 /* АВТООТКРЫТИЕ ОКОН ПО ССЫЛКЕ ИЗ БОТА */
 var params = new URLSearchParams(window.location.search);
 var packParam = params.get('pack');
-var calcParam = params.get('calc'); // <-- НОВОЕ: проверка на калькулятор
+var calcParam = params.get('calc');
+var pack='Консультация';
 
 if(packParam){
   var packNames = {
@@ -634,12 +653,12 @@ if(packParam){
   setTimeout(function(){ $('#lead').showModal(); }, 600);
 }
 
-if(calcParam){ // <-- НОВОЕ: если в ссылке есть ?calc, открываем калькулятор
+if(calcParam){
   resetCalc();
   setTimeout(function(){ $('#calc').showModal(); }, 600);
 }
 
-/* Универсальное управление диалогами */
+/* Управление диалогами */
 $$('[data-open]').forEach(function(a){
   a.addEventListener('click',function(e){
     var id=a.dataset.open;
@@ -666,13 +685,14 @@ document.addEventListener('keydown',function(e){
   }
 });
 
-/* Заявка */
+/* 1. ОТПРАВКА ОСНОВНОЙ ЗАЯВКИ */
 $('#lsend').addEventListener('click',function(){
   var industry=$('#l_industry').value.trim();
   var size=$('#l_size').value.trim();
   var pain=$('#l_pain').value.trim();
   var n=$('#ln').value.trim();
   var c=$('#lc').value.trim();
+  var lm=$('#lm').value.trim();
   var e=$('#lerr');
 
   $('#l_industry').classList.remove('error');
@@ -693,28 +713,28 @@ $('#lsend').addEventListener('click',function(){
   if(!$('#lp').checked){e.textContent='Нужно согласие на обработку персональных данных.';return}
   e.textContent='';
 
-  var t='🔔 Новая заявка с сайта\n\n'
-    +'📦 Формат: '+pack+'\n'
-    +'🏭 Направление: '+industry+'\n'
-    +'👥 Численность: '+size+'\n'
-    +'🔥 Боль: '+pain+'\n'
-    +'👤 Имя: '+n+'\n'
-    +'📞 Контакт: '+c
-    +($('#lm').value.trim()?'💬 Комментарий: '+$('#lm').value.trim():'');
+  var text = ` <b>Новая заявка с сайта</b>\n\n` +
+    `📦 <b>Формат:</b> ${pack}\n` +
+    `🏭 <b>Направление:</b> ${industry}\n` +
+    `👥 <b>Численность:</b> ${size}\n` +
+    `🔥 <b>Боль:</b> ${pain}\n` +
+    ` <b>Имя:</b> ${n}\n` +
+    `📞 <b>Контакт:</b> ${c}` +
+    (lm ? `\n💬 <b>Комментарий:</b> ${lm}` : '');
 
-  window.open(tg(t),'_blank','noopener');
-  $('#lead').close();
-
-  $('#l_industry').value='';
-  $('#l_size').value='';
-  $('#l_pain').value='';
-  $('#ln').value='';
-  $('#lc').value='';
-  $('#lm').value='';
-  $('#lp').checked=false;
+  sendToTelegram(text, function(){
+    $('#lead').close();
+    $('#l_industry').value='';
+    $('#l_size').value='';
+    $('#l_pain').value='';
+    $('#ln').value='';
+    $('#lc').value='';
+    $('#lm').value='';
+    $('#lp').checked=false;
+  });
 });
 
-/* Калькулятор потерь */
+/* 2. КАЛЬКУЛЯТОР ПОТЕРЬ */
 var step=1,fmt=function(v){return Math.round(v).toLocaleString('ru-RU')+' ₽'};
 var num=function(id){var v=parseFloat($('#'+id).value);return isNaN(v)||v<0?0:v};
 function showCalc(){for(var i=1;i<=5;i++)$('#s'+i).hidden=(i!==step);
@@ -744,6 +764,8 @@ $('#next').addEventListener('click',function(){
   $('#cn').classList.remove('error');$('#cc').classList.remove('error');
   finishCalc(n,c);return}
  step++;showCalc()});
+
+var calcData = {};
 function finishCalc(n,c){
  var down=$('#c_down').checked,proc=$('#c_proc').checked,v=num('vac'),d=num('days');
  var dl=down?num('rev')/30*d*v:0;
@@ -752,11 +774,29 @@ function finishCalc(n,c){
  if(down)rows+='<div><span>Потери от простоя вакансий</span><b>'+fmt(dl)+'</b></div>';
  if(proc)rows+='<div><span>Затраты на процесс найма</span><b>'+fmt(pl)+'</b></div>';
  $('#total').textContent=fmt(tot);$('#rows').innerHTML=rows;
- var t='Результат калькулятора потерь от найма\nИмя: '+n+'\nКонтакт: '+c+'\nВакансий: '+v+', срок закрытия: '+d+' дн.\nПотери от простоя: '+fmt(dl)+'\nЗатраты на процесс: '+fmt(pl)+'\nИтого: '+fmt(tot);
- $('#sendres').href=tg(t);step=5;showCalc()}
+ 
+ calcData = { n, c, v, d, dl, pl, tot };
+ step=5;showCalc();
+}
+
+$('#sendres_btn').addEventListener('click', function(){
+    if(!calcData.n) return;
+    var text = ` <b>Результат калькулятора потерь</b>\n\n` +
+        ` <b>Имя:</b> ${calcData.n}\n` +
+        `📞 <b>Контакт:</b> ${calcData.c}\n` +
+        `📊 <b>Вакансий:</b> ${calcData.v}, срок: ${calcData.d} дн.\n` +
+        `📉 <b>Потери от простоя:</b> ${fmt(calcData.dl)}\n` +
+        `️ <b>Затраты на процесс:</b> ${fmt(calcData.pl)}\n` +
+        `💰 <b>Итого потери:</b> ${fmt(calcData.tot)}`;
+    
+    sendToTelegram(text, function(){
+        $('#calc').close();
+        resetCalc();
+    });
+});
 showCalc();
 
-/* AI Калькулятор */
+/* 3. AI КАЛЬКУЛЯТОР */
 var aiStep=1;
 function showAiCalc(){
   for(var i=1;i<=4;i++)$('#ai_s'+i).hidden=(i!==aiStep);
@@ -768,13 +808,11 @@ function showAiCalc(){
 }
 function resetAiCalc(){aiStep=1;showAiCalc()}
 
-$('#ai_back').addEventListener('click',function(){
-  if(aiStep>1){aiStep--;showAiCalc()}
-});
+$('#ai_back').addEventListener('click',function(){ if(aiStep>1){aiStep--;showAiCalc()} });
 
+var aiData = {};
 $('#ai_next').addEventListener('click',function(){
-  var er=$('#ai_err');
-  er.textContent='';
+  var er=$('#ai_err'); er.textContent='';
   $$('#ai_calc input, #ai_calc select').forEach(function(el){el.classList.remove('error')});
 
   if(aiStep===1){
@@ -787,12 +825,10 @@ $('#ai_next').addEventListener('click',function(){
     else if(!proc){$('#ai_processes').classList.add('error');if(valid)er.textContent='Выберите уровень зрелости процессов.';valid=false}
     if(!valid)return;
   }
-
   if(aiStep===2){
     var anyChecked=$('#ai_t1').checked||$('#ai_t2').checked||$('#ai_t3').checked||$('#ai_t4').checked||$('#ai_t5').checked||$('#ai_t6').checked;
     if(!anyChecked){er.textContent='Отметьте хотя бы одну задачу, чтобы расчёт был точным.';return}
   }
-
   if(aiStep===3){
     var n=$('#ai_name').value.trim(),c=$('#ai_contact').value.trim();
     if(!n||!c){
@@ -805,9 +841,7 @@ $('#ai_next').addEventListener('click',function(){
     calculateAiResult(n,c);
     return;
   }
-
-  aiStep++;
-  showAiCalc();
+  aiStep++; showAiCalc();
 });
 
 function calculateAiResult(name,contact){
@@ -816,46 +850,46 @@ function calculateAiResult(name,contact){
   var hrsPerMonth=hrsPerWeek*4.33;
 
   var tasks=[
-    {id:'ai_t1',factor:0.7,weight:0.25},
-    {id:'ai_t2',factor:0.6,weight:0.20},
-    {id:'ai_t3',factor:0.75,weight:0.15},
-    {id:'ai_t4',factor:0.5,weight:0.15},
-    {id:'ai_t5',factor:0.65,weight:0.15},
-    {id:'ai_t6',factor:0.7,weight:0.10}
+    {id:'ai_t1',factor:0.7,weight:0.25}, {id:'ai_t2',factor:0.6,weight:0.20},
+    {id:'ai_t3',factor:0.75,weight:0.15}, {id:'ai_t4',factor:0.5,weight:0.15},
+    {id:'ai_t5',factor:0.65,weight:0.15}, {id:'ai_t6',factor:0.7,weight:0.10}
   ];
 
-  var totalFactor=0;
-  var totalWeight=0;
+  var totalFactor=0, totalWeight=0;
   tasks.forEach(function(t){
-    if($('#'+t.id).checked){
-      totalFactor+=t.factor*t.weight;
-      totalWeight+=t.weight;
-    }
+    if($('#'+t.id).checked){ totalFactor+=t.factor*t.weight; totalWeight+=t.weight; }
   });
 
   var avgFactor=totalWeight>0?totalFactor/totalWeight:0;
   var aiHours=Math.round(hrsPerMonth*avgFactor);
 
   var proc=$('#ai_processes').value;
-  var procMultiplier=1;
-  if(proc==='none')procMultiplier=0.7;
-  else if(proc==='basic')procMultiplier=0.9;
-  else if(proc==='mid')procMultiplier=1.0;
-  else if(proc==='advanced')procMultiplier=1.15;
-
+  var procMultiplier = proc==='none'?0.7 : proc==='basic'?0.9 : proc==='mid'?1.0 : 1.15;
   aiHours=Math.round(aiHours*procMultiplier);
-
   if(aiHours>hrsPerMonth)aiHours=Math.round(hrsPerMonth*0.85);
   if(aiHours<0)aiHours=0;
 
   $('#ai_hours_result').textContent=aiHours+' ч/мес';
-
-  var t='Заявка на AI HR System\nИмя: '+name+'\nКонтакт: '+contact+'\nСотрудников: '+emp+'\nЧасов рутины в неделю: '+hrsPerWeek+'\nПроцессы: '+proc+'\nПотенциал автоматизации: '+aiHours+' ч/мес';
-  $('#ai_discuss').href=tg(t);
-
-  aiStep=4;
-  showAiCalc();
+  
+  aiData = { name, contact, emp, hrsPerWeek, proc, aiHours };
+  aiStep=4; showAiCalc();
 }
+
+$('#ai_sendres_btn').addEventListener('click', function(){
+    if(!aiData.name) return;
+    var text = `🤖 <b>Заявка на AI HR System</b>\n\n` +
+        `👤 <b>Имя:</b> ${aiData.name}\n` +
+        `📞 <b>Контакт:</b> ${aiData.contact}\n` +
+        `🏢 <b>Сотрудников:</b> ${aiData.emp}\n` +
+        `⏱ <b>Часов рутины в неделю:</b> ${aiData.hrsPerWeek}\n` +
+        `⚙️ <b>Уровень процессов:</b> ${aiData.proc}\n` +
+        `✨ <b>Потенциал автоматизации:</b> ${aiData.aiHours} ч/мес`;
+    
+    sendToTelegram(text, function(){
+        $('#ai_calc').close();
+        resetAiCalc();
+    });
+});
 
 showAiCalc();
 </script>
