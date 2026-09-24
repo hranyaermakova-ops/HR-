@@ -115,7 +115,7 @@ nav a{text-decoration:none;color:var(--ink)}nav a:hover{color:var(--burgundy)}
 .pk.rec{border:2px solid var(--gold);background:linear-gradient(180deg, var(--gold-bg) 0%, #fff 100%)}
 .badge{position:absolute;top:-14px;left:28px;background:var(--gold);color:#2B2B2B;font-size:12px;font-weight:700;padding:4px 14px;border-radius:99px;text-transform:uppercase;letter-spacing:0.04em}
 
-/* SYSTEM — 4 карточки с золотом */
+/* SYSTEM */
 .system-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
 .system-card{display:flex;flex-direction:column;padding:28px 22px;background:#fff;border:1px solid var(--gold-light);border-radius:var(--r);transition:transform .2s,box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
 .system-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));opacity:0.6;transition:opacity .2s}
@@ -216,7 +216,6 @@ input.error,textarea.error,select.error{border-color:#B3261E}
   .cost,.solution{padding:32px 24px}
   .ai-role-grid{grid-template-columns:1fr}
   .hero h1{border-left:none;padding-left:0}
-  .hero h1::before{display:none}
 }
 @media(max-width:520px){
   .stats{grid-template-columns:1fr}
@@ -252,7 +251,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <span>Собственники и руководители компаний 20–150 человек, где найм тормозит рост, текучесть съедает бюджет, а HR-вопросы решаются «по настроению».</span>
 </div>
 <div class="cta-row">
-<a class="btn big" href="#" data-open="calc">🧮 Рассчитать потери от найма</a>
+<a class="btn big" href="#" data-open="calc"> Рассчитать потери от найма</a>
 <a class="btn ghost big" href="#" data-open="lead" data-pack="Диагностика найма за 48 часов">Записаться на диагностику</a>
 </div>
 </div>
@@ -265,7 +264,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <p class="lead">Если хотя бы два пункта про вас — HR-система работает против вас, а не на вас. И это стоит денег каждый месяц.</p>
 <div class="pain-grid">
 <div class="pain"><div class="ico">⏳</div><div><h3>Вакансия висит месяцами</h3><p>Резюме не те, толковых кандидатов нет, каждый день простоя — это упущенная выручка.</p></div></div>
-<div class="pain"><div class="ico"></div><div><h3>Текучка съедает бюджет</h3><p>Поиск, обучение, адаптация, потерянная выгода. Один уход стоит 3–6 окладов.</p></div></div>
+<div class="pain"><div class="ico">💸</div><div><h3>Текучка съедает бюджет</h3><p>Поиск, обучение, адаптация, потерянная выгода. Один уход стоит 3–6 окладов.</p></div></div>
 <div class="pain"><div class="ico">❓</div><div><h3>Непонятно, почему уходят</h3><p>«Не вписался в коллектив» — это не причина. Нужна система, которая показывает реальные точки оттока.</p></div></div>
 <div class="pain"><div class="ico">🎲</div><div><h3>Найм на интуиции</h3><p>Нет воронки, метрик, прогноза. Решения принимаются «на глаз», результат не масштабируется.</p></div></div>
 </div>
@@ -369,9 +368,9 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <a class="btn ai" href="#" data-open="ai_calc">✨ Рассчитать потенциал AI</a>
 </div>
 
-<!-- KPI & ГРЕЙДЫ -->
+<!-- KPI -->
 <div class="system-card">
-<div class="ico-wrap"><div class="ico">🎯</div></div>
+<div class="ico-wrap"><div class="ico"></div></div>
 <h3>Система KPI и грейдов</h3>
 <p class="subtitle">Прозрачная мотивация, которая работает на результат</p>
 <p>Сотрудники понимают, за что получают бонус. Руководители видят вклад каждого. Вы строите справедливую систему роста зарплат и удержания лучших — без «обид» и субъективных оценок.</p>
@@ -403,7 +402,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 
 <!-- АВТОМАТИЗАЦИЯ -->
 <div class="system-card">
-<div class="ico-wrap"><div class="ico">⚙️</div></div>
+<div class="ico-wrap"><div class="ico">️</div></div>
 <h3>Автоматизация HR-процессов</h3>
 <p class="subtitle">CRM, КЭДО и чат-боты вместо рутины</p>
 <p>Внедряем инструменты, которые экономят десятки часов ежемесячно: CRM для рекрутмента, электронный документооборот, чат-боты для адаптации и ответов на вопросы сотрудников.</p>
@@ -440,7 +439,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <h2>Готовы навести порядок в HR?</h2>
 <p>Начните с бесплатного расчёта потерь или запишитесь на диагностику за 48 часов. Это конкретный первый шаг, а не «обсудим возможности».</p>
 <div class="cta-row" style="justify-content:center">
-<a class="btn" href="#" data-open="calc"> Рассчитать потери от найма</a>
+<a class="btn" href="#" data-open="calc">🧮 Рассчитать потери от найма</a>
 <a class="btn ghost" href="#" data-open="lead" data-pack="Диагностика найма за 48 часов">Записаться на диагностику</a>
 </div>
 </div>
@@ -453,9 +452,42 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 <div><a href="#" data-open="privacy">Политика конфиденциальности</a> · <a href="#" id="tglink" target="_blank" rel="noopener">Telegram</a><span id="botwrap"> · <a href="#" id="botlink" target="_blank" rel="noopener">Ищете работу в HR? Материалы в боте</a></span></div>
 </div></footer>
 
-<!-- Заявка -->
+<!-- ЗАЯВКА (ОБНОВЛЁННАЯ ФОРМА) -->
 <dialog id="lead"><div class="dlg"><button class="x" data-close aria-label="Закрыть">×</button>
 <h3>Оставить заявку</h3><p class="subtitle">Вы выбрали: <b id="packname">Консультация</b></p>
+
+<label for="l_industry">Направление компании<span class="req">*</span></label>
+<select id="l_industry" required>
+<option value="">— выберите сферу бизнеса —</option>
+<option value="E-commerce / Маркетплейсы">E-commerce / Маркетплейсы</option>
+<option value="Услуги / Сервис">Услуги / Сервис</option>
+<option value="Производство">Производство</option>
+<option value="IT / Digital">IT / Digital</option>
+<option value="Розничная торговля">Розничная торговля</option>
+<option value="Агентство / Консалтинг">Агентство / Консалтинг</option>
+<option value="Другое">Другое</option>
+</select>
+
+<label for="l_size">Численность сотрудников<span class="req">*</span></label>
+<select id="l_size" required>
+<option value="">— выберите численность —</option>
+<option value="До 20 человек">До 20 человек</option>
+<option value="20–50 человек">20–50 человек</option>
+<option value="50–150 человек">50–150 человек</option>
+<option value="Более 150 человек">Более 150 человек</option>
+</select>
+
+<label for="l_pain">Что болит сильнее всего?<span class="req">*</span></label>
+<select id="l_pain" required>
+<option value="">— выберите основную проблему —</option>
+<option value="Вакансии висят месяцами">Вакансии висят месяцами</option>
+<option value="Высокая текучесть кадров">Высокая текучесть кадров</option>
+<option value="Найм на интуиции, нет системы">Найм на интуиции, нет системы</option>
+<option value="Непонятно, почему уходят сотрудники">Непонятно, почему уходят сотрудники</option>
+<option value="Нужна система KPI и мотивации">Нужна система KPI и мотивации</option>
+<option value="Другое">Другое</option>
+</select>
+
 <label for="ln">Ваше имя<span class="req">*</span></label><input id="ln" type="text" autocomplete="name" required>
 <label for="lc">Телефон или Telegram<span class="req">*</span></label><input id="lc" type="text" autocomplete="tel" required>
 <label for="lm">Комментарий (необязательно)</label><textarea id="lm" rows="3"></textarea>
@@ -549,7 +581,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 
 <div class="ai-role-grid">
 <div class="ai-role ai-side">
-<h4>🤖 Что делает AI</h4>
+<h4> Что делает AI</h4>
 <ul>
 <li>Первичный скрининг резюме по критериям</li>
 <li>Ответы на типовые вопросы 24/7</li>
@@ -559,7 +591,7 @@ input.error,textarea.error,select.error{border-color:#B3261E}
 </ul>
 </div>
 <div class="ai-role human-side">
-<h4> Что остаётся человеку</h4>
+<h4>👤 Что остаётся человеку</h4>
 <ul>
 <li>Финальное решение по кандидатам</li>
 <li>Сложные переговоры и офферы</li>
@@ -657,20 +689,57 @@ document.addEventListener('keydown',function(e){
   }
 });
 
-/* Заявка */
+/* Заявка (ОБНОВЛЁННАЯ — с 3 вопросами для собственника) */
 $('#lsend').addEventListener('click',function(){
-  var n=$('#ln').value.trim(),c=$('#lc').value.trim(),e=$('#lerr');
-  $('#ln').classList.remove('error');$('#lc').classList.remove('error');
-  if(!n||!c){
-    e.textContent='Пожалуйста, укажите имя и телефон или Telegram.';
+  var industry=$('#l_industry').value.trim();
+  var size=$('#l_size').value.trim();
+  var pain=$('#l_pain').value.trim();
+  var n=$('#ln').value.trim();
+  var c=$('#lc').value.trim();
+  var e=$('#lerr');
+
+  // Сброс ошибок
+  $('#l_industry').classList.remove('error');
+  $('#l_size').classList.remove('error');
+  $('#l_pain').classList.remove('error');
+  $('#ln').classList.remove('error');
+  $('#lc').classList.remove('error');
+
+  // Валидация
+  if(!industry||!size||!pain||!n||!c){
+    e.textContent='Пожалуйста, заполните все обязательные поля.';
+    if(!industry)$('#l_industry').classList.add('error');
+    if(!size)$('#l_size').classList.add('error');
+    if(!pain)$('#l_pain').classList.add('error');
     if(!n)$('#ln').classList.add('error');
     if(!c)$('#lc').classList.add('error');
     return;
   }
   if(!$('#lp').checked){e.textContent='Нужно согласие на обработку персональных данных.';return}
   e.textContent='';
-  var t='Заявка с сайта\nФормат: '+pack+'\nИмя: '+n+'\nКонтакт: '+c+($('#lm').value.trim()?'\nКомментарий: '+$('#lm').value.trim():'');
-  window.open(tg(t),'_blank','noopener');$('#lead').close()});
+
+  // Формируем сообщение
+  var t='🔔 Новая заявка с сайта\n\n'
+    +'📦 Формат: '+pack+'\n'
+    +' Направление: '+industry+'\n'
+    +'👥 Численность: '+size+'\n'
+    +'🔥 Боль: '+pain+'\n'
+    +'👤 Имя: '+n+'\n'
+    +'📞 Контакт: '+c
+    +($('#lm').value.trim()?'💬 Комментарий: '+$('#lm').value.trim():'');
+
+  window.open(tg(t),'_blank','noopener');
+  $('#lead').close();
+
+  // Сброс формы
+  $('#l_industry').value='';
+  $('#l_size').value='';
+  $('#l_pain').value='';
+  $('#ln').value='';
+  $('#lc').value='';
+  $('#lm').value='';
+  $('#lp').checked=false;
+});
 
 /* Калькулятор потерь */
 var step=1,fmt=function(v){return Math.round(v).toLocaleString('ru-RU')+' ₽'};
